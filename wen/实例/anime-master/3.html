@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	div {
+      position: absolute;
+      top: -.5rem;
+      left: -.5rem;
+      width: 1rem;
+      height: 1rem;
+      background: green;
+    }
+	</style>
+</head>
+<body>
+	<div class="green"></div>
+
+	<svg width="500" height="500">
+	<path id="svg_1" d="m86,152c56,5 95,-52 95,-52c0,0 75,41 75,41c0,0 -20,76 -20,76c0,0 152,-30 152,-30c0,0 24,50 24,50c0,0 -266,12 -266,12c0,0 133,-76 50,-76c-83,0 -166,-26 -110,-21z" stroke-width="1.5" stroke="#000" fill="#fff"/>
+	</svg>
+
+
+	<script type="text/javascript" src="anime.min.js"></script>
+	<script type="text/javascript">
+		var mypath=anime.path('path');
+		var myAnimation = anime({
+		  targets: 'div',
+		  translateX: mypath,
+		  translateY: mypath,
+		  rotate: mypath,
+		  borderRadius: 8,
+		  duration: 200000,
+		  loop: true
+		});
+	</script>
+</body>
+</html>

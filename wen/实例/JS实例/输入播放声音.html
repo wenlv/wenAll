@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="input">
+	<button onclick="bofang()">播放</button>
+	<audio src="" controls id="aud"></audio>
+	<input type="number" name="" id="num" value="1">
+	<script type="text/javascript">
+	function bofang(){
+		var txt=document.getElementById('input').value;
+		var aud=document.getElementById('aud');
+		var num=document.getElementById('num').value;
+		var myUrl="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd="+num+"&text="+txt;   //spd=''控制播放速度   text='' 要播放的内容
+
+		aud.src=myUrl;
+		aud.play();
+	}
+
+
+	</script>
+</body>
+</html>

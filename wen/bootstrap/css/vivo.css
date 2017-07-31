@@ -1,0 +1,428 @@
+@font-face {
+	font-family: 'myfont';
+    src: url('../font/iconfont.eot'); /* IE9*/
+    src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+/* *****************导航开始********************* */
+.navbar{
+	margin-bottom:0px;
+	border:0px;
+}
+.navbar .container{
+	width: 95%;
+	padding: 0px;
+	margin: 0 auto;
+
+}
+.navbar .container .collapse ul{
+	padding-right: 0px;
+	margin-right: 0px;
+}
+
+.navbar .container .collapse ul:first-child li{
+	transition:all 0.3s;
+	position: relative;
+}
+.navbar .container .collapse ul:first-child li ul{
+	position: absolute;
+	z-index: 999;
+	left: -200px;
+	top: 50px;
+	width: 750px;
+	height: 320px;
+	display:none;
+	background: white;
+}
+.navbar .container .collapse ul:first-child li:hover ul{
+	display: block;
+}
+.navbar .container .collapse ul:first-child li ul li{
+	width: 100px;
+	list-style-type: none;
+	float: left;
+	margin: 30px 20px;
+}
+.navbar .container .collapse ul:first-child li ul li a{
+	color: #333;
+	display: block;
+}
+.navbar .container .collapse ul:first-child li ul li span{
+	width:100px;
+	height: 40px;
+	line-height: 40px;
+	display: block;
+}
+.navbar .container .collapse ul:first-child li a:hover{
+	background: #008CD6;
+	color: white;
+}
+.navbar .container .collapse ul:first-child li:hover ul li a:hover {
+	background: white;
+	color: #008CD6;
+	text-decoration: none;
+}
+.navbar .container .collapse ul:first-child li img{
+	width: 250px;
+	overflow: hidden;
+	vertical-align: middle;
+	display: block;
+}
+.navbar .container .collapse ul:last-child li{
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	width: 35px;
+	box-sizing: border-box;
+}
+.navbar .container .collapse ul li:last-child{
+	padding-right: 0px;
+}
+.navbar .container .collapse ul li button{
+	height: 50px;
+	background: #F8F8F8;
+	border: 0px;
+	margin-top: 5px;
+}
+.navbar .container .collapse ul li a span,.navbar .container .collapse ul li button span{
+	width: 30px;
+	height: 30px;
+	font-family: 'myfont';
+	font-size: 25px;
+	border: 1px solid #666;
+	border-radius: 30px;
+	display: block;
+	line-height: 30px;
+	color: #666;
+}
+.navbar .container .collapse ul li button span:hover{
+	background: #008CD6;
+	color: white;
+}
+/*********导航结束************/
+/*********商品开始*************/
+.shop{
+	width: 100%;
+}
+.shop .row{
+	width:100%;
+	box-sizing:border-box;
+	margin:0 auto;
+}
+.shop .row div,.row div a,.shop .row div a img{
+	padding:0px;
+	margin:0px;
+	border:0px;
+}
+.shop .row div{
+	position:relative;
+}
+.shop .row div div{
+	position:absolute;
+	left:30%;
+	top:65%;
+	text-align:center;
+	
+}
+.shop .row div:nth-of-type(2) div h4,.shop .row div:nth-of-type(2) div span{
+	color:white;
+	display:block;
+}
+.shop .row div:nth-of-type(3) div h4{
+	color:#333333;
+}
+.shop .row div:nth-of-type(3) div span{
+	color:#999999;
+}
+.shop .row div a:hover{
+	text-decoration:none;
+}
+/***********商品结束***********/
+/*************活动开始************/
+.huodong,.dong ,.mei{
+	width:95%;
+	margin:0 auto;
+}
+.huodong .hu,.dong .hu,.mei .media{
+	height:80px;
+	width: 100%;
+	margin: 0 auto;
+	margin-top:90px;
+	/* padding:0px; */
+}
+.huodong  .hu span:first-child,.dong  .hu span:first-child,.mei .media span{
+	font-size:25px;
+	font-weight:700;
+	color:black;
+	display:block;
+	margin-left:0px;
+}
+.huodong .hu span:last-child a,.dong .hu span:last-child a{
+	width:60px;
+	height:30px;
+	border:1px solid #999;
+	border-radius:20px;
+	display:block;
+	line-height:30px;
+	text-align:center;
+	margin-left:10px;
+	color:#999999;
+}
+.huodong  .hu span:last-child a:hover,.dong  .hu span:last-child a:hover{
+	color:#008CD6;
+	border:1px solid #008CD6;
+	text-decoration:none;
+}
+.huodong  .row div a{
+	padding:5px;
+	display: block;
+}
+.huodong  .row div a img{
+	width: 100%;
+}
+.huodong  .row div a span:nth-of-type(1){
+	font-size:18px;
+	color:#000000;
+	margin-top:15px;
+	display:block;
+}
+.huodong  .row div a span:nth-of-type(2){
+	font-size:13px;
+	color:#666666;
+	display:block;
+	margin:0px;
+}
+.huodong  .row div a:hover span{
+	color:#008CD6;
+}
+.huodong  .row div > span:nth-of-type(1){
+	width:20px;
+	border-top:2px solid #CCCCCC;
+	margin:10px 0px;
+	display:block;
+	margin-left: 5px;
+}
+.huodong  .row div > span:nth-of-type(2){
+	color:#666;
+	display:block;
+	margin-left: 5px;
+}
+/**********活动结束***************/
+/* *********************动态开始**************************88 */
+.dong{
+	width: 95%;
+}
+.dong .row div .thumbnail{
+	border: 0px;
+	padding: 0px;
+}
+.thumbnail a img{
+	margin-right: 10px;
+}
+.dong .row div div .caption{
+	width: 50%;
+	padding: 0px;
+	white-space: nowrap;
+	overflow: hidden;
+	display: block;
+}
+.caption h3{
+	height: 30px;
+	padding: 0px;
+	font-size: 15px;
+	margin-top: 0px;
+	line-height: 30px;
+}
+.caption h3 span{
+	width: 40px;
+	height: 30px;
+	border-radius: 3px;
+	display: block;
+	color: white;
+	margin-top: 0px;
+	background: #008CD6;
+	line-height: 30px;
+	text-align: center;
+}
+.caption h3 a{
+	color: black;
+}
+.caption p a{
+	color: #666666;
+}
+.caption p:nth-of-type(1){
+	margin-bottom: 30px;
+}
+/*********活动结束**********/
+/*********媒体开始***********/
+.mei {
+	width: 95%;
+	margin-bottom:50px ;
+	box-sizing: border-box;
+	padding: 0px;
+}
+.mei .row{
+	margin: 0 auto;
+	padding: 0px;
+}
+.mei .row div,.mei .row div .thumbnail{
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+.mei .row div .thumbnail .caption{
+	box-sizing: border-box;
+	width: 43%;
+	padding: 0px;
+	margin: 0px;
+}
+.mei .row div .thumbnail .caption p:nth-of-type(1){
+	height: 80px;
+	width: 100%;
+	overflow: hidden;
+}
+.mei .row div .thumbnail .caption p:nth-of-type(2){
+	width: 20px;
+	border-top: 2px solid #CCCCCC;
+}
+.mei .row div .thumbnail .caption p:nth-of-type(3){
+	color: #999;
+}
+.mei .row div .thumbnail .caption p:nth-of-type(3) span:first-child{
+	font-family:'myfont';
+	font-size: 30px;
+	display: inline-block;
+	vertical-align: middle;
+}
+/**************主题结束****************/
+/**********footer开始*************/
+.footer{
+	width:100%;
+	height:100%;
+	overflow: hidden;
+	background:#222222;
+	padding-top:30px;
+	margin: 0 auto;
+}
+.footer .foot{
+	width:95%;
+	height:100%;
+	margin:0 auto;
+}
+.footer .foot div:first-child{
+	margin:50px auto;
+	display:block;
+}
+.footer .foot div:nth-of-type(2){
+	width: 100%;
+	height: 100%;
+	display: block;
+	padding: 0px;
+}
+.footer .foot  div:nth-of-type(2)  ul{
+	width:100%;
+	display:block;
+	padding: 0px;
+}
+.footer .foot div:nth-of-type(2) ul li{
+	list-style-type: none;
+	margin: 0 auto;
+	display: inline-block;
+	position: relative;
+	vertical-align: bottom;
+}
+.footer .foot div:nth-of-type(2) ul  li:nth-of-type(2) div{
+	position: absolute;
+	left: -10px;
+	top: -160px;
+	display: none;
+}
+.footer .foot div:nth-of-type(2) ul  li:nth-of-type(2):hover div{
+	display: block;
+}
+.footer .foot div:nth-of-type(2) ul li a{
+	margin:0 10px;
+	display: block;
+}
+.footer .foot div:nth-of-type(2) ul li a span{
+	display:inline-block;
+	width:50px;
+	height:50px;
+	font-family: 'myfont';
+	font-size: 40px;
+	background:#666666;
+	border-radius:50px;
+	line-height:50px;
+	color:white;
+	font-size:20px;
+}
+.footer .foot div:nth-of-type(2) ul li:nth-of-type(6) span{
+	width:2px;
+	border-left: 2px solid #666;
+	display: block;
+}
+.footer .foot div:nth-of-type(2) ul li:nth-of-type(7){
+	vertical-align: top;
+}
+.footer .foot div:nth-of-type(2) ul li:nth-of-type(7) span{
+	width:150px;
+	height:30px;
+	margin-top:10px;
+	line-height:30px;
+	border-radius:30px;
+	display:block;
+}
+.footer .foot div:nth-of-type(2) a:hover{
+	text-decoration: none;
+}
+.footer .foot div:nth-of-type(2)  span:hover{
+	background:#2185EE;
+}
+.footer .foot div:nth-of-type(3){
+	margin:20px 0px;
+}
+.footer .foot div:nth-of-type(3) ul{
+	width:100%;
+	margin:0 auto;
+	padding: 0px;
+}
+.footer .foot div:nth-of-type(3) ul li{
+	display: inline-block;
+	padding:0px 10px;
+	margin:0px auto;
+}
+.footer .foot div:nth-of-type(3) ul li a{
+	width:100%;
+	margin:0px auto;
+	color:#666666;
+	display:block;
+}
+.footer .foot div:nth-of-type(3) ul li a:hover{
+	color:#008CD6;
+}
+.footer .foot div:nth-of-type(4) {
+	margin-bottom: 50px;
+}
+.footer .foot div:nth-of-type(4) span:first-child{
+	width:200px;
+	margin:0 auto;
+	display:block;
+	color:#666666;
+}
+.footer .foot div:nth-of-type(4) span:last-child{
+	width:300px;
+	margin:0 auto;
+	display:block;
+	color:#666666;
+}
+.footer .foot div:nth-of-type(4) span:last-child a{
+	color:#666;
+	display:inline-block;
+}
+.footer .foot div:nth-of-type(4) span:last-child a:hover{
+	color:#008CD6;
+}
+

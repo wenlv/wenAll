@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#box{
+			width: 100px;
+			height: 100px;
+			border: 2px solid #000;
+		}
+		#menu{
+			width: 300px;
+			height: 300px;
+			border: 1px solid #ccc;
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			display: none;
+		}
+		#menu ul{
+			list-style: none;
+			width: 280px;
+			float: left;
+		}
+		#menu ul li{
+			float: left;
+			margin: 5px;
+		}
+	</style>
+</head>
+<body>
+	设置:	<button id="shezhi">点击设置</button>
+	<br>
+	<div id="box"></div>
+	<div id="menu">
+		<ul>
+			<li>背景色:</li>
+			<li><button onclick="myChange(1)">红</button></li>
+			<li><button onclick="myChange(2)">黄</button></li>
+			<li><button onclick="myChange(3)">蓝</button></li>
+		</ul>
+
+		<ul>
+			<li>宽:</li>
+			<li><button onclick="myChange(4)">200</button></li>
+			<li><button onclick="myChange(5)">300</button></li>
+			<li><button onclick="myChange(6)">400</button></li>
+		</ul>
+
+		<ul>
+			<li>高:</li>
+			<li><button onclick="myChange(7)">200</button></li>
+			<li><button onclick="myChange(8)">300</button></li>
+			<li><button onclick="myChange(9)">400</button></li>
+		</ul>
+		<ul>
+			<li><button onclick="myChange(10)">恢复</button></li>
+			<li><button onclick="queren()">确认</button></li>
+		</ul>
+
+	</div>
+	<script type="text/javascript">
+	document.getElementById('shezhi').onclick=function(){
+		document.getElementById('menu').style.display="block";
+	}
+	function queren () {
+		document.getElementById('menu').style.display="none";
+	}
+	var box = document.getElementById('box');
+	function myChange(n){
+		switch(n){
+			case 1:
+			box.style.backgroundColor="red";
+			break;
+			case 2:
+			box.style.backgroundColor="yellow";
+			break;
+			case 3:
+			box.style.backgroundColor="blue";
+			break;
+			case 4:
+			box.style.width="200px";
+			break;
+			case 5:
+			box.style.width="300px";
+			break;
+			case 6:
+			box.style.width="400px";
+			break;
+			case 7:
+			box.style.height="200px";
+			break;
+			case 8:
+			box.style.height="300px";
+			break;
+			case 9:
+			box.style.height="400px";
+			break;
+			case 10:
+			box.style.width="100px";
+			box.style.height="100px";
+			box.style.backgroundColor="";
+		}
+	}
+	</script>
+</body>
+</html>

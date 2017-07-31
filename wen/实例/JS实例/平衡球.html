@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		.box{
+			width:600px;
+			height:50px;
+			border-radius: 25px;
+			border:1px solid #ccc;
+			margin:0 auto;
+			position: relative;
+		}
+		.ball{
+			position: absolute;
+			width:50px;
+			height:50px;
+			border-radius: 25px;
+			background-image:radial-gradient(at 20px 20px,#fff,#000);
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="ball" style="left:0px;"></div>
+	</div>
+
+	<script>
+		//获取小球
+		var ball = document.getElementsByTagName('div')[1];
+		console.log(ball);
+		//向右的定时
+		var righter = setInterval(toRight,50);
+		//向左的定时
+		var lefter = null;
+		function toRight(){
+			var num = parseInt(ball.style.left);
+			if(num > 545){
+				clearInterval(righter);
+				lefter = setInterval(toLeft,50);
+				return;
+			}
+			num+=5;
+			ball.style.left = num+'px';
+		}
+
+		function toLeft(){
+			var num = parseInt(ball.style.left);
+			if(num < 5){
+				clearInterval(lefter);
+				righter = setInterval(toRight,50);
+				return;
+			}
+			num-=5;
+			ball.style.left = num+'px';
+		}
+	</script>
+</body>
+</html>

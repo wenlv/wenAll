@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<title>注册</title>
+	<style>
+		tr td.error{
+			color: red;
+		}
+		tr td.success{
+			color: green;
+		}
+		.loginOut{
+			color: red;
+			width:500px;
+			height: 30px;
+			margin: 0 auto;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="loginOut">商家后台注册</div>
+	<table width='600px' align="center">
+		<form action="login.php" onsubmit='return checkForm()' name='myform'>
+			<tr>
+				<td width='100px' >用户名：</td>
+				<td width='90px'><input type="text" name='username'></td>
+				<td id='t11' width='260px'>4-11的大小写字母</td>
+				<td id='t1' width='260px'></td>
+			</tr>
+			<tr>
+				<td width='100px'>密码：</td>
+				<td width='90px'><input type="password" name='pwd'></td>
+				<td id='t22' width='260px'>6-12位数字</td>
+				<td id='t2' width='260px'></td>
+			</tr>
+			<!-- <tr>
+				<td width='120px'>确认密码：</td>
+				<td width='90px'><input type="password" name='repwd'></td>
+				<td id='t33' width='260px'>6-12位数字</td>
+				<td id='t3' width='260px'></td>
+			</tr> -->
+			<!-- <tr>
+				<td width='90px'>电话：</td>
+				<td width='90px'><input type="text" name='tel'></td>
+				<td id='t44' width='260px'>11位数字</td>
+				<td id='t4' width='260px'></td>
+			</tr> -->
+			<tr>
+				<td></td>
+				<td colspan='2'>
+					<!-- <input type="submit" name='submit' value='提 交'> -->
+					<input type="submit" name='zhuce' value='注 册'>
+				</td>
+			</tr>
+		</form>
+	</table>
+
+
+	<script>
+		//验证用户名
+		//获取用户名
+		var username=document.myform.username;
+		var user='';
+		username.onblur=function(){
+			//console.log(this.value);
+			user=this.value;
+			checkUser();
+		}
+		function checkUser(){
+			if(!user.match(/^[A-z]\w{3,11}$/)){
+				t1.innerHTML='用户名格式不正确';
+				t1.className='';
+				t1.className='error';
+				return false;
+			}
+			t1.innerHTML='用户名格式准确';
+			t1.innerName='';
+			t1.className='success';
+			return true;
+		}
+
+	//验证密码 --6-12位的数字
+	//获取密码
+	var pwd=document.myform.pwd;
+	var pw='';
+	pwd.onblur=function(){
+		pw=this.value;
+		checkPwd();
+	}
+	function checkPwd(){
+		if(!pw.match(/^\d{6,12}$/)){
+			t2.innerHTML='密码格式不正确';
+			t2.className='';
+			t2.className='error';
+			return false;
+		}
+		t2.innerHTML='密码格式正确';
+		t2.className='';
+		t2.className='success';
+		return true;
+	}
+
+
+	// //验证手机 --11位的数字
+	// //获取手机号
+	// var telphone=document.myform.tel;
+	// var tel='';
+	// telphone.onblur=function(){
+	// 	tel=this.value;
+	// 	checkTel();
+	// }
+	// function checkTel(){
+	// 	if(!tel.match(/^\d{11}$/)){
+	// 		t4.innerHTML='电话格式不正确';
+	// 		t4.className='';
+	// 		t4.className='error';
+	// 		return false;
+	// 	}
+	// 	t4.innerHTML='电话格式正确';
+	// 	t4.className='';
+	// 	t4.className='success';
+	// 	return true;
+	// }
+
+	//验证函数
+	function checkForm(){
+		return checkUser() && checkPwd();
+	}
+	</script>
+</body>
+</html>

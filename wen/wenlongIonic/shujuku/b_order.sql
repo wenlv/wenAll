@@ -1,0 +1,226 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : h507
+Source Server Version : 50632
+Source Host           : localhost:3306
+Source Database       : h507
+
+Target Server Type    : MYSQL
+Target Server Version : 50632
+File Encoding         : 65001
+
+Date: 2017-02-15 15:25:23
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for b_order
+-- ----------------------------
+DROP TABLE IF EXISTS `b_order`;
+CREATE TABLE `b_order` (
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `order_addtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`order_id`,`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=260 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of b_order
+-- ----------------------------
+INSERT INTO `b_order` VALUES ('65', '1', '2017-01-18 22:52:42');
+INSERT INTO `b_order` VALUES ('66', '1', '2017-01-18 22:52:56');
+INSERT INTO `b_order` VALUES ('67', '3', '2017-02-10 21:15:54');
+INSERT INTO `b_order` VALUES ('68', '3', '2017-02-10 21:17:01');
+INSERT INTO `b_order` VALUES ('69', '3', '2017-02-10 21:22:59');
+INSERT INTO `b_order` VALUES ('70', '3', '2017-02-10 21:25:28');
+INSERT INTO `b_order` VALUES ('71', '3', '2017-02-10 21:26:34');
+INSERT INTO `b_order` VALUES ('72', '3', '2017-02-10 21:27:53');
+INSERT INTO `b_order` VALUES ('73', '3', '2017-02-10 21:30:16');
+INSERT INTO `b_order` VALUES ('74', '3', '2017-02-10 21:34:00');
+INSERT INTO `b_order` VALUES ('75', '3', '2017-02-10 21:36:02');
+INSERT INTO `b_order` VALUES ('76', '3', '2017-02-10 21:39:53');
+INSERT INTO `b_order` VALUES ('77', '3', '2017-02-10 21:45:09');
+INSERT INTO `b_order` VALUES ('78', '3', '2017-02-10 21:50:50');
+INSERT INTO `b_order` VALUES ('79', '3', '2017-02-10 21:55:43');
+INSERT INTO `b_order` VALUES ('80', '3', '2017-02-10 22:04:23');
+INSERT INTO `b_order` VALUES ('81', '3', '2017-02-10 22:05:24');
+INSERT INTO `b_order` VALUES ('82', '3', '2017-02-10 22:07:09');
+INSERT INTO `b_order` VALUES ('83', '3', '2017-02-10 22:09:17');
+INSERT INTO `b_order` VALUES ('84', '3', '2017-02-10 22:15:28');
+INSERT INTO `b_order` VALUES ('85', '3', '2017-02-10 22:16:28');
+INSERT INTO `b_order` VALUES ('86', '3', '2017-02-10 22:18:38');
+INSERT INTO `b_order` VALUES ('87', '3', '2017-02-10 22:19:34');
+INSERT INTO `b_order` VALUES ('88', '3', '2017-02-10 22:21:16');
+INSERT INTO `b_order` VALUES ('89', '3', '2017-02-10 22:23:26');
+INSERT INTO `b_order` VALUES ('90', '1', '2017-02-10 22:27:07');
+INSERT INTO `b_order` VALUES ('91', '3', '2017-02-10 22:32:13');
+INSERT INTO `b_order` VALUES ('92', '3', '2017-02-10 22:34:10');
+INSERT INTO `b_order` VALUES ('93', '3', '2017-02-10 22:35:58');
+INSERT INTO `b_order` VALUES ('94', '3', '2017-02-10 22:36:44');
+INSERT INTO `b_order` VALUES ('95', '3', '2017-02-10 22:37:57');
+INSERT INTO `b_order` VALUES ('96', '3', '2017-02-10 22:38:51');
+INSERT INTO `b_order` VALUES ('97', '3', '2017-02-11 11:06:09');
+INSERT INTO `b_order` VALUES ('98', '3', '2017-02-11 11:10:22');
+INSERT INTO `b_order` VALUES ('99', '3', '2017-02-11 11:11:30');
+INSERT INTO `b_order` VALUES ('100', '3', '2017-02-11 11:12:19');
+INSERT INTO `b_order` VALUES ('101', '3', '2017-02-11 11:12:45');
+INSERT INTO `b_order` VALUES ('102', '3', '2017-02-11 11:14:37');
+INSERT INTO `b_order` VALUES ('103', '3', '2017-02-11 11:15:44');
+INSERT INTO `b_order` VALUES ('104', '3', '2017-02-11 11:17:44');
+INSERT INTO `b_order` VALUES ('105', '3', '2017-02-11 11:18:35');
+INSERT INTO `b_order` VALUES ('106', '3', '2017-02-11 11:19:53');
+INSERT INTO `b_order` VALUES ('107', '3', '2017-02-11 11:24:10');
+INSERT INTO `b_order` VALUES ('108', '3', '2017-02-11 11:25:35');
+INSERT INTO `b_order` VALUES ('109', '3', '2017-02-11 11:28:48');
+INSERT INTO `b_order` VALUES ('110', '3', '2017-02-11 11:29:44');
+INSERT INTO `b_order` VALUES ('111', '3', '2017-02-11 11:32:36');
+INSERT INTO `b_order` VALUES ('112', '3', '2017-02-11 11:34:45');
+INSERT INTO `b_order` VALUES ('113', '3', '2017-02-11 11:36:22');
+INSERT INTO `b_order` VALUES ('114', '3', '2017-02-11 11:37:17');
+INSERT INTO `b_order` VALUES ('115', '3', '2017-02-11 11:39:06');
+INSERT INTO `b_order` VALUES ('116', '3', '2017-02-11 11:40:02');
+INSERT INTO `b_order` VALUES ('117', '3', '2017-02-11 11:40:22');
+INSERT INTO `b_order` VALUES ('118', '3', '2017-02-11 11:42:06');
+INSERT INTO `b_order` VALUES ('119', '3', '2017-02-11 11:47:06');
+INSERT INTO `b_order` VALUES ('120', '3', '2017-02-11 11:48:30');
+INSERT INTO `b_order` VALUES ('121', '3', '2017-02-11 11:49:43');
+INSERT INTO `b_order` VALUES ('122', '3', '2017-02-11 11:51:08');
+INSERT INTO `b_order` VALUES ('123', '3', '2017-02-11 11:54:41');
+INSERT INTO `b_order` VALUES ('124', '3', '2017-02-11 11:57:55');
+INSERT INTO `b_order` VALUES ('125', '3', '2017-02-11 12:01:29');
+INSERT INTO `b_order` VALUES ('126', '3', '2017-02-11 12:08:43');
+INSERT INTO `b_order` VALUES ('127', '3', '2017-02-11 12:10:35');
+INSERT INTO `b_order` VALUES ('128', '3', '2017-02-11 12:12:21');
+INSERT INTO `b_order` VALUES ('129', '3', '2017-02-11 12:14:59');
+INSERT INTO `b_order` VALUES ('130', '3', '2017-02-11 12:16:00');
+INSERT INTO `b_order` VALUES ('131', '3', '2017-02-11 12:17:38');
+INSERT INTO `b_order` VALUES ('132', '3', '2017-02-11 12:18:31');
+INSERT INTO `b_order` VALUES ('133', '3', '2017-02-11 12:22:52');
+INSERT INTO `b_order` VALUES ('134', '3', '2017-02-11 12:28:01');
+INSERT INTO `b_order` VALUES ('135', '3', '2017-02-11 12:33:40');
+INSERT INTO `b_order` VALUES ('136', '3', '2017-02-11 12:35:10');
+INSERT INTO `b_order` VALUES ('137', '3', '2017-02-11 12:35:56');
+INSERT INTO `b_order` VALUES ('138', '3', '2017-02-11 12:36:07');
+INSERT INTO `b_order` VALUES ('139', '3', '2017-02-11 12:39:12');
+INSERT INTO `b_order` VALUES ('140', '3', '2017-02-11 12:41:51');
+INSERT INTO `b_order` VALUES ('141', '3', '2017-02-11 12:43:17');
+INSERT INTO `b_order` VALUES ('142', '3', '2017-02-11 12:46:05');
+INSERT INTO `b_order` VALUES ('143', '3', '2017-02-11 12:47:41');
+INSERT INTO `b_order` VALUES ('144', '3', '2017-02-11 12:51:17');
+INSERT INTO `b_order` VALUES ('145', '3', '2017-02-11 12:54:41');
+INSERT INTO `b_order` VALUES ('146', '3', '2017-02-11 12:56:32');
+INSERT INTO `b_order` VALUES ('147', '3', '2017-02-11 13:00:10');
+INSERT INTO `b_order` VALUES ('148', '3', '2017-02-11 13:01:47');
+INSERT INTO `b_order` VALUES ('149', '3', '2017-02-11 13:02:48');
+INSERT INTO `b_order` VALUES ('150', '3', '2017-02-11 13:06:48');
+INSERT INTO `b_order` VALUES ('151', '3', '2017-02-11 13:26:21');
+INSERT INTO `b_order` VALUES ('152', '3', '2017-02-11 13:27:04');
+INSERT INTO `b_order` VALUES ('153', '3', '2017-02-11 13:29:29');
+INSERT INTO `b_order` VALUES ('154', '3', '2017-02-11 13:30:04');
+INSERT INTO `b_order` VALUES ('155', '3', '2017-02-11 13:32:35');
+INSERT INTO `b_order` VALUES ('156', '3', '2017-02-11 13:32:58');
+INSERT INTO `b_order` VALUES ('157', '3', '2017-02-11 13:35:29');
+INSERT INTO `b_order` VALUES ('158', '3', '2017-02-11 13:35:38');
+INSERT INTO `b_order` VALUES ('159', '3', '2017-02-11 13:36:00');
+INSERT INTO `b_order` VALUES ('160', '3', '2017-02-11 13:36:52');
+INSERT INTO `b_order` VALUES ('161', '3', '2017-02-11 13:37:00');
+INSERT INTO `b_order` VALUES ('162', '3', '2017-02-11 13:37:24');
+INSERT INTO `b_order` VALUES ('163', '3', '2017-02-11 13:37:49');
+INSERT INTO `b_order` VALUES ('164', '3', '2017-02-11 13:37:56');
+INSERT INTO `b_order` VALUES ('165', '1', '2017-02-11 13:38:16');
+INSERT INTO `b_order` VALUES ('166', '5', '2017-02-11 13:39:02');
+INSERT INTO `b_order` VALUES ('167', '5', '2017-02-11 13:39:14');
+INSERT INTO `b_order` VALUES ('168', '3', '2017-02-11 17:00:38');
+INSERT INTO `b_order` VALUES ('169', '3', '2017-02-11 17:09:08');
+INSERT INTO `b_order` VALUES ('170', '3', '2017-02-11 19:38:17');
+INSERT INTO `b_order` VALUES ('171', '1', '2017-02-12 15:39:19');
+INSERT INTO `b_order` VALUES ('172', '1', '2017-02-13 11:24:13');
+INSERT INTO `b_order` VALUES ('173', '3', '2017-02-13 11:26:19');
+INSERT INTO `b_order` VALUES ('174', '3', '2017-02-13 11:26:47');
+INSERT INTO `b_order` VALUES ('175', '3', '2017-02-13 11:30:09');
+INSERT INTO `b_order` VALUES ('176', '3', '2017-02-13 11:32:36');
+INSERT INTO `b_order` VALUES ('177', '3', '2017-02-13 11:32:45');
+INSERT INTO `b_order` VALUES ('178', '3', '2017-02-13 11:33:02');
+INSERT INTO `b_order` VALUES ('179', '3', '2017-02-13 11:33:29');
+INSERT INTO `b_order` VALUES ('180', '3', '2017-02-13 11:33:50');
+INSERT INTO `b_order` VALUES ('181', '3', '2017-02-13 11:35:58');
+INSERT INTO `b_order` VALUES ('182', '3', '2017-02-13 11:36:20');
+INSERT INTO `b_order` VALUES ('183', '3', '2017-02-13 11:37:50');
+INSERT INTO `b_order` VALUES ('184', '3', '2017-02-13 11:38:04');
+INSERT INTO `b_order` VALUES ('185', '3', '2017-02-13 11:38:15');
+INSERT INTO `b_order` VALUES ('186', '3', '2017-02-13 11:40:33');
+INSERT INTO `b_order` VALUES ('187', '3', '2017-02-13 11:40:57');
+INSERT INTO `b_order` VALUES ('188', '1', '2017-02-13 11:43:49');
+INSERT INTO `b_order` VALUES ('189', '1', '2017-02-13 11:44:39');
+INSERT INTO `b_order` VALUES ('190', '1', '2017-02-13 11:44:59');
+INSERT INTO `b_order` VALUES ('191', '1', '2017-02-13 12:00:27');
+INSERT INTO `b_order` VALUES ('192', '3', '2017-02-13 12:04:54');
+INSERT INTO `b_order` VALUES ('193', '3', '2017-02-13 12:05:08');
+INSERT INTO `b_order` VALUES ('194', '3', '2017-02-13 12:07:22');
+INSERT INTO `b_order` VALUES ('195', '3', '2017-02-13 12:08:57');
+INSERT INTO `b_order` VALUES ('196', '3', '2017-02-13 12:09:16');
+INSERT INTO `b_order` VALUES ('197', '3', '2017-02-13 12:12:14');
+INSERT INTO `b_order` VALUES ('198', '3', '2017-02-13 12:15:14');
+INSERT INTO `b_order` VALUES ('199', '3', '2017-02-13 13:04:35');
+INSERT INTO `b_order` VALUES ('200', '3', '2017-02-13 13:06:50');
+INSERT INTO `b_order` VALUES ('201', '3', '2017-02-13 13:08:48');
+INSERT INTO `b_order` VALUES ('202', '3', '2017-02-13 13:13:42');
+INSERT INTO `b_order` VALUES ('203', '3', '2017-02-13 13:16:29');
+INSERT INTO `b_order` VALUES ('204', '3', '2017-02-13 13:18:30');
+INSERT INTO `b_order` VALUES ('205', '3', '2017-02-13 13:26:42');
+INSERT INTO `b_order` VALUES ('206', '3', '2017-02-13 13:33:21');
+INSERT INTO `b_order` VALUES ('207', '3', '2017-02-13 13:34:25');
+INSERT INTO `b_order` VALUES ('208', '3', '2017-02-13 13:36:06');
+INSERT INTO `b_order` VALUES ('209', '3', '2017-02-13 13:42:11');
+INSERT INTO `b_order` VALUES ('210', '3', '2017-02-13 13:42:21');
+INSERT INTO `b_order` VALUES ('211', '3', '2017-02-13 15:11:51');
+INSERT INTO `b_order` VALUES ('212', '3', '2017-02-13 15:12:17');
+INSERT INTO `b_order` VALUES ('213', '3', '2017-02-13 16:05:20');
+INSERT INTO `b_order` VALUES ('214', '3', '2017-02-13 16:25:54');
+INSERT INTO `b_order` VALUES ('215', '3', '2017-02-13 16:51:49');
+INSERT INTO `b_order` VALUES ('216', '1', '2017-02-13 16:55:14');
+INSERT INTO `b_order` VALUES ('217', '1', '2017-02-13 16:55:29');
+INSERT INTO `b_order` VALUES ('218', '3', '2017-02-13 18:25:49');
+INSERT INTO `b_order` VALUES ('219', '3', '2017-02-13 18:30:11');
+INSERT INTO `b_order` VALUES ('220', '3', '2017-02-13 19:24:04');
+INSERT INTO `b_order` VALUES ('221', '3', '2017-02-13 21:21:43');
+INSERT INTO `b_order` VALUES ('222', '3', '2017-02-13 21:22:30');
+INSERT INTO `b_order` VALUES ('223', '3', '2017-02-14 08:37:06');
+INSERT INTO `b_order` VALUES ('224', '3', '2017-02-14 08:38:40');
+INSERT INTO `b_order` VALUES ('225', '3', '2017-02-14 09:05:02');
+INSERT INTO `b_order` VALUES ('226', '3', '2017-02-14 09:05:49');
+INSERT INTO `b_order` VALUES ('227', '3', '2017-02-14 09:13:31');
+INSERT INTO `b_order` VALUES ('228', '3', '2017-02-14 09:15:02');
+INSERT INTO `b_order` VALUES ('229', '3', '2017-02-14 09:15:17');
+INSERT INTO `b_order` VALUES ('230', '3', '2017-02-14 09:15:31');
+INSERT INTO `b_order` VALUES ('231', '3', '2017-02-14 09:16:02');
+INSERT INTO `b_order` VALUES ('232', '3', '2017-02-14 09:16:10');
+INSERT INTO `b_order` VALUES ('233', '3', '2017-02-14 09:16:18');
+INSERT INTO `b_order` VALUES ('234', '3', '2017-02-14 09:16:24');
+INSERT INTO `b_order` VALUES ('235', '3', '2017-02-14 09:16:32');
+INSERT INTO `b_order` VALUES ('236', '3', '2017-02-14 09:17:25');
+INSERT INTO `b_order` VALUES ('237', '3', '2017-02-15 14:18:28');
+INSERT INTO `b_order` VALUES ('238', '3', '2017-02-15 14:19:01');
+INSERT INTO `b_order` VALUES ('239', '3', '2017-02-15 14:19:10');
+INSERT INTO `b_order` VALUES ('240', '13', '2017-02-15 14:33:12');
+INSERT INTO `b_order` VALUES ('241', '13', '2017-02-15 14:34:01');
+INSERT INTO `b_order` VALUES ('242', '3', '2017-02-15 14:34:41');
+INSERT INTO `b_order` VALUES ('243', '14', '2017-02-15 14:37:21');
+INSERT INTO `b_order` VALUES ('244', '3', '2017-02-15 14:52:48');
+INSERT INTO `b_order` VALUES ('245', '3', '2017-02-15 14:57:14');
+INSERT INTO `b_order` VALUES ('246', '15', '2017-02-15 14:59:38');
+INSERT INTO `b_order` VALUES ('247', '3', '2017-02-15 15:01:01');
+INSERT INTO `b_order` VALUES ('248', '3', '2017-02-15 15:01:18');
+INSERT INTO `b_order` VALUES ('249', '3', '2017-02-15 15:02:22');
+INSERT INTO `b_order` VALUES ('250', '3', '2017-02-15 15:03:35');
+INSERT INTO `b_order` VALUES ('251', '3', '2017-02-15 15:04:30');
+INSERT INTO `b_order` VALUES ('252', '3', '2017-02-15 15:04:39');
+INSERT INTO `b_order` VALUES ('253', '3', '2017-02-15 15:04:46');
+INSERT INTO `b_order` VALUES ('254', '3', '2017-02-15 15:05:36');
+INSERT INTO `b_order` VALUES ('255', '3', '2017-02-15 15:16:08');
+INSERT INTO `b_order` VALUES ('256', '3', '2017-02-15 15:17:28');
+INSERT INTO `b_order` VALUES ('257', '3', '2017-02-15 15:17:51');
+INSERT INTO `b_order` VALUES ('258', '16', '2017-02-15 15:18:35');
+INSERT INTO `b_order` VALUES ('259', '16', '2017-02-15 15:19:02');

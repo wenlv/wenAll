@@ -1,0 +1,22 @@
+<ion-view view-title="介绍应用新功能">
+	<ion-nav-buttons side="left">
+		<button class='button button-assertive' ng-click="goHomePage()">跳过介绍</button>
+	</ion-nav-buttons>
+	<ion-content>
+		<ion-slide-box ng-style="{{heightObj}}" on-slide-changed="slideHasChanged($index)">
+			<ion-slide>
+				<div class="box blue col-5">
+					<h1>第一个介绍页面{{VERSION}}</h1>
+					<img src="images/1.jpg" at="" style="width:100%">
+				</div>
+			</ion-slide>
+			<ion-slide>
+				<div class='box pink'>
+					<h1>第二个介绍页面{{VERSION}}</h1>
+					<img src="images/2.jpg" at="" style="width:100%">
+					<button class="button button-calm" ui-sref="tab.list">进入主页</button>
+				</div>
+			</ion-slide>
+		</ion-slide-box>
+	</ion-content>
+</ion-view>

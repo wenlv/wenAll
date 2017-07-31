@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单事件</title>
+</head>
+<body>
+	<input type="text" id="input"><br>
+	<p id="p"></p>
+	<hr>
+	<textarea name="" id="text" cols="30" rows="10">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, inventore iusto impedit non aperiam minus expedita dignissimos molestias optio sapiente doloremque error provident quaerat libero quam. Similique non veritatis explicabo!
+	</textarea>
+	<hr>
+	<p id="pp">
+		那优美的旋律像极了人生的心电图
+　　
+　　在自由的版图上勾勒生活
+　　
+　　无所谓哪一片土地上养育着的精灵
+　　
+　　顺着时光的缝隙慢慢龟裂
+　　
+　　为自己斟一杯火红色的鸡尾酒
+　　
+　　在人生的旅途中为那一抹嫣红调色
+　　
+　　有时候不是一路畅通，而是转弯后的宁静比时光默然
+	</p>
+	<script>
+		//获取input
+		//N05   onchange  当value发生改变的时候触发
+		var input = document.getElementById('input');
+		input.onchange = function(){  
+			//p.innerHTML = this.value;
+			console.log("我是Onchange"+this.value);
+		}
+		input.onblur = function(){
+			console.log("我是onblur"+this.value);
+		}
+
+		//N06  onselect   文本被选中
+		var text = document.getElementById('text');
+		text.onselect = function(){
+			alert('啊，我被选中了。');
+		}
+		pp.onselect = function(){
+			alert('啊，我也被选中了。')
+		}
+	</script>
+</body>
+</html>

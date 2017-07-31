@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			text-decoration: none;
+		}
+		#box{
+			width: 960px;
+			margin: 0 auto;
+		}
+		#box ul{
+			width: 960px;
+			height: 42px;
+		}
+		#box ul li{
+			float: left;
+			border: 1px solid #ccc;
+			height: 40px;
+		}
+		#box ul li img{
+			width: 25px;
+			height: 25px;
+		}
+
+		#box ul li:nth-child(1){
+			width: 15%;
+		}
+		#box ul li:nth-child(2){
+			width: 59%;
+		}
+		#box ul li:nth-child(3){
+			width: 25%;
+		}
+		textarea{
+			width: 960px;
+			display: block;
+			resize: none;
+			margin: 0 auto;
+		}
+		#facebox{
+			width: 36px;
+			height: 20px;
+			background: #e7f;
+			position: relative;
+			cursor: pointer;
+		}
+		#myface{
+			width: 220px;
+			height: 60px;
+			border: 1px solid #42C642;
+			position: absolute;
+			left: 270px;
+			top: -30px;
+			display: none;
+		}
+		#myface li{
+			float: left;
+		}
+		#sub{
+			width: 960px;
+			margin: 40px auto 100px;
+			position: relative;
+		}
+		#fabiao{
+			float: right;
+			border: 0;
+			width: 50px;
+			height: 40px;
+			background: #16e;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<h1>留言板</h1>
+		<ul>
+			<li>昵称</li>
+			<li>留言</li>
+			<li>日期</li>
+		</ul>
+		<ul>
+			<li>大娃</li>
+			<li>沙发我的了!!!</li>
+			<li>2016年十一月25日/9:40:58</li>
+		</ul>
+		<ul>
+			<li>二娃</li>
+			<li>楼上大哥好</li>
+			<li>2016年十一月25日/9:40:58</li>
+		</ul>
+		<ul>
+			<li>三娃</li>
+			<li>我是小三儿</li>
+			<li>2016年十一月25日/9:40:58</li>
+		</ul>
+		<ul>
+			<li>四娃</li>
+			<li>我是喷火的!!</li>
+			<li>2016年十一月25日/9:40:58</li>
+		</ul>
+	</div>
+	
+		<br>
+		<div id="sub">
+			我的昵称:<input type="text" name="" id="username"><br>
+			<ul id="myface">
+						<li><a href="javascript:void(0)"><img src="img/00.gif" height="25" width="25" alt="" title="[拜拜]"></a></li>
+						<li><a href="javascript:void(0)"><img src="img/01.gif" height="25" width="25" alt=""></a></li>
+						<li><a href="javascript:void(0)"><img src="img/02.gif" height="25" width="25" alt=""></a></li>
+						<li><a href="javascript:void(0)"><img src="img/03.gif" height="25" width="25" alt=""></a></li>
+						<li><a href="javascript:void(0)"><img src="img/04.gif" height="25" width="25" alt=""></a></li>
+						<li><a href="javascript:void(0)"><img src="img/05.gif" height="25" width="25" alt=""></a></li>
+						<li><a href="javascript:void(0)"><img src="img/06.gif" height="25" width="25" alt=""></a></li>
+						<li><a href="javascript:void(0)"><img src="img/07.gif" height="25" width="25" alt=""></a></li>
+			</ul>
+			留言内容: <button id="facebox">表情</button>
+			<textarea name="" id="text" cols="30" rows="10"></textarea>
+			<button id="fabiao">发表</button>
+		</div>
+		
+
+
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="moment.js"></script>
+	<script type="text/javascript" src="zh-cn.js"></script>
+	<script type="text/javascript">
+	var faceList=["[拜拜]","[害羞]","[调皮]","[可怜]","[流汗]","[敲打]","[微笑]","[奸笑]"];
+	var n=0;
+	$("#facebox").click(function() {//表情列表开关
+		if(n==0){
+			$("#myface").css("display","block");
+			n=1;
+		}else{
+			$("#myface").css("display","none")
+			n=0;
+		}
+	});
+	$("#myface li").click(function(event) {
+		// console.log($(this).index())
+		// 获取表情对应的下标
+		var face=faceList[$(this).index()];
+		// var txt=$("#text").val();
+		// console.log(face);
+		// console.log(txt);
+		$("#text").insertContent(face);
+		// $("#text").val(txt+face).focus();//重新组合文字
+	});
+
+	$("#fabiao").click(function(){
+		var allTxt=$("#text").val();
+		var oldTxt=demo(allTxt);
+		var newTxt=replaceFace(oldTxt);//防止代码注入
+
+		var username=demo($("#username").val());
+
+		var nowTime=moment('2016-7-1 11:22:10').fromNow();
+		console.log(nowTime)
+		$("#box").append("<ul><li>"+username+"</li><li>"+newTxt+"</li><li>"+nowTime+"</li></ul>")
+	})
+
+
+
+	// 定义表情替换方法
+	function demo(str) {//替换特殊字符
+	return str.replace(/[<>”&]/g, function(match) {
+	    switch (match) {
+	                   case "<":
+	                      return "&lt;";
+	                   case ">":
+	                      return "&gt;";
+	                   case "&":
+	                      return "&amp;";
+	                   case "\"":
+	                      return "&quot;";
+	      }
+	  });
+}
+	
+	function replaceFace(str) {//替换表情
+	return str.replace(/(\[拜拜\])|(\[害羞\])|(\[调皮\])|(\[可怜\])|(\[流汗\])|(\[敲打\])|(\[微笑\])|(\[奸笑\])/g, function(match) {
+	    switch (match) {
+	                   case "[拜拜]":
+	                      return "<img src='img/00.gif' width='25' height='25'>";
+							break;
+	                  case "[害羞]":
+	                      return "<img src='img/01.gif' width='25' height='25'>";
+							break;
+	                  case "[调皮]":
+	                      return "<img src='img/02.gif' width='25' height='25'>";
+							break;
+	                  case "[可怜]":
+	                      return "<img src='img/03.gif' width='25' height='25'>";
+							break;
+	                  case "[流汗]":
+	                      return "<img src='img/04.gif' width='25' height='25'>";
+							break;
+	                  case "[敲打]":
+	                      return "<img src='img/05.gif' width='25' height='25'>";
+							break;
+	                  case "[微笑]":
+	                      return "<img src='img/06.gif' width='25' height='25'>";
+							break;
+	                  case "[奸笑]":
+	                      return "<img src='img/07.gif' width='25' height='25'>";
+							break;
+	                  
+	      }
+	  });
+}
+
+
+//中途获取焦点并插入
+$.fn.insertContent = function(myValue, t) {
+		var $t = $(this)[0];
+		if (document.selection) { //ie
+			this.focus();
+			var sel = document.selection.createRange();
+			sel.text = myValue;
+			this.focus();
+			sel.moveStart('character', -l);
+			var wee = sel.text.length;
+			if (arguments.length == 2) {
+				var l = $t.value.length;
+				sel.moveEnd("character", wee + t);
+				t <= 0 ? sel.moveStart("character", wee - 2 * t - myValue.length) : sel.moveStart("character", wee - t - myValue.length);
+				sel.select();
+			}
+		} else if ($t.selectionStart || $t.selectionStart == '0') {
+			var startPos = $t.selectionStart;
+			var endPos = $t.selectionEnd;
+			var scrollTop = $t.scrollTop;
+			$t.value = $t.value.substring(0, startPos) + myValue + $t.value.substring(endPos, $t.value.length);
+			this.focus();
+			$t.selectionStart = startPos + myValue.length;
+			$t.selectionEnd = startPos + myValue.length;
+			$t.scrollTop = scrollTop;
+			if (arguments.length == 2) {
+				$t.setSelectionRange(startPos - t, $t.selectionEnd + t);
+				this.focus();
+			}
+		}
+		else {
+			this.value += myValue;
+			this.focus();
+		}       
+    };
+console.log(replaceFace("方超好[害羞],你真该[敲打]"));
+	</script>
+</body>
+</html>

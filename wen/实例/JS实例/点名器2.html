@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		ul{
+			list-style: none;
+		}
+		li{
+			width: 200px;
+			height: 50px;
+			float: left;
+			border: 1px solid #ccc;
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+	<button onclick="suijiName()">开始点名</button>
+	<script type="text/javascript">
+	//定义名单数组
+	var arr = ['田伟凯','付智御','李赟','罗炯','余谦','袁嘉诚','李德普','朱晶','方超','张文华','陈红','姜铭芳','赵拨云','曹晓飞','丁纪翔'];
+	//遍历名单
+	document.write('<ul>');
+	for(var i=0;i<arr.length;i++){
+		document.write('<li>'+arr[i]+'</li>')
+	
+	}
+	document.write("</ul>");
+
+	function suiji(){//清除定时器
+		
+		clearInterval(timer);
+	}
+
+	function suijiName(){//点击开始执行
+		timer=setInterval(suijishu,200);//执行多次定时随机
+		setTimeout(suiji,2000);//2秒过后,执行清除上面的定时器
+	}
+
+
+	function suijishu(){
+		//获取Li的集合
+		var liArr=document.getElementsByTagName('li');
+		console.log(liArr);
+		//将所有的边框变成#ccc
+		for(var i=0;i<liArr.length;i++){
+			liArr[i].style.borderColor="#ccc";
+		}
+
+		var num = Math.floor(Math.random()*1000000000)%arr.length;
+	//随机获取其中一个li
+		liArr[num].style.borderColor='red';
+
+	}
+
+	</script>
+</body>
+</html>

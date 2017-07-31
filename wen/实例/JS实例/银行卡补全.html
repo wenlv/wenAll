@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>银行卡补全</title>
+</head>
+<body>
+	<input type="text" id="input">
+	<script>
+		var input = document.getElementById('input');
+		//给input绑定键盘抬起事件
+		input.onkeyup = function(){
+			//获取value
+			var str = this.value;
+			console.log(str);
+			//处理用户输入的内容
+			str = str.replace(/\D/,"");
+			//this.value = str;
+			//补充空格
+			str = str.replace(/(\d{4})(?=\d)/g,'$1 ');
+			this.value = str;
+		}
+	</script>
+</body>
+</html>

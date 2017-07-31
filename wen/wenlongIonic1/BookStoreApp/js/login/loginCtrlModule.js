@@ -1,0 +1,55 @@
+(function(){
+	angular.module("loginCtrlModule",[])
+		.controller("loginController",[
+			"$scope","modalDataService","postDataService",
+			"ionicMessageService","USERDATA",
+			"$rootScope","$ionicModal","$state",
+			function($scope,modalDataService,
+				postDataService,ionicMessageService,
+				USERDATA,$rootScope,$ionicModal,$state){
+				$scope.user={
+					username:"root",
+					password:"123456"
+				};
+
+				$scope.backToHome=function(){
+					modalDataService.myModal.remove();
+
+				};
+				$scope.loginUser=function(){
+					ionicMessageService.showLoading("正在登录中...");
+					postDataService.postRequst(
+						"userInfoLogin.php",
+						{
+							username:$scope.user.username,
+							password:hex_md5($scope.user.password)
+						},
+						function(response){
+							console.log(response);
+							ionicMessageService.hideLoading();
+							if(response.data.code==0){
+								//存储用户的数据
+								USERDATA.user=response.data.data;
+								$rootScope.$broadcast("loginSuccess");
+								modalDataService.myModal.remove();
+							}else{
+								ionicMessageService.showMessage(response.data.data);
+							}
+						},function(error){
+							console.log(error);
+							ionicMessageService.showMessage("服务器发生错误");
+						});
+				};
+
+				$scope.regist=function(){
+					modalDataService.myModal.remove();
+					$ionicModal.fromTemplateUrl("tpl/login/regist.html",{
+						animation:'slide-in-up'
+					}).then(function(modal){
+						$scope.modal=modal;
+						$scope.modal.show();
+						modalDataService.myModal=modal;
+					});
+				}
+			}])
+})()

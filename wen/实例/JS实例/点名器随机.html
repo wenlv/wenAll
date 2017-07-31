@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机点名器</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.container{
+			width:500px;
+			height:300px;
+			margin:0 auto;
+			border:1px solid #333;
+			border-radius: 20px;
+			margin-top: 80px;
+		}
+		#box{
+			width:200px;
+			height:80px;
+			border:1px solid #333;
+			margin:0 auto;
+			text-align: center;
+			font:20px/80px '微软雅黑';
+			border-radius: 10px;
+			margin-top: 80px;
+		}
+		button{
+			width:100px;
+			height:50px;
+			border-radius: 10px;
+			border:1px solid #ccc;
+			background: #fff;
+			margin:0 auto;
+			display: block;
+			margin-top: 50px;
+			cursor: pointer;
+			outline: none;
+			font-size: 18px;
+			font-family: '微软雅黑';
+		}
+		button:active{
+			background: #f2f2f2;
+		}
+	</style>
+</head>
+<body>
+	<h1>随机点名器1.0版本</h1>
+	<hr>
+	<div class="container">
+		<div id="box"></div>
+		<button onclick="getName(this)">开始</button>
+	</div>
+
+	<script>
+		//定义一组姓名
+		var arr = ['田伟凯','付智御','李赟','罗炯','余谦','袁嘉诚','李德普','朱晶','方超','张文华','陈红','姜铭芳','赵拨云','曹晓飞','丁纪翔'];
+		//获取 box
+		var  box = document.getElementById('box');
+		//定义一个定时器
+		var timer = null;
+		//定义函数
+		function getName(n){
+			//console.log(n.innerHTML);
+			if(n.innerHTML=='开始'){
+				n.innerHTML='暂停';
+				timer = setInterval(getN,100);
+			}else{
+				n.innerHTML='开始';
+				clearInterval(timer);
+			}
+		}
+
+			//随机获取人名，放入box
+		function getN(){
+			//获取随机数
+			var num = Math.floor(Math.random()*1000000000)%arr.length; 
+			//将得到的名字放入box
+			box.innerHTML = arr[num];
+		}
+
+		//随机一个同学
+		getN();
+	</script>
+</body>
+</html>

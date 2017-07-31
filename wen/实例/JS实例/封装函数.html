@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#box{
+				width:200px;
+				height:200px;
+				background-color:orange;
+			}	
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<button id="btn">点我</button>
+		<script>
+			/**
+			* 事件的绑定	
+			*/
+			//1.  标准方式绑定   --同一个事件可以绑定多次
+			/*var box = document.getElementById('box');
+			box.addEventListener('click',show);	
+			
+			//定义函数show
+			function show(){
+				alert('我是标准绑定');
+			}
+			box.addEventListener('click',toshow);
+			function toshow(){
+				alert('我是第二次绑定');
+			}
+			*/
+			//IE的标准绑定方法
+			/*box.attachEvent('onclick',showing);
+			function showing(){
+				alert('我是IE的绑定方式');
+			}
+			
+			*/
+			if(box.addEventListener){
+				box.addEventListener('click',together);
+			}else if(box.attachEvent){
+				box.attachEvent('onclick',together);
+			}else{
+				alert('您的野浏览改换了.');
+			}
+			
+			function together(){
+				alert('我是两种绑定方式');
+			}
+		
+			//将标准绑定方式封装成一个函数 
+			/*
+			*参数  元素 ，事件名，函数名	
+			*/
+			function AddEvent(element,event,fn){
+				if(element.addEventListener){
+					element.addEventListener(event,fn);
+				}else if(element.attachEvent){
+					element.attachEvent('on'+event,fn);
+				}else{
+					alert('您的野浏览改换了.');
+				}
+			}
+			var btn = document.getElementById('btn');
+			AddEvent(btn,'click',btnshow);
+			function btnshow(){
+				alert('我是函数绑定');
+			}
+			
+		</script>
+	</body>
+</html>

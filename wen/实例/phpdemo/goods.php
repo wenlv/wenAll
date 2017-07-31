@@ -1,0 +1,12 @@
+<?php
+	header("Content-type:text/html;charset=utf-8");
+	$arr=[
+		["img"=>"img/031.jpg","name"=>"方超","price"=>"$100.00"],
+		["img"=>"img/032.jpg","name"=>"丁纪翔","price"=>"$100.00"],
+		["img"=>"img/033.jpg","name"=>"李赟","price"=>"$100.00"],
+		["img"=>"img/034.jpg","name"=>"黄豪","price"=>"$100.00"],
+		["img"=>"img/14.jpg","name"=>"君君","price"=>"$100.00"],
+		["img"=>"img/15.jpg","name"=>"黄立","price"=>"$100.00"],
+		["img"=>"img/19.jpg","name"=>"方超","price"=>"$100.00"],
+		["img"=>"img/20.jpg","name"=>"方超","price"=>"$100.00"]
+	];

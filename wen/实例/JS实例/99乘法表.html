@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>99乘法表格</title>
+	<style>
+		table{
+			empty-cells: hide;
+		}
+	</style>
+</head>
+<body>
+	<script>
+	//for1
+		document.write("<table border='1px' width='800px' height='600px'>");
+			for(i=9;i>=1;i--){
+				document.write("<tr>")
+					for(j=1;j<=i;j++){
+						document.write('<td>'+j+'X'+i+'='+j*i+'</td>');
+					}
+				document.write("</tr>")
+			}
+		document.write('</table>');
+		document.write('<hr>');
+
+
+		//for2
+		document.write("<table border='1px' width='800px' height='600px'>");
+			for(i=1;i<=9;i++){
+				document.write("<tr>");
+					  for(var k = 2;k<=i;k++){
+						document.write('<td></td>');
+					 }
+					for(j=9;j>=i;j--){
+						
+						
+						document.write('<td>'+(10-i)+'X'+ (j-i+1) +'='+(10-i)*(j-i+1)+'</td>');
+							
+					}
+				document.write("</tr>");
+			}
+		document.write('</table>');
+
+		document.write('<hr>');
+
+		/**************while*************/
+		document.write("<table border='1px' width='800px' height='600px'>");
+			var a=9;
+			while(a>=1){
+			 	document.write("<tr>");
+			 	a--;
+				
+				var b=1;
+			 	while(b<=a){
+					document.write("<td>"+a+'X'+b+'='+a*b+'</td>');
+					b++;
+					 	}
+
+			document.write("</tr>");
+			}
+		document.write('</table>');
+
+
+
+		document.write('<hr>');
+		/********while**************/
+		document.write("<table border='1px' width='800px' height='600px'>");
+			for(var a=9;a>=1;a--){
+				document.write("<tr>");
+					for(k=8;k>=a;k--){
+						document.write('<td></td>');
+					}
+					for(b=a;b>=1;b--){
+						document.write('<td>'+a+'X'+b+'='+a*b+'</td>');
+					}
+						
+				document.write("</tr>");
+			}
+		document.write('</table>');
+
+	</script>
+</body>
+</html>

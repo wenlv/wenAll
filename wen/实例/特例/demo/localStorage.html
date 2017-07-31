@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script type="text/javascript">
+		document.cookie="方超";
+		console.log(document.cookie);
+		// window.localStorage['a']=["方超","丁纪翔"];
+		// console.log(window.localStorage['a']);
+		window.localStorage['sss']=JSON.stringify(
+		{
+			"a":'方超',
+			"b":'丁纪翔'
+		});
+		// JSON.parse
+		console.log(JSON.parse(window.localStorage['sss']));
+	</script>
+</body>
+</html>

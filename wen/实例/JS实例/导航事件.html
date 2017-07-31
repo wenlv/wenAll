@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件</title>
+	<style>
+		ul li{
+			list-style:none;
+			line-height: 40px;
+			border:1px solid #ccc;
+			width:300px;
+			cursor: pointer;
+		}
+		#box{
+			width:300px;
+			height:300px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>内衣</li>
+		<li>内衣</li>
+		<li>内衣</li>
+		<li>内衣</li>
+		<li>内衣</li>
+		<li>内衣</li>
+	</ul>
+	<button onclick="show(this)">点击事件</button>
+
+	<div id="box"></div>
+	<script>
+		/*
+		*this 的作用
+		*/
+
+		var list = document.getElementsByTagName('li');
+		//for循环来绑定事件
+		for(var i = 0; i < list.length; i++){
+			list[i].onclick=function(){
+				console.log(i);
+
+				removeColor();
+				//list[i].style.backgroundColor="red";
+				this.style.backgroundColor='red';
+			}
+		}
+
+		//定义一个函数将所有的li背景清空
+		function removeColor(){
+		for(var j = 0; j < list.length; j++){
+			list[j].style.backgroundColor="";
+		}
+		}
+
+
+
+		function show(m){
+			console.log(m);
+			m.style.backgroundColor='red';
+		}
+
+
+		//
+		box.onclick = function(){
+			//box.style.backgroundColor='yellow';
+			this.style.backgroundColor='yellow';
+		}
+	</script>
+</body>
+</html>

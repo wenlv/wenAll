@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#box{
+			width: 600px;
+			height: 600px;
+			background: url(images/clock_logo.jpg) no-repeat;
+		}
+		#hour{
+			width: 30px;
+			height: 600px;
+			background: url(images/hour.png) no-repeat;
+			position: absolute;
+			margin-left: 285px;
+		}
+		#min{
+			width: 30px;
+			height: 600px;
+			background: url(images/minute.png) no-repeat;
+			position: absolute;
+			margin-left: 285px;
+		}
+		#sec{
+			width: 30px;
+			height: 600px;
+			background: url(images/second.png) no-repeat;
+			position: absolute;
+			margin-left: 285px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="hour"></div>
+		<div id="min"></div>
+		<div id="sec"></div>
+	</div>
+	<audio src="images/clock.mp3" controls id="aud"></audio>
+	<script type="text/javascript">
+	var hour=document.getElementById('hour');
+	var min=document.getElementById('min');
+	var sec=document.getElementById('sec');
+	var aud=document.getElementById('aud');
+
+now();
+function now(){
+	var nowTime=new Date();
+	//获取当前的时
+	var h=nowTime.getHours();
+	// if(h>12){
+	// 	h = h%12;
+	// }
+//获取当前分
+	var m=nowTime.getMinutes();
+//获取当前秒
+	var s=nowTime.getSeconds();
+
+	//获取毫秒数
+	var hm=nowTime.getMilliseconds();
+//定义秒针的度数
+	sec.style.transform="rotate("+6*s+"deg)";
+	// sec.style.transform="rotate("+6*(s+hm/1000)+"deg)";
+//定义分针的度数
+	min.style.transform="rotate("+6*(m+s/60)+"deg)";
+//定义时针的度数
+	hour.style.transform="rotate("+30*(h+m/60+s/3600)+"deg)";
+	//播放音频
+	aud.play();
+}
+	setInterval(now,1000);
+	</script>
+</body>
+</html>

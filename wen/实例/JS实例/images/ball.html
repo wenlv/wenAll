@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>HTML DOM</title>
+		<script type="text/javascript">
+			var x=0;
+			var f=true;
+			function fun(){
+				var bid = document.getElementById("bid");
+				if(bid.offsetTop+x>480){
+					bid.style.top=480+"px";
+					f=false;
+				}else{
+					bid.style.top=bid.offsetTop+x+"px";
+				}
+				
+				if(x<0){
+					f=true;
+				}
+				
+				if(f){
+					x+=2;
+				}else{
+					x=-x+8;
+				}
+				//if(bid.offsetTop>)
+			}
+			function doStart(){
+				setInterval("fun()",20);
+			}
+		</script>
+	</head>
+<body onload="doStart()">
+	<div style="width:500px;height:500px;border:1px solid blue;position:relative;">
+		<img id="bid"  src="RedPiece.png" style="position:absolute;top:10;left:240px;"/>
+	</div>
+</body>
+</html>

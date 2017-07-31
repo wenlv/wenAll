@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>键盘事件</title>
+</head>
+<body>
+	<script>
+		// 键盘按下
+		document.onkeydown = function(en){
+			var e = en || window.event;
+			console.log(e);
+			console.log(e.keyCode);
+			var index = e.keyCode;  //按键代表的数字
+			var s = String.fromCharCode(index);
+			document.body.style.backgroundColor="red";
+			console.log(s);
+		}
+
+		/*
+		//键盘按下   打印字符(可见)
+		document.onkeypress = function(){
+			document.body.style.backgroundColor='red';
+		}*/
+
+
+		// 键盘抬起
+		document.onkeyup = function(){
+			document.body.style.backgroundColor = 'green';
+		}
+	</script>
+</body>
+</html>

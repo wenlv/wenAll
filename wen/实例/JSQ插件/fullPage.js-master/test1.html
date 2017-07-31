@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./jquery.fullPage.css">
+	<style>
+		#mymenu{
+			position: fixed;
+			left: 0px;
+			top: 0;
+			z-index: 9999;
+		}
+		#mymenu li{
+			float: left;
+			width: 100px;
+			list-style: none;
+			background: red;
+			margin-left: 10px;
+			text-align: center;
+		}
+		#mymenu li.active a{
+			background:blue;
+			color: #fff;
+			display: block;
+		}
+	</style>
+	<script src='jquery.min.js'></script>
+	<script src='jquery.easings.min.js'></script>
+	<script src='jquery.fullPage.min.js'></script>
+</head>
+<body>
+	<ul id="mymenu">
+		<li><a href="#Page1">第一</a></li>
+		<li><a href="#Page2">第二</a></li>
+		<li><a href="#Page3">第三</a></li>
+		<li><a href="#Page4">第四</a></li>
+	</ul>
+	<div id="fullpage">
+    <div class="section">第一屏</div>
+    <div class="section">第二屏</div>
+    <div class="section">
+        <div class="slide">第三屏的第一屏</div>
+        <div class="slide">第三屏的第二屏</div>
+        <div class="slide">第三屏的第三屏</div>
+        <div class="slide">第三屏的第四屏</div>
+    </div>
+    <div class="section">第四屏</div>
+</div>
+
+<script>
+	
+	$(function(){
+	    $('#fullpage').fullpage({
+	    	navigation: true,
+	    	 anchors:['Page1', 'Page2','Page3','Page4'],
+	    	 sectionsColor : ['#ccc', 'pink','gold','blue'],
+	    	 navigationTooltips: ['第一', '第二','第三','第四'],
+	    	 slidesNavigation: true,
+	    	 scrollingSpeed: 1000,
+	    	 loopBottom: true,
+	    	 menu:true,
+	    	 controlArrowColor:'pink',
+	    	 loopHorizontal:true,
+	    	 afterLoad: function(anchorLink, index){
+		        	console.log(anchorLink);
+		        	console.log(index);
+		        	
+		        	$('#mymenu').children('li').eq(index-1).addClass('active').siblings().removeClass('active');
+
+		        	// if(anchorLink=="secondPage"){
+		        	// 	// alert(2)
+		        	// }
+		        },
+	    });
+	    setInterval(function(){
+				$.fn.fullpage.moveSectionDown();
+			},2000)
+	});
+</script>
+</body>
+</html>

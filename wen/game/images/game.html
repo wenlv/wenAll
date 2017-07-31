@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>HTML DOM</title>
+		<style>
+			html, body, div, span, object, iframe,
+			h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+			abbr, address, cite, code,
+			del, dfn, em, img, ins, kbd, q, samp,
+			small, strong, sub, sup, var,
+			b, i,
+			dl, dt, dd, ol, ul, li,
+			fieldset, form, label, legend,
+			table, caption, tbody, tfoot, thead, tr, th, td,
+			article, aside, canvas, details, figcaption, figure, 
+			footer, header, hgroup, menu, nav, section, summary,
+			time, mark, audio, video { margin:0; padding:0; border:0; outline:0;}
+			
+			.map{float:left; overflow:hidden; width:15px; height:15px;background-image:url(bg.png); background-repeat:no-repeat;}
+			.map0{background-position:-60px 50%;}/*ÎÞÍ¼*/
+			.map1{background-position:0px 50%;}/*Ê÷´Ô*/
+			.map2{background-position:-15px 50%;}/*ºÓÁ÷*/
+			.map3{background-position:-30px 50%;}/*¸ÖÇ½*/
+			.map4{background-position:-45px 50%;}/*×©Ç½*/
+			
+		</style>
+		<script type="text/javascript">
+			function fun(){
+				var maplist=[
+					4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+					4,0,0,0,0,0,0,0,0,0,0,0,0,0,4,
+					4,0,4,4,4,4,4,0,4,4,4,4,4,0,4,
+					4,0,4,3,3,3,4,0,1,1,1,1,1,1,4,
+					4,0,4,3,3,3,4,0,1,1,1,1,1,1,4,
+					4,0,4,4,4,4,4,0,4,4,4,4,4,0,4,
+					4,0,0,0,0,0,0,0,0,0,0,0,0,0,4,
+					4,1,1,1,1,1,4,0,4,4,4,4,4,0,4,
+					4,1,1,1,1,1,4,0,2,2,2,2,2,2,4,
+					4,0,4,4,4,4,4,0,4,3,3,3,4,0,4,
+					4,0,4,3,3,3,4,0,4,4,4,4,4,0,4,
+					4,0,4,4,0,0,0,0,0,0,0,4,4,0,4,
+					4,0,0,0,0,0,3,3,3,0,0,0,0,0,4,
+					4,4,4,4,4,4,3,2,3,4,4,4,4,4,4,
+					];
+				var gameid = document.getElementById("gameid");
+				for(var i=0;i<maplist.length;i++){
+					var dd = document.createElement("div");
+					var cs = document.createAttribute("class");
+					cs.nodeValue="map map"+maplist[i];
+					dd.setAttributeNode(cs);
+					gameid.appendChild(dd);
+				}
+			}
+		</script>
+	</head>
+<body onload="fun()">
+<center>
+	<div  id="gameid" style="width:225px;height:210px;border:1px solid blue;margin-top:100px;background:#dddddd">
+	
+	</div>
+	</center>
+</body>
+</html>

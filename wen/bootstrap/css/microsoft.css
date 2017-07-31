@@ -1,0 +1,330 @@
+@font-face {
+	font-family: 'myfont';
+    src: url('../font/iconfont.eot'); /* IE9*/
+    src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+/* **********************新导航开始*************************** */
+.navbar{
+	margin: 0px;
+}
+.container{
+	width: 90%;
+}
+.navbar-header button{
+	border: 0px;
+}
+.navbar-brand{
+	padding-left: 0px;
+	padding-top: 10px;
+}
+.collapse a{
+	color: #2f2f2f;
+}
+.container a img{
+	height: 30px;
+}
+.collapse ul{
+	border: 0px;
+}
+.collapse ul > li a:hover{
+	/* color: #f2f2f2; */
+	background: #E5E5E5;
+	display: block;
+	
+}
+.collapse > ul > li ul{
+	background: #f2f2f2;
+}
+.collapse > ul > li ul li a{
+	line-height: 50px;
+	background: #f2f2f2;
+}
+.collapse ul li ul li ul{
+	position: absolute;
+	left: 220px;
+	top: 0px;
+	width: 300px;
+	background: #E5E5E5;
+	display: none;
+	padding: 0px;
+}
+.collapse ul li:hover ul li:hover ul{
+	display: block;
+}
+.collapse ul li ul li ul li {
+	list-style-type: none;
+	padding: 0px;
+	background: #E5E5E5;
+	margin: 0px;
+}
+.collapse  ul li ul li ul li a{
+ 	display: block;
+ 	color: black;
+}
+.collapse  ul li ul li:hover ul li:hover a{
+	background: #D9D9D9;
+	display: block;
+}
+.collapse ul:nth-of-type(2) li a span{
+	font-family: 'myfont';
+	font-size: 25px;
+	display: block;
+	color: #8D8D8D;
+}
+.collapse form div{
+	width: 300px;
+	border: 1px solid #A9A9A9;
+	box-sizing: border-box;
+}
+.collapse form div input{
+	border: 0px;
+}
+.collapse form div span{
+	width: 100%;
+	height:100%;
+	font-family: 'myfont';
+	font-size: 25px;
+	font-weight: 700;
+	color: #8D8D8D;
+	background: white;
+	border: 0px;
+}
+.collapse form div span a{
+	color: #8F8F8F;
+}
+.collapse form div span a:hover{
+	color: #1F83CD;
+	font-size: 26px;
+	font-weight: 700;
+	text-decoration: none;
+}
+/* ***********轮播开始********* */
+.lunbo{
+	width: 100%;
+	background: white;
+	/* border: 1px solid red; */
+}
+.lunbo .lun{
+	width: 90%;
+	/* border: 1px solid red; */
+	margin: 0 auto;
+}
+.lunbo .lun .item:nth-of-type(2) img{
+	width: 100%;
+}
+.carousel .carousel-inner .item .carousel-caption {
+	/* border: 1px solid red; */
+	font: 15px "微软雅黑";
+	color: #3C3C3C;
+}
+.carousel .carousel-inner .item .carousel-caption div a{
+	border: 2px solid #797979;
+	font: 15px/40px "微软雅黑";
+	font-weight: 400;
+	color: #3C3C3C;
+	width: 120px;
+	height: 40px;
+	display: block;
+	text-align: center;
+	margin-right: 20px;
+	z-index: 999;
+}
+.carousel .carousel-inner .item .carousel-caption div a:hover{
+	color: white;
+	background: black;
+	z-index: 999;
+}
+.lun .carousel ol li{
+	border: 1px solid black;
+}
+.lun .carousel div:last-child .carousel-control{
+	width: 6%;
+	background: transparent;
+}
+.lun .carousel div:last-child .carousel-control  span{
+	margin-top: 300% ;
+	background: black;
+	line-height: 40px;
+	width: 20px;
+	height: 40px;
+	border: 1px solid black;
+	display:none;
+}
+.lun .carousel:hover div:last-child .carousel-control span{
+	display: block;
+	z-index: 1;
+}
+/**************轮播结束**************/
+/*************商品开始*************/
+.row {
+	width:90%;
+	margin:30px auto;
+}
+.thumbnail{
+	border:0px;
+	height:350px;
+}
+.thumbnail .caption h3,.thumbnail .caption p{
+	text-align:left;
+	color: black;
+}
+.thumbnail  a:hover{
+	text-decoration: none;
+}
+.thumbnail  a:hover img,.thumbnail .caption a:hover h3,.thumbnail .caption a:hover p{
+	opacity: .8;
+}
+/**********商品结束**********/
+/*********巨幕开始*********/
+.jumb{
+	width:90%;
+	margin:0 auto;
+
+	border:1px solid red;
+}
+.jumb .jumbotron{
+	padding:0px;
+	margin-top:0px;
+	background:#333;
+}
+.jumb .jumbotron img{
+	width:100%;
+	/*display:block;*/
+	margin-top:0px;
+}
+.jumb .jumbotron .container{
+	height:230px;
+	color:#FFFFFF;
+	text-align:center;
+	margin:50px 0px;
+}
+.jumb .jumbotron .container a,.carousel-inner .item .carousel-caption a{
+	font-size:15px;
+	background:rgba(255,255,255,.0);
+	border:1px solid #fff;
+	border-radius:0px;
+}
+.jumb .jumbotron .container a:hover,.carousel-inner .item .carousel-caption a:hover{
+	background:white;
+	color:black;
+}
+.carousel-inner .item .carousel-caption{
+	width:500px;
+	text-align:left;
+	margin-top:-25px;
+	left:80px;
+	top:180px;
+}
+.carousel-inner .item .carousel-caption p{
+	font-size:23px;
+	margin-top:10px;
+	margin-bottom:30px;
+}
+/************巨幕结束*************/
+/*********商品二开始*********/
+.row .caption{
+	text-align:center;
+	overflow:hidden;
+}
+/*******商品二结束*********/
+/**********footer开始**********/
+.footer{
+	width:100%;
+}
+.footer .navbottom{
+	width: 100%;
+	height: 100%;
+	overflow:hidden;
+	background: #f2f2f2;
+}
+.footer .navbottom .navlast{
+	width: 90%;
+	height:100%;
+	margin: 0 auto;
+}
+.footer .navbottom  ul{
+	height: 280px;
+}
+.footer .navbottom ul li{
+	border: 0px;
+	padding: 0px;
+	line-height: 25px;
+	font-size: 13px;
+	background: #f2f2f2;
+	display: block;
+}
+.footer .navbottom ul h5,.footer .navbottom ul li a{
+	color: #62666B;
+}
+.footer .navbottom .copy{
+	width: 90%;
+	margin: 20px auto;
+	display: block;
+}
+.copy .copymain ul{
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+.copy .copymain ul:nth-of-type(1) li span{
+	font-family: 'myfont';
+	font-size: 25px;
+	color: #626262;
+}
+.copy .copymain ul:nth-of-type(3) li a,.copy .copymain ul:nth-of-type(2) li a{
+ 	width:100% ;
+ 	padding-right:20px;
+}
+.copy .copymain ul:nth-of-type(2) li a:first-child,.copy .copymain ul:nth-of-type(3) li a:first-child{
+	margin-left: 0px;
+}
+/* .navlast .dropdown button{
+	border: 0px ;
+	background: #F2F2F2;
+}
+.navlast .dropdown ul{
+	background:#F2F2F2 ;
+	border: 0px;
+	box-shadow: none;
+}
+.navlast .dropdown ul li{
+	height:30px;
+	line-height: 30px;
+} */
+
+.panel-group{
+	background: #F2F2F2;
+	border: 0px;
+}
+.panel-group .panel,.panel-group .panel-default{
+	margin: 0px;
+	border: 0px;
+}
+.panel-default>.panel-heading{
+	background: #F2F2F2;
+	border: 0px;
+	margin: 0px;
+}
+.panel-title a{
+	display: block;
+}
+.panel-body{
+	padding: 0px;
+	background: #F2F2F2;
+}
+.panel-collapse .panel-body ul{
+	height: 100%;
+	padding: 15px;
+	margin: 0px;
+}
+.panel-collapse .panel-body ul li{
+	height: 40px;
+}
+.panel-collapse .panel-body ul li a{
+	font-size: 15px;
+	color: #626262;
+}
+/* **********footer结束************ */

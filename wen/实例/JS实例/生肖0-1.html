@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多向分支--生肖判断</title>
+</head>
+<body>
+	请输入数字：<input type="text" id="input"><br>
+	<button onclick="show()">确定</button><br>
+	<h3 id="h3"></h3>
+
+	<script>
+		//定义show函数
+		function show(){
+			//获取数字
+			var num = document.getElementById('input').value;
+			console.log(num);
+			//定义一个变量
+			var index = null;
+			switch(num){   
+				case '0':            //注意数据类型
+					index = '等于零';
+				                     //如果没有break   程序将继续执行
+				case '1':
+					index = '等于一';
+					
+				break;
+
+			}
+
+			//获取h3
+			var h = document.getElementById('h3');
+			h.innerHTML = '您输入的值是：'+index;
+
+		}
+
+	</script>
+</body>
+</html>

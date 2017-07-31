@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>双向分支结构</title>
+</head>
+<body>
+	请输入您的尺寸：<input type="text" id="input"><br>
+	<button onclick="show()">提交</button>
+	<script>
+		//	双向判断
+		function show(){
+			//获取input元素的value
+			var num = document.getElementById('input').value;
+			console.log(num);
+			//双向分支结构  if(boolean){true的时候执行的代码}else{false的时候}
+			if(num>20){
+				alert('小巧玲珑');
+			}else{
+				alert('要好好吃饭呀');
+			}
+		}
+
+
+
+
+
+
+		//单项判断
+		//定义show函数
+		function show(){
+			//获取input元素的value
+			var num = document.getElementById('input').value;
+			console.log(num);
+
+			//单向分支结构  if(boolean){true的执行的代码}
+			if(num>20){
+				alert('小巧玲珑');	
+			}	
+
+			console.log('继续执行');
+
+		}
+	</script>
+</body>
+</html>

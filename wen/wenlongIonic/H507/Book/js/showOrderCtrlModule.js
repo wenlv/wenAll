@@ -1,0 +1,23 @@
+(function(){
+	angular.module("showOrderCtrlModule",[])
+	.controller("showOrderController",["$scope",
+		"getDataService","USERDATA","messageService",
+		function($scope,getDataService,USERDATA,messageService){
+			messageService.showLoading("请求订单中...");
+			getDataService.getRequest(
+				"orderQuery.php",
+				{user_id:USERDATA.user.user_id},
+				function(response){
+					messageService.hideLoading();
+					if(response.data.code==0){
+						$scope.orders=response.data.data;
+					}else{
+						messageService.showMessageBox(response.data.data);
+					}
+				},
+				function(error){
+					messageService.hideLoading();
+					messageService.showMessageBox("服务器错误");
+				})
+		}])
+})()

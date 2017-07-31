@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/loading.css">
+</head>
+<body ng-app="bookApp">
+	<div class="container">
+		<header>
+			<h1>BookStore <small>{{'by'+'AngularJS'}}</small></h1>
+		</header>
+		<div ng-view></div>
+	</div>
+	<div ng-include="'tpl/loading.html'"></div>
+
+	<script src="../AngularJSlib/js/md5.js"></script>
+	<script src="../AngularJSlib/js/angular.js"></script>
+	<script src="../AngularJSlib/js/angular-route.js"></script>
+	<script src="../AngularJSlib/js/angular-sanitize.js"></script>
+	<script src="../AngularJSlib/js/angular-animate.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/appRouteModule.js"></script>
+	<script src="js/bookListCtrlModule.js"></script>
+	<script src="js/getDataModule.js"></script>
+	<script src="js/hostConfigModule.js"></script>
+	<script src="js/messageModule.js"></script>
+	<script src="js/bookDetailCtrlModule.js"></script>
+	<script src="js/loginCtrlModule.js"></script>
+	<script src="js/postDataModule.js"></script>
+	<script src="js/bookCartCtrlModule.js"></script>
+	<script src="js/bookCartDataModule.js"></script>
+	<script src="js/showOrderCtrlModule.js"></script>
+
+	
+</body>
+</html>

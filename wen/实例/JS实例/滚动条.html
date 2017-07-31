@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动图</title>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+		#container{
+			width:900px;
+			height:200px;
+			border:1px solid #ccc;
+			overflow: hidden;
+			margin:0 auto;
+		}
+		.big{
+			width:8000px;
+			height:200px;
+		}
+		.imglist{
+			float:left;
+		}
+		img{
+			height:200px;
+			width:400px;
+			float:left;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div class="big" id="big">
+			<div class="imglist">
+				<img src="../img/lun1.jpg" alt="">
+				<img src="../img/lun2.jpg" alt="">
+				<img src="../img/lun3.jpg" alt="">
+				<img src="../img/lun4.png" alt="">
+				<img src="../img/lun5.jpg" alt="">
+				<img src="../img/lun6.jpg" alt="">
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+		//获取big
+		var big = document.getElementById('big');
+		big.innerHTML += big.innerHTML;    //将big中的所有内容复制一遍
+		//获取container
+		var container = document.getElementById('container');
+
+		//开始定时
+		var timer = setInterval(playing,30);
+
+		function playing(){
+			if(container.scrollLeft >= 2400){
+				container.scrollLeft = 0;
+			}
+			container.scrollLeft += 5;
+		}
+
+
+	</script>
+</body>
+</html>

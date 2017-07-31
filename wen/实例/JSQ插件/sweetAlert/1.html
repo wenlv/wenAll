@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="sweetalert.css">
+	<!-- <link rel="stylesheet" href="google/google.css"> -->
+	<!-- <link rel="stylesheet" href="facebook/facebook.css"> -->
+	<link rel="stylesheet" href="twitter/twitter.css">
+</head>
+<body>
+	<button onclick="demo()">按钮1</button>
+	<button onclick="demo1()">按钮2</button>
+	<button onclick="demo2()">按钮3</button>
+	<button onclick="demo3()">按钮4</button>
+
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="sweetalert.min.js"></script>
+	<script type="text/javascript">
+	function demo(){
+		// sweetAlert("你好");
+		// sweetAlert("你好","我也好");
+		// sweetAlert("你好","我也好","success");
+		// sweetAlert("你好","我也好","error");
+		// sweetAlert("你好","我也好","warning");
+
+	}
+	function demo1(){
+		// swal("你好","我也好","success")
+		swal({
+		  title: "<h1>你好</h1>",
+		  text: "你也好",
+		  type: "success",
+		  showCancelButton: true,//是否显示退出按钮
+		  confirmButtonColor: "red",//确认的颜色
+		  confirmButtonText: "走你",//确认按钮的文字内容
+		  closeOnConfirm: true,  //false运行下面函数内的swal
+			html:true, //识别html
+			timer:1000
+		},
+		function(){
+			alert(1)
+		  swal("危险", "", "error");
+		});
+	}
+	function demo2(){
+		 swal({
+		  title: "Are you sure?",
+		  text: "You will not be able to recover this imaginary file!",
+		  type: "warning",
+		  showCancelButton: true,
+		  confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "Yes, delete it!",
+		  cancelButtonText: "No, cancel plx!",//退出按钮文字
+		  closeOnConfirm: false,
+		  closeOnCancel: false  //退出运行函数
+		},
+		function(isConfirm){
+			alert(isConfirm)
+		  if (isConfirm) {
+		    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+		  } else {
+		    swal("Cancelled", "Your imaginary file is safe :)", "error");
+		  }
+		});
+	}
+
+	function demo3(){
+		swal({
+		  title: "请输入",
+		  text: "输入什么呢",
+		  type: "input",
+		  showCancelButton: true,
+		  closeOnConfirm: false,
+		  animation: "slide-from-bottom",//
+		  inputPlaceholder: "你的姓名"
+		},
+		function(inputValue){
+		  if (inputValue === false){
+				return false;
+		  }
+		  
+		  if (inputValue === "") {
+		    swal.showInputError("你咋啥都不写呢");
+		    return false
+		  }
+		  
+		  swal("Nice!", "我的名字叫: " + inputValue, "success");
+		});
+	}
+	</script>
+</body>
+</html>

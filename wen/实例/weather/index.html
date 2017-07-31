@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<select name="" id="prov">
+		<option value="">---请选择---</option>
+	</select>
+	
+	<div id="box"></div>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript">
+	$.ajax({
+		url: 'http://files.heweather.com/china-city-list.json',
+		type: 'get',
+		dataType: 'json',
+		data: {},
+		success:function(data){
+			console.log(data)
+		},
+		error:function(err){
+			// console.log(eval(err.responseText));
+			var places=eval(err.responseText);
+			var provs=getProv(places);
+			$.each(provs, function(index, val) {
+				 $('<option>').html(val).appendTo('#prov');
+			});
+			$('#prov').change(function() {
+				// console.log($(this).find('option:selected'));
+				var prov=$(this).find('option:selected').html();//获取省份名
+
+				$('#city').remove();
+				$('#prov').after("<select id='city'><option>---请选择---</option></select>");
+
+				var citys=getCity(places,prov);//获取该省下的所有地级市
+				$.each(citys, function(index, val) {
+					 $('<option>').html(val).appendTo('#city');
+				});
+				$('#city').change(function() {
+					var city=$(this).find('option:selected').html();//获取市名
+
+					$('#area').remove();
+					$('#city').after("<select id='area'><option>---请选择---</option></select>");
+
+					var areas=getArea(places,city);//获取该市下的区县
+					$.each(areas, function(index, val) {
+						$('<option>').html(val).appendTo('#area');
+					});
+					$("#area").change(function(){
+						var area=$(this).find('option:selected').html();//获得具体的区县名
+						getWeather(area);//获取天气情况
+					})
+				});
+
+			});
+
+		}
+	})
+
+
+function getWeather(area){
+	$.ajax({
+		url: 'https://free-api.heweather.com/v5/now?',
+		type: 'get',
+		dataType: 'json',
+		data: {
+			key: 'a9886e4050944efabcd376c25b69c7ca',
+			city: area	
+		},
+		success:function(data){
+			console.log(data.HeWeather5[0].now);
+			var cond=data.HeWeather5[0].now.cond;//获取天状况
+			var tmp=data.HeWeather5[0].now.tmp;//获取温度
+			$('#box').html("当前天气为:"+cond.txt+"<br>气温为:"+tmp+"℃"+"<img src='http://files.heweather.com/cond_icon/"+cond.code+".png'>");
+		},
+		error:function(err){
+			console.log(err)
+		}
+	})	
+}
+
+
+//定义获取省直辖市的方法
+function getProv(places){
+	var provs=[];//定义省的空数组
+	for(var i=0;i<places.length;i++){
+		// console.log(places[i].provinceZh);
+		if(provs.indexOf(places[i].provinceZh) == -1){
+			provs.push(places[i].provinceZh);
+		}
+	}
+	return provs;
+}
+
+//定义获取城市的方法
+function getCity(places,prov){
+	var citys=[];//定义一个市的空数组
+	// console.log(prov)
+	for(var i=0;i<places.length;i++){
+		if(places[i].provinceZh==prov && places[i].cityZh==places[i].leaderZh){
+			citys.push(places[i].cityZh);
+		}
+	}
+	return citys;
+}
+
+//定义获取区县的方法
+function getArea(places,city){
+	var areas=[];//定义曲线空数组
+	for(var i=0;i<places.length;i++){
+		if(places[i].leaderZh==city && places[i].cityZh!=city){
+			areas.push(places[i].cityZh)
+		}
+	}
+	return areas;
+}
+
+	</script>
+</body>
+</html>

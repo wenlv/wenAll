@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	div{
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+		background: #ccc;
+		float: left;
+		margin-left: 10px;
+		/* 自定义替换鼠标 */
+		cursor: url(files/1.png),default;
+		color: #000;
+		font-size: 30px;
+		text-align: center;
+		line-height: 150px;
+	}
+	</style>
+</head>
+<body>
+	<div class="gu1" onclick="qiao(0)" onmousedown="anxia(this)" onmouseup="taiqi(this)">Q</div>
+	<div class="gu2" onclick="qiao(1)" onmousedown="anxia(this)" onmouseup="taiqi(this)">W</div>
+	<div class="gu3" onclick="qiao(2)" onmousedown="anxia(this)" onmouseup="taiqi(this)">E</div>
+	<div class="gu4" onclick="qiao(3)" onmousedown="anxia(this)" onmouseup="taiqi(this)">R</div>
+	<div class="gu5" onclick="qiao(4)" onmousedown="anxia(this)" onmouseup="taiqi(this)">D</div>
+	<div class="gu6" onclick="qiao(5)" onmousedown="anxia(this)" onmouseup="taiqi(this)">F</div>
+	<div class="gu7" onclick="qiao(6)" onmousedown="anxia(this)" onmouseup="taiqi(this)">1</div>
+	<div class="gu8" onclick="qiao(7)" onmousedown="anxia(this)" onmouseup="taiqi(this)">2</div>
+	<div class="gu9" onclick="qiao(8)" onmousedown="anxia(this)" onmouseup="taiqi(this)">3</div>
+	<div class="gu10" onclick="qiao(9)" onmousedown="anxia(this)" onmouseup="taiqi(this)">4</div>
+	<div class="gu11" onclick="qiao(10)"onmousedown="anxia(this)"  onmouseup="taiqi(this)">B</div>
+
+	<audio src="files/clap.wav"></audio>
+	<audio src="files/crash.wav"></audio>
+	<audio src="files/crash2.wav"></audio>
+	<audio src="files/crash3.wav"></audio>
+	<audio src="files/kick.wav"></audio>
+	<audio src="files/snare.wav"></audio>
+	<audio src="files/snare2.wav"></audio>
+	<audio src="files/snare3.wav"></audio>
+	<audio src="files/snare4.WAV"></audio>
+	<audio src="files/stick.WAV"></audio>
+	<audio src="files/tom.wav"></audio>
+
+	<script type="text/javascript">
+	function qiao(n){
+		var auds=document.getElementsByTagName('audio');
+		// console.log(auds[n]);
+		//判断音频是否播放结束
+		if(!auds[n].ended){
+			//如果播放没结束,就重新加载
+			auds[n].load();
+		}
+		auds[n].play();
+	}
+	function taiqi(index){
+		// console.log(index);
+		//抬起时鼠标切换
+		index.style.cursor="url(files/1.png),default";
+		// index.style.width='150px';
+		// index.style.height='150px';
+	}
+	function anxia(index){
+		// console.log(index);
+		//按下时鼠标切换,并且鼓变大
+		index.style.cursor="url(files/2.png),default";
+		index.style.width='170px';
+		index.style.height='170px';
+		index.style.backgroundColor='gold';
+	}
+	window.onmouseup=function(){
+		
+			var gus=document.getElementsByTagName('div');
+		// var gus=document.getElementsByClassName()
+		for(var i=0;i<gus.length;i++){
+			console.log(gus[i]);
+			gus[i].style.width='150px';
+			gus[i].style.height='150px';
+			gus[i].style.backgroundColor='#ccc';
+		}
+		
+	}
+	window.onkeydown=function (en){
+		var e=en || window.event;
+		// alert(e.keyCode);
+		switch(e.keyCode){
+			case 81:
+				qiao(0);
+				break;
+			case 87:
+				qiao(1);
+				break;
+			case 69 :
+				qiao(2);
+				break;
+			case 82 :
+				qiao(3);
+				break;
+			case 68 :
+				qiao(4);
+				break;
+			case 70 :
+				qiao(5);
+				break;
+			case 49 :
+				qiao(6);
+				break;
+			case 50 :
+				qiao(7);
+				break;
+			case 51:
+				qiao(8);
+				break;
+			case 52 :
+				qiao(9);
+				break;
+			case 66 :
+				qiao(10);
+				break;
+		}
+	}
+	</script>
+</body>
+</html>

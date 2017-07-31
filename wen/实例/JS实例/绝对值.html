@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//定义一个函数求绝对值
+		function getNum(n){
+
+			/*if((typeof n) != 'number'){
+				alert('大哥，能不能好好输入')
+				return;
+			}
+			if(isNaN(n)){
+				alert('大哥，能不能好好输入')
+				return;
+			}*/
+
+			if((typeof n) != 'number'  || isNaN(n)){
+				alert('大哥，能不能好好输入')
+				return;
+			}
+
+
+			if(n<0){
+				return -n;
+			}
+			return n;
+		} 
+		document.write(getNum(-100)+"<br>");
+		document.write(getNum(100)+"<br>");
+		document.write(getNum(0)+"<br>");
+		document.write(getNum('abc')+"<br>");
+		document.write(getNum(NaN)+"<br>");
+		document.write(getNum(-0.44434));
+	</script>
+</body>
+</html>

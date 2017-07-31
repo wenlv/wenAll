@@ -1,0 +1,25 @@
+<ion-modal-view ng-controller="loginController">
+	<ion-header-bar>
+		<button class="button button-calm" ng-click="backToHome()">返回</button>
+		<h1 class="title">用户登录</h1>
+		<button class="button button-calm" ng-click="regist()" >注册</button>
+	</ion-header-bar>
+	<ion-content>
+		<form name="myForm">
+			<div class="list">
+				<label class="item item-input">
+					<span class="input-label">用户名</span>
+					<input type="text" required  ng-model="user.username">
+				</label>
+				<label class="item item-input">
+					<span class="input-label">密码</span>
+					<input type="password" required ng-model="user.password">
+				</label>
+			</div>
+
+			<div class="padding-horizontal">
+				<button ng-disabled="!myForm.$valid" class="button button-balanced button-block" ng-click="loginUser()">登录</button>
+			</div>
+		</form>
+	</ion-content>
+</ion-modal-view>

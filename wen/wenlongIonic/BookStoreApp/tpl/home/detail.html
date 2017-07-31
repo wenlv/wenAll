@@ -1,0 +1,33 @@
+<ion-view view-title="商品详情">
+	<ion-nav-buttons side="right">
+		<button ng-show="!isLogin" classs="button button-assertive" ng-click="loginClick()">登录</button>
+	</ion-nav-buttons>
+	<ion-content>
+		<h3>商家名称:{{shop}}</h3>
+		<h1>商品详情页面</h1>
+		<ion-list type="list-inset">
+			<ion-item class="item response-sm ">
+				<img ng-src="{{IMAGEURL+good.images[0].image_name}}" alt="" style="height:200px;float:left;margin-right:80px">
+				<h3 class="col pull-right">标题: {{good.title}}</h3>
+				<p class="col pull-right">价格: ￥{{good.price}}</p>
+				<button ng-show="isLogin" class="button button-positive item" badge="0" badge-style="badge-assertive" ui-sref="tab.cart" >查看购物车</button>
+				<button ng-show="isLogin"
+				class="button button-assertive item pull-right" ng-click="addCart(good)" >加入购物车</button>
+				
+			</ion-item>
+		</ion-list>
+		<div ng-bind-html="good.desc" style="margin:0 20px"></div>
+		<h1>关联商品</h1>
+		<ion-list type="list-inset ">	
+			<ion-item  ng-repeat="relate in good.relation" style="float:left">
+			    <a ui-sref="tab.detail({id:{{relate.relate_bookid}}})">
+					<img ng-src='{{IMAGEURL+relate["images"][0].image_name}}' alt="" style="width:100px">
+				</a>
+
+			</ion-item>
+		</ion-list>
+		
+		
+
+	</ion-content>
+</ion-view>

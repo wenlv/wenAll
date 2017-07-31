@@ -1,0 +1,22 @@
+<ion-view view-title="商品列表">
+	<ion-nav-buttons side="right">
+		<button ng-show="!isLogin" classs="button button-assertive" ng-click="loginClick()">登录</button>
+		<button ng-show="isLogin" class="button button-balanced" ng-click="loginOut()">用户ID:  {{username}}  登出</button>
+	</ion-nav-buttons>
+	<ion-content>
+		<div ng-if="showReloadBtn" style="text-align: center;">
+			<button class="button button-assertive" ng-click="loadBtnClick()">点击重新加载数据</button>
+		</div>
+		<ion-list type="list-inset">
+			<ion-item ng-repeat="good in goods" class="item-button-right">
+				<div ng-click="goToDetail(good)" class="item item-thumbnail-left button-full">
+					<img ng-src="{{IMAGEURL+good.images[0].image_name}}" alt="" style="height:50px" >
+					<h3>{{good.title}}</h3>
+					<p>{{good.price |currency:"RMB":2}}</p>
+					<p>商家名称:{{good.username}}</p>
+				</div>
+				<button class="button button-assertive ion-ios-cart" ng-click="addCart(good)"></button>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

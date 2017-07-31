@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>99乘法表</title>
+	<style>
+		table{
+			empty-cells: hide;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		document.write('<table border="1px" width="700px" height="400px">');
+			for(var i = 1; i<=9;i++){
+				document.write('<tr>');
+					for(var j = 1;j<=i;j++){
+						document.write('<td>'+i+'X'+j+'='+i*j+'</td>');
+					}
+				document.write('</tr>');
+			}
+		document.write('</table>');
+
+		document.write('<hr>');
+
+
+		document.write('<table border="1px" width="700px" height="400px">');
+			for(var i = 1; i<=9;i++){
+				document.write('<tr>');
+					//输出空的单元格将内容顶过去
+					for(var k = 8;k>=i;k--){
+						document.write('<td></td>');
+					}
+
+					for(var j = 1;j<=i;j++){
+						document.write('<td>'+i+'X'+j+'='+i*j+'</td>');
+					}
+				document.write('</tr>');
+			}
+		document.write('</table>');
+	</script>
+</body>
+</html>

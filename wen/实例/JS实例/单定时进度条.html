@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.container{
+			width:600px;
+			height:50px;
+			border:1px solid #ccc;
+			margin: 0 auto;
+			margin-top: 50px;
+			border-radius: 10px;
+		}
+		#box{
+			height:50px;
+			background: pink;
+			border-radius: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div id="box" style="width:0%"></div>
+	</div>
+	<script>
+		//使用单次定时
+		//获取box
+		var box = document.getElementById('box');
+		running();
+
+		function running(){
+			var num = parseInt(box.style.width);
+			if(num >= 100){
+				return;
+			}
+			num++;
+			console.log(num);
+
+			//将num拼接成字符串  赋值给宽度
+			box.style.width = num +'%';
+			setTimeout(running,50);
+		}
+
+	</script>
+
+</body>
+</html>

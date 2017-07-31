@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box1{
+			width: 100px;
+			height: 100px;
+			background: #1e1;
+		}
+		.box2{
+			width: 100px;
+			height: 100px;
+			background: #12e;
+		}
+		.box3{
+			width: 100px;
+			height: 100px;
+			background: #e21;
+		}
+	</style>
+</head>
+<body>
+	<button onclick="doIt()">执行</button>
+	<button onclick="stopDo()">暂停</button>
+	<button onclick="again()">重来</button>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<!-- <div class="box3"></div> -->
+
+
+	<script type="text/javascript" src="anime.min.js"></script>
+	<script type="text/javascript">
+	var obj={
+		one:0,
+		two:2000
+	}
+	var myobj = anime({
+	  targets: obj,
+	  one: 10,
+	  two: 4200,
+	  duration: 5000,
+	  round: true,
+	  easing: 'linear',
+	  loop: true,
+	  update: function() {
+	    // console.log(obj);
+	    document.write(obj.one)
+	  }
+	});
+
+
+
+		var myAnimation = anime({
+		  targets: ['.box1'],//目标
+		  translateX: '30rem',//X方向的偏移量
+		  translateY: '10em',//Y方向的偏移量
+		  rotate:1800,//选择角度
+		  borderRadius: 0,//圆角
+		  duration:3000,	//运行期间
+		  loop: 2,	//循环数字+1次
+		  autoplay:false,		//自动播放,默认true
+		  direction:"alternate",	//方向  默认正常normal  反向reverse, 交替alternate
+		  // easing:"easeInBounce",	//贝赛尔曲线
+		  elasticity:400,	//弹性 默认400
+		  scale:{//缩放规模
+		  	value:0.2, //放大倍数
+		  	delay:3000	//执行延迟
+		  },
+		  // delay:3000 //延迟
+		});
+		function doIt(){
+			myAnimation.play();//执行
+		}
+		function stopDo(){
+			myAnimation.pause();//暂停
+		}
+		function again(){
+			myAnimation.restart()
+		}
+	</script>
+</body>
+</html>

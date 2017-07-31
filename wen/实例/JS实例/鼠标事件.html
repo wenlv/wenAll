@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标事件</title>
+</head>
+<body>
+	<script>
+		//鼠标按下事件
+		document.onmousedown = function(en){
+			var e = en || window.event;
+			console.log(e.button);
+			console.log('我被按下了');
+		}
+		//鼠标抬起事件
+		document.onmouseup = function(){
+			console.log('我起来了');
+		}
+
+		//鼠标移动事件
+		document.onmousemove = function(en){
+			var e = en || window.event;
+			console.log(e.clientX+','+e.clientY);
+		}
+	</script>
+</body>
+</html>

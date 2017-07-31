@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//--自定义一个函数求数组的最大值
+				var index = -Infinity; 
+			function getMax(arr){
+				if(!Array.isArray(arr)){
+					alert('你搞毛啊');return;
+				}
+				for(var i = 0; i < arr.length; i++){
+					if(arr[i]>index){
+						index = arr[i];
+					}	
+				}
+				return index;
+			}
+			console.log(getMax([200,34,32,43]));
+
+
+
+		//循环输出1到50中,不能被7整除,且尾数不为7的所有数?
+		for(var i=1;i<=50;i++){
+			if(i%7 !=0 && i%10 !=7){
+				console.log(i)
+				document.write(i+'<br>');
+			}	
+		}
+
+		//定义一个新对象  --求属性值的和
+		var o = {
+			n0:100,
+			n1:101,
+			n2:102,
+			n3:103,
+			n4:104
+		}
+		var num = 0;
+		for(var i = 0; i < 5; i++){
+			num += o['n'+i];    //只能使用[]
+			//num += o.'n'+i;
+		}
+		alert('num:'+num);
+
+
+
+
+		//将稀疏数组变成不稀疏
+		// var index = [];
+		// for(var i = 0; i < a.length; i++){
+		// 	console.log(a[i]);
+		// 	if(a[i] != undefined){
+		// 		index.push(a[i]);
+		// 	}		
+		// }
+		// console.log(index);
+
+
+
+		//将数组中的元素  放入新的数组中
+		// var index = [];
+		// for(var j = 0; j<girl.length;j++){
+		// 	index[j] = girl[j];
+		// } 
+		// console.log(index);
+
+
+
+		/*
+		*处理参数的undefined
+		*/
+		function show(a,b){
+			if(b == undefined){
+				b = '凤凤';
+			}
+			return a+'和'+b+'准备去啪啪啪';
+		}
+
+		document.write(show('李德普')+"<br>");
+		document.write(show('李德普','余谦'));
+
+
+
+		//判断是否有穷
+		console.log(isFinite(Infinity));
+		console.log(isFinite(-Infinity));
+		console.log(isFinite(NaN));
+		console.log(isFinite(0));
+		console.log(isFinite(10000000000000000000));
+
+
+
+
+		var c = '123abc'*100;
+		/*  此判断方式不可取
+		if(c == NaN){
+			alert('ok');
+		}*/
+		if(isNaN(c)){    //通过isNaN()来判断是否是NaN
+			alert('ok');
+		}
+
+
+
+
+
+		//标题字滚动
+		document.title = '【您有一条新短消息】！请注意查收。'
+		console.log(document.title);
+		setInterval(function(){
+			var s = document.title.slice(1);
+			var f = document.title.charAt(0);
+			document.title = s + f;
+		},200);
+	</script>
+</body>
+</html>

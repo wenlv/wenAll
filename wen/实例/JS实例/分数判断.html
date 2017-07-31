@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分数的判断</title>
+</head>
+<body>
+	请输入您的分数：<input type="text" id="input"><br>
+	<button onclick="show()">提交</button>
+	<h2 id="h2"></h2>
+
+
+
+	<script>
+		//定义一个函数
+		function show(){
+			//获取分数
+			var num = document.getElementById('input').value;
+			var str = null;
+			if(num>100){
+				str = '你咋不上天呢';
+			}else{
+				if(num>90){
+					str="小伙子很不错啊";
+				}else{
+					if(num>80){
+						str="小伙子还可以啊";
+					}else{
+						if(num > 60){
+							str = '小伙子要加油啊';
+						}else{
+							str = '小伙子很有潜力';
+						}
+					}
+				}
+			}
+
+			alert(str);
+		}
+
+	</script>
+</body>
+</html>

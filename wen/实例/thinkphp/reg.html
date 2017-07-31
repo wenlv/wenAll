@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>注册</h1>
+<br>
+	用户名:
+	<input type="text" name="" id="username"><br>
+	密码:
+	<input type="password" name="" id="pwd">
+
+
+	<script type="text/javascript" src="jquery-1.12.4.min.js"></script>
+	<script type="text/javascript">
+	$("#username").blur(function() {
+		var user=$(this).val();
+		// console.log(user);
+		$.ajax({
+			url: 'http://www.h5ajax.cc/AliYunTp/index.php/Reg/Reg/reg',
+			type: 'get',
+			dataType: 'jsonp',//跨域
+			data: {name: user},
+			success:function(data){
+				console.log(data);
+				if(data.code==0){
+					
+				}
+			},
+			error:function(err){
+				console.log(err);
+			}
+		})	
+	});
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<ion-view view-title="用户中心">
+	<ion-nav-buttons side=left>
+		<button class="button button-assertive" ng-click="backHomePage()">返回</button>
+	</ion-nav-buttons>
+	<ion-content>
+		<ion-list type="list-inset">
+			<ion-item  class="item-avatar item-icon-right responsive-sm ">
+				<img  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1486806928721&di=3601f57351cdb54dd32967dd3ad26ac4&imgtype=0&src=http%3A%2F%2Fcdn.duitang.com%2Fuploads%2Fitem%2F201601%2F18%2F20160118225735_ca2LW.jpeg" alt="" style="width:60px">
+				<div >用户名:{{username}}</div>	
+				<button ng-if="isLogin"  ng-click="login()">登录</button>	
+				<button ng-if="!isLogin"  ng-click="loginOut()">注销</button>	
+			</ion-item>
+			<ion-item>
+				<button ng-if="!isLogin" ng-click="goOrderdetail()">查看订单</button>
+			</ion-item>
+			<ion-item>
+				<a href="http://localhost/zuoye/wenlongIonic/admin/" class="button button-balanced">商家中心</a>
+			</ion-item>
+			<!-- <ion-item>
+				<button ng-if="!isLogin" ng-click="editPwd()">修改密码</button>
+			</ion-item> -->
+		</ion-list>
+	</ion-content>
+</ion-view>

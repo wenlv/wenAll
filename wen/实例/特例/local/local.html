@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript" src="local.js"></script>
+	<script type="text/javascript">
+	// myLocalStorage.setLocalStorage("H507","方超");
+	// myLocalStorage.setLocalStorage("H507",
+	// 	[{'aaa':'方超'},
+	// 	 {'bbb':'丁纪翔'}
+	// 	]
+	// 	);
+	// console.log(myLocalStorage.getLocalStorageObject("H507"));
+	var obj=myLocalStorage.getLocalStorageObject("H507");
+	obj.push({"ccc":'黄老四'});
+	myLocalStorage.setLocalStorage("H507",obj);
+	// myLocalStorage.deleteLocalStorage("H507");
+	</script>
+</body>
+</html>

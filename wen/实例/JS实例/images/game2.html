@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<title>HTML DOM</title>
+		<style>
+			html, body, div, span, object, iframe,
+			h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+			abbr, address, cite, code,
+			del, dfn, em, img, ins, kbd, q, samp,
+			small, strong, sub, sup, var,
+			b, i,
+			dl, dt, dd, ol, ul, li,
+			fieldset, form, label, legend,
+			table, caption, tbody, tfoot, thead, tr, th, td,
+			article, aside, canvas, details, figcaption, figure, 
+			footer, header, hgroup, menu, nav, section, summary,
+			time, mark, audio, video { margin:0; padding:0; border:0; outline:0;}
+			
+			.map{float:left; overflow:hidden; width:24px; height:35px;background-image:url(map.png); background-repeat:no-repeat;}
+			.map0{background-position:-480px 50%;}/*ÎÞÍ¼*/
+			.map1{background-position:0px 50%;}/*Ê÷´Ô*/
+			.map2{background-position:-24px 50%;}/*Ê÷´Ô*/
+			.map3{background-position:-48px 50%;}/*Ê÷´Ô*/
+			.map4{background-position:-72px 50%;}/*Ê÷´Ô*/
+			.map5{background-position:-96px 50%;}/*Ê÷´Ô*/
+			.map6{background-position:-120px 50%;}/*Ê÷´Ô*/
+			.map7{background-position:-144px 50%;}/*Ê÷´Ô*/
+			.map8{background-position:-168px 50%;}/*Ê÷´Ô*/
+			.map9{background-position:-192px 50%;}/*Ê÷´Ô*/
+			.map10{background-position:-216px 50%;}/*Ê÷´Ô*/
+			.map11{background-position:-240px 50%;}/*Ê÷´Ô*/
+			.map12{background-position:-264px 50%;}/*Ê÷´Ô*/
+			.map13{background-position:-288px 50%;}/*Ê÷´Ô*/
+			.map14{background-position:-312px 50%;}/*Ê÷´Ô*/
+			.map15{background-position:-336px 50%;}/*Ê÷´Ô*/
+			.map16{background-position:-360px 50%;}/*Ê÷´Ô*/
+			.map17{background-position:-384px 50%;}/*Ê÷´Ô*/
+			.map18{background-position:-408px 50%;}/*Ê÷´Ô*/
+			.map19{background-position:-432px 50%;}/*Ê÷´Ô*/
+			.map20{background-position:-456px 50%;}/*Ê÷´Ô*/
+			
+		</style>
+		<script type="text/javascript">
+			function fun(){
+				//Í¼²ãÐÅÏ¢
+				var maplist=[
+					3,3,14,3,3,3,8,4,5,5,
+					1,2,3,20,3,3,8,4,5,5,
+					3,6,3,3,3,3,3,8,4,5,
+					3,6,15,3,19,3,3,8,4,5,
+					3,6,1,1,1,12,1,2,3,8,
+					11,10,11,11,11,11,11,10,11,11,
+					3,6,3,3,18,3,3,6,3,3,
+					3,6,3,3,3,3,3,12,1,1,
+					3,12,1,1,1,13,17,3,15,3,
+					3,3,3,3,16,3,3,3,3,3,
+					];
+				//Ö´ÐÐ±éÀúÍ¼²ã,²¢»æÖÆ
+				var gameid = document.getElementById("gameid");
+				for(var i=0;i<maplist.length;i++){
+					var dd = document.createElement("div");
+					var cs = document.createAttribute("class");
+					cs.nodeValue="map map"+maplist[i];
+					dd.setAttributeNode(cs);
+					gameid.appendChild(dd);
+				}
+			}
+		</script>
+	</head>
+<body onload="fun()">
+<center>
+	<div  id="gameid" style="width:240px;height:350px;border:1px solid blue;margin-top:100px;background:#dddddd">
+	
+	</div>
+	</center>
+</body>
+</html>

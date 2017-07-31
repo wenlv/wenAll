@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ball</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.ball{
+			width:100px;
+			height:100px;
+			border-radius: 50px;
+			position: absolute;
+			background-image:radial-gradient(at 30px 30px,#fff,#000);
+			left:400px;
+			animation:ball 1s infinite ease-in alternate paused;
+		}
+		@keyframes ball{
+			0%{
+				top:0px;
+				transform:translatey(0%);
+			}
+
+			100%{
+				top:100%;
+				transform:translatey(-100%);
+			}
+		}
+	</style>
+
+</head>
+<body>
+	<div class="ball"></div>
+	<button onclick="running(this)">开始</button>
+	<script>
+		//获取小球
+		var ball = document.getElementsByTagName('div')[0];
+		function running(m){
+			if(m.innerHTML=='开始'){
+				ball.style.animationPlayState = 'running';
+				m.innerHTML = '暂停';
+			}else{
+				ball.style.animationPlayState = 'paused';
+				m.innerHTML = '开始';
+			}
+			
+		}
+	</script>
+</body>
+</html>

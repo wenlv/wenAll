@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>时间</title>
+	<style>
+		.box{
+			width:400px;
+			height:100px;
+			background-image:linear-gradient(to bottom,#046AC1,#6DAAE2);
+			color:white;
+			font-family: '微软雅黑';
+			text-align: center;
+			margin: 0 auto;
+		}
+		.left{
+			height:100px;
+			width:230px;
+			float: left;
+			line-height: 100px;
+		}
+		.right{
+			width:150px;
+			height:100px;
+			float:right;
+		}
+		#s1{
+			font-size: 50px;
+		}
+		#s2{
+			font-size: 28px;
+			margin-left: 5px;
+		}
+		.right p{
+			font-size: 20px;
+			margin: 0px;
+			margin-top: 25px;
+			margin-bottom: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="left">
+			<span id="s1"></span>
+			<span id="s2"></span>
+		</div>
+		<div class="right">
+			<p id="p"></p>
+			<span id="span"></span>
+		</div>
+	</div>
+	<script>
+		//获取所有存放时间的盒子模型
+		var s1 = document.getElementById('s1');
+		var s2 = document.getElementById('s2');
+		var p = document.getElementById('p');
+		var span = document.getElementById('span');
+		var timer = setInterval(getTime,1000);
+
+		getTime();
+		//定义一个函数
+		function getTime(){
+			//获取时间对象
+			var date = new Date();
+			//年
+			var y = date.getFullYear();
+			//月
+			var m = date.getMonth()+1;
+			m = m>9?m:'0'+m;
+			//日
+			var r = date.getDate();
+			r = r>9?r:'0'+r;
+			//时
+			var h = date.getHours();
+			h = h>9?h:'0'+h;
+			//分
+			var f = date.getMinutes();
+			f = f>9?f:'0'+f;
+			//秒
+			var s = date.getSeconds();
+			s = s>9?s:'0'+s;
+			//星期
+			p.innerHTML=getDay();	
+			s1.innerHTML = h+':'+f;
+			s2.innerHTML = s;
+			span.innerHTML = y+'年'+m+'月'+r+'日';
+		}
+		//获取星期的函数
+		function getDay(){
+			var date = new Date();
+			var str = '';
+			var num = date.getDay();
+			switch(num){
+				case 0: str='星期日';break;
+				case 1: str='星期一';break;
+				case 2: str='星期二';break;
+				case 3: str='星期三';break;
+				case 4: str='星期四';break;
+				case 5: str='星期五';break;
+				case 6: str='星期六';break;
+			}
+			return str;
+		}
+	</script>
+
+</body>
+</html>

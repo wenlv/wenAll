@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>雪山之巅</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		ul{
+			width: 90%;
+			overflow: hidden;
+			background: white;
+			margin: 0 auto;
+		}
+		ul li{
+			float:left;	
+			list-style: none;
+			transition:all 0.3s;
+		}
+		ul li:first-child{
+			margin-left: 100px;
+		}
+		ul li a{
+			display: block;
+			text-decoration: none;
+			color:#000;
+			font: 18px/60px '微软雅黑';
+			padding: 0px 20px;
+			transition:all 0.3s;
+		}
+		ul li:hover{
+			background: rgb(0,80,180);
+			color:white;
+		}
+		ul li:hover a{
+			color:white;
+		}
+		.clock{
+			width: 500px;
+			height: 600px;
+			border: 5px solid red;
+			border-radius: 30px;
+			margin: 80px auto;
+			margin-left: 10px;
+			float: left;
+		}
+		.clock a{
+			width: 300px;
+			height: 80px;
+			border: 2px solid red;
+			border-radius: 20px;
+			margin: 0 auto;
+			margin-top: 30px;
+			display: block;
+			text-decoration: none;
+			text-align: center;
+			font: bold 30px/80px '微软雅黑';
+			color: red;
+		}
+		#box{
+			width: 600px;
+			height: 600px;
+			background: url(images/clock_logo.jpg) no-repeat;
+			float: left;
+			margin: 80px;
+		}
+		#hour{
+			width: 30px;
+			height: 600px;
+			background: url(images/hour.png) no-repeat;
+			position: absolute;
+			margin-left: 285px;
+		}
+		#min{
+			width: 30px;
+			height: 600px;
+			background: url(images/minute.png) no-repeat;
+			position: absolute;
+			margin-left: 285px;
+		}
+		#sec{
+			width: 30px;
+			height: 600px;
+			background: url(images/second.png) no-repeat;
+			position: absolute;
+			margin-left: 285px;
+		}
+		audio{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+
+	<ul>
+		<li><a href="http://www.bootcss.com/" target="black">Bootstrap</a></li>
+		<li><a href="http://amazeui.org/" target="black">Amaze UI</a></li>
+		<li><a href="http://www.apjs.net/#dir1" target="black">Angular Js</a></li>
+		<li><a href="http://reactnative.cn/" target="black">React</a></li>
+		<li><a href="http://www.runoob.com/ajax/ajax-tutorial.html" target="black">AJAX</a></li>
+		<li><a href="http://frozenui.github.io/" target="black">Frozen UI</a></li>
+		<li><a href="http://www.runoob.com//" target="black">RUNOOB</a></li>
+		<li><a href="http://fis.baidu.com/" target="black">FIS3</a></li>
+		<li><a href="http://www.open-open.com/lib/tag/JavaScript?pn=1" target="black">深度开源</a></li>
+		<li><a href="http://www.imooc.com/" target="black">慕课网</a></li>
+		<li><a href="http://www.shouce.ren/" target="black">手册网</a></li>
+	</ul>
+	<ul>
+		<li><a href="http://www.prglab.com/" target="black">实验室</a></li>
+		<li><a href="http://www.shouce.ren/" target="black">手册网</a></li>
+		<li><a href="https://www.shiyanlou.com/courses/" target="black">实验楼</a></li>
+		<li><a href="http://www.w3cplus.com/tools/emmet-cheat-sheet.html" target="black">快捷键</a></li>
+		<li><a href="http://docs.emmet.io/cheat-sheet/" target="black">快捷键全</a></li>
+		<li><a href="http://cubic-bezier.com/#.17,.67,.83,.67" target="black">贝塞尔曲线</a></li>
+		<li><a href="http://www.bejson.com/" target="black">JSON在线</a></li>
+		<li><a href="http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=6&text=天之魅蓝 雪山之巅" target="black">输入声音</a></li>	
+		<li><a href="http://www.youziku.com/" target="black">有字库</a></li>
+		<li><a href="http://alloyteam.github.io/JX/#home" target="black">JX</a></li>
+	</ul>
+	<ul>
+		<li><a href="http://www.jq22.com/jquery-info1124" target="black">fullPage.JS</a></li>
+		<li><a href="http://www.swiper.com.cn/" target="black">swiper.js</a></li>
+		<li><a href="http://www.jq22.com/jquery-info1320" target="black">intro.js</a></li>
+	</ul>
+
+	<div id="box">
+		<div id="hour"></div>
+		<div id="min"></div>
+		<div id="sec"></div>
+		<audio src="images/clock.mp3" controls id="aud"></audio>
+	</div>
+	
+
+	<div class='clock'>
+		<a href="http://bxu2442650784.my3w.com/wen/wenlongbootstrap/" target="new">bootstrap</a><br>
+		<a href="http://bxu2442650784.my3w.com/wen/wenlongvivo/" target="new">vivo</a><br>
+		<a href="http://bxu2442650784.my3w.com/wen/wenlongweiruan/" target="new">微软</a><br>
+		<a href="http://qianxun11.com/" target="new">介绍</a>
+	</div>
+
+	
+	<script>
+		document.title = '天之魅蓝，雪山之巅。'
+		console.log(document.title);
+		setInterval(function(){
+			var s = document.title.slice(1);
+			var f = document.title.charAt(0);
+			document.title = s + f;
+		},1000);
+
+
+
+		var hour=document.getElementById('hour');
+	var min=document.getElementById('min');
+	var sec=document.getElementById('sec');
+	var aud=document.getElementById('aud');
+
+	now();
+	function now(){
+		var nowTime=new Date();
+		//获取当前的时
+		var h=nowTime.getHours();
+		// if(h>12){
+		// 	h = h%12;
+		// }
+	//获取当前分
+		var m=nowTime.getMinutes();
+	//获取当前秒
+		var s=nowTime.getSeconds();
+
+		//获取毫秒数
+		var hm=nowTime.getMilliseconds();
+	//定义秒针的度数
+		sec.style.transform="rotate("+6*s+"deg)";
+		// sec.style.transform="rotate("+6*(s+hm/1000)+"deg)";
+	//定义分针的度数
+		min.style.transform="rotate("+6*(m+s/60)+"deg)";
+	//定义时针的度数
+		hour.style.transform="rotate("+30*(h+m/60+s/3600)+"deg)";
+		//播放音频
+		aud.play();
+	}
+		setInterval(now,1000);
+	</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试专用</title>
+	<style>
+		ul{
+			list-style: none;
+		}
+		li{
+			width: 200px;
+			height: 50px;
+			float: left;
+			border: 1px solid #ccc;
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+	<button >点击开始</button>
+
+
+	<script>
+		var arr=['田伟凯','付智御','李赟','罗炯','余谦','袁嘉诚','李德普','朱晶','方超','张文华','陈红','姜铭芳','赵拨云','曹晓飞','丁纪翔'];
+		document.write('<ul>');
+			for(var i=0;i<arr.length;i++){
+				document.write('<li>'+arr[i]+'</li>');
+			}
+		document.write('</ul>');
+
+		function suijishu(){
+			var liArr=document.getElementsByTagName('li');
+			console.log(liArr);
+			for(var i=0;i<liArr.length;i++){
+				liArr[i].style.borderColor='#ccc';
+			}
+
+			var num=Math.floor(Math.random()*10000000000000)%arr.length;
+			liArr[num].style.borderColor='red';
+		}
+		suijishu();
+	</script>
+</body>
+</html>

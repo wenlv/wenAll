@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>实现一个计算器</h1><br>
+	第一个数：<input type="number" id="inp1"><br><br>
+	<input type="radio" name="yun" onclick="show(1)">+
+	<input type="radio" name="yun" onclick="show(2)">-
+	<input type="radio" name="yun" onclick="show(3)">*
+	<input type="radio" name="yun" onclick="show(4)">/
+	<br><br>
+	第二个数：<input type="number" id="inp2"><br><br>
+	<button onclick="getNum()">提交</button> <br>
+	<h2 id="h2"></h2>
+
+
+
+	<script>
+		//获取两个input元素
+		var inp1 = document.getElementById('inp1');
+		var inp2 = document.getElementById('inp2');
+		//定义一个运算的变量
+		var index = null;
+		//定义一个运算符号的变量
+		var s = null;
+		//定义获取运算符的函数
+		function show(n){
+			index = n;
+			return;
+		}
+
+
+
+		//定义计算的函数
+		function getNum(){
+			var num = 0;       //结果的变量
+			var num1 = Number(inp1.value);   //第一个数
+			var num2 = Number(inp2.value);   //第二个数
+			if(index == null){
+				alert('请选择您需要的运算');
+				return;
+			}
+			switch(index){
+				case 1:
+					num = num1 + num2;
+					s = ' + ';
+				break;
+				case 2:
+					num = num1 - num2;
+					s=" - ";
+				break;
+				case 3:
+					num = num1 * num2;
+					s = ' * ';
+				break;
+				case 4:
+					num = num1 / num2;
+					s  = ' / ';
+				break;
+			}
+			console.log(num);
+			//获取 h2
+			var h2 = document.getElementById('h2');
+			h2.innerHTML = num1+s+num2+' = '+num;
+		}
+	</script>
+</body>
+</html>

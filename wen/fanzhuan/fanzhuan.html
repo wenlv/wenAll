@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片翻转</title>
+	<style>
+		body{
+			perspective:1000px;
+		}
+		.box{
+			width:279px;
+			height:400px;
+			margin:0 auto;
+			margin-top: 50px;
+			position: relative;
+			transform-style:preserve-3d;
+			transition:all 1.5s;
+		}
+		.box:hover{
+			transform:rotatey(180deg);
+		}
+		.box img{
+			position: absolute;
+			left:0px;
+			top:0px;
+			backface-visibility:hidden;
+		}
+		.img1{
+			transform:rotatey(180deg);	
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="box">
+		<img src="./images/1.jpg" class="img1">
+		<img src="./images/2.jpg" class="img2">
+	</div>
+</body>
+</html>

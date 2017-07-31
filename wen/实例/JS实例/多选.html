@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<label><input type="checkbox" name="girl[]">王昭君</label></br>
+	<label><input type="checkbox" name="girl[]">玲玲</label></br>
+	<label><input type="checkbox" name="girl[]">冰冰</label></br>
+	<label><input type="checkbox" name="girl[]">西施</label></br>
+	<label><input type="checkbox" name="girl[]">貂蝉</label></br>
+	<label><input type="checkbox" name="girl[]">杨玉环</label></br>
+
+	<button onclick="check(1)">全选</button>
+	<button onclick="check(2)">全不选</button>
+	<button onclick="check(3)">反选</button>
+	<script>
+		//获取所有的input框
+		var inputs = document.getElementsByTagName('input');
+		//定义函数
+		function check(n){
+			for(var i = 0; i < inputs.length; i++){
+				switch(n){
+					case 1:
+						inputs[i].checked = true;
+					break;
+					case 2:
+						inputs[i].checked = false;
+					break;
+					case 3:
+						//方法二：
+						inputs[i].checked = !inputs[i].checked;
+						/*
+						方法一：
+						if(inputs[i].checked){
+							inputs[i].checked = false;
+						}else{
+							inputs[i].checked = true;
+						}*/
+					break;
+				}
+			}
+		}
+	</script>
+</body>
+</html>

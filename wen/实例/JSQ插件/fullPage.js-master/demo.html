@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="jquery.fullPage.css">
+</head>
+<body>
+	<div id="fullpage">
+	    <div class="section">第一屏</div>
+	    <div class="section">第二屏</div>
+	    <div class="section">
+	        <div class="slide">第三屏的第一屏</div>
+	        <div class="slide">第三屏的第二屏</div>
+	        <div class="slide">第三屏的第三屏</div>
+	        <div class="slide">第三屏的第四屏</div>
+	    </div>
+	    <div class="section">第四屏</div>
+	</div>
+
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.easings.min.js"></script>
+	<script type="text/javascript" src="jquery.fullPage.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $('#fullpage').fullpage({
+		        //Navigation
+		        // menu: '#menu',
+		        // lockAnchors: false,
+		        anchors:['firstPage', 'secondPage','thirdPage'],
+		        navigation: true,
+		        // navigationPosition: 'right',
+		        navigationTooltips: ['第一', '第二','第三','第四'],
+		        showActiveTooltip: true,
+		        slidesNavigation: true,
+		        slidesNavPosition: 'bottom',
+
+		        // //Scrolling
+		        // css3: true,
+		        scrollingSpeed: 100,
+		        //autoScrolling: false,//浏览器滚动条
+		        // fitToSection: true,
+		        // fitToSectionDelay: 1000,
+		        // scrollBar: false,
+		        // easing: 'easeInOutCubic',
+		        // easingcss3: 'ease',
+		        // loopBottom: false,
+		        // loopTop: false,
+		        // loopHorizontal: true,
+		        // continuousVertical: false,
+		        // continuousHorizontal: false,
+		        // scrollHorizontally: false,
+		        // interlockedSlides: false,
+		        // dragAndMove: false,
+		        // offsetSections: false,
+		        // resetSliders: false,
+		        // fadingEffect: false,
+		        // normalScrollElements: '#element1, .element2',
+		        // scrollOverflow: false,
+		        // scrollOverflowOptions: null,
+		        // touchSensitivity: 15,
+		        // normalScrollElementTouchThreshold: 5,
+		        // bigSectionsDestination: null,
+
+		        // //Accessibility
+		        // keyboardScrolling: true,
+		        // animateAnchor: true,
+		        // recordHistory: true,
+
+		        // //Design
+		        // controlArrows: true,
+		        // verticalCentered: true,
+		       	sectionsColor : ['#ccc', 'pink','gold','blue'],//背景颜色
+		        // paddingTop: '3em',
+		        // paddingBottom: '10px',
+		        // fixedElements: '#header, .footer',
+		        // responsiveWidth: 0,
+		        // responsiveHeight: 0,
+		        // responsiveSlides: false,
+
+		        // //Custom selectors
+		        // sectionSelector: '.section',
+		        // slideSelector: '.slide',
+
+		        // lazyLoading: true,
+
+		        // //events
+		        // onLeave: function(index, nextIndex, direction){ alert(1)},
+		        afterLoad: function(anchorLink, index){
+		        	console.log(anchorLink);
+		        	console.log(index);
+
+		        	if(anchorLink=="secondPage"){
+		        		// alert(2)
+		        	}
+		        },
+		        // afterRender: function(){},
+		        // afterResize: function(){},
+		        // afterResponsive: function(isResponsive){},
+		        // afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
+		        // onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+		    });
+			setInterval(function(){
+				$.fn.fullpage.moveSectionDown();
+			},1000)
+			
+		});
+
+	</script>
+
+</body>
+</html>

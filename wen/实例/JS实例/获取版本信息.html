@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实例</title>
+</head>
+<body>
+	<script>
+		document.write(navigator.userAgent);
+
+		var str = navigator.userAgent;
+		var index = /(chrome)\/([\d\.]+)/i.exec(str) || /(firefox)\/([\d\.]+)/i.exec(str) || /(MSIE) ([\d\.]+)/.exec(str);
+		console.log(index);
+		console.log('浏览器的名称'+index[1])
+		console.log('浏览器的版本'+index[2])
+	</script>
+</body>
+</html>

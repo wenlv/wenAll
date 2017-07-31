@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>地址联动</title>
+</head>
+<body>
+	请选择您的家庭住址：
+	<select name="" id="s1"></select>
+	<select name="" id="s2"></select>
+
+	<script>
+		//定义数据
+		var provinces = ['安徽','浙江','江苏','上海','湖北'];
+		var citys = [];   //[[],[],[],[],[],[]]   二维数组
+		citys[0] = ['马鞍山','黄山','安庆','合肥','六安','阜阳'];
+		citys[1] = ['温州','义乌','杭州','宁波','金华','绍兴'];
+		citys[2] = ['淮安','徐州','泰州','扬州','常州','苏州'];
+		citys[3] = ['宝山','静安','青浦','松江','闵行','崇明'];
+		citys[4] = ['武汉','黄冈','黄石','鄂州','襄樊','随州','襄阳'];
+		//将省份信息放入s1
+		/*
+		方法一：
+		var str = '';
+		for(var i = 0; i < provinces.length; i++){
+			str += "<option value="+i+">"+provinces[i]+"</option>"
+		}
+		s1.innerHTML = str;*/
+		//console.log(str);
+		for(var i = 0 ; i < provinces.length; i++){
+			s1.add(new Option(provinces[i],i));//参数一：用户看到的值，参数二：value值
+		}
+
+		//给s1绑定onchange事件
+		s1.onchange = function(){
+			console.log(this.value);
+			var city_list = citys[this.value];//获取城市信息
+			//将s2先清空
+			s2.innerHTML="";
+			for(var j = 0 ; j < city_list.length; j++){
+				s2.add(new Option(city_list[j],j));
+			}
+		}
+		//先执行一次
+		s1.onchange();
+	</script>
+</body>
+</html>

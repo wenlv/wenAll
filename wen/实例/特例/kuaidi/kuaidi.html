@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>快递</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 800px;
+			height: 500px;
+		}
+	</style>
+</head>
+<body>
+	快递公司:
+	<select name="" id="com">
+		<option value="shunfeng">顺丰</option>
+		<option value="yuantong">圆通</option>
+		<option value="shentong">申通</option>
+		<option value="zhongtong">中通</option>
+		<option value="huitongkuaidi">百世汇通</option>
+		<option value="yunda">韵达</option>
+		<option value="ems">中国邮政</option>
+	</select>
+	<br>
+	快递单号:
+	<input type="text" id="num">
+	<button onclick="searchKuaidi()">查询</button>
+	<div id="box"></div>
+
+	<script type="text/javascript">
+		function searchKuaidi(){
+			//获取选中的option
+			var com=document.getElementById('com');
+			var opt=com.options[com.selectedIndex].value;
+			//selectedIndex选项的索引号
+			// console.log(opt);
+			//获取快递单号
+			var num=document.getElementById('num').value;
+
+
+
+
+			//创建 XHR 对象
+			if (window.XMLHttpRequest) {
+				var xhr = new XMLHttpRequest();
+			} else {
+				var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			//设置事件回调函数
+			xhr.onreadystatechange = function(){
+				if (xhr.status === 200 && xhr.readyState === 4) {
+						// console.log(xhr.responseText);
+						var data=JSON.parse(xhr.responseText);
+						// console.log(data);
+						var box=document.getElementById('box');
+
+						if(data.message=="ok"){
+							var datas = data.data;
+							console.log(datas);
+							for(var i = datas.length-1; i >=0 ;i--){
+								// console.log(datas[i]['context']);
+								var text = datas[i]['context'];
+								var time = datas[i]['time'];
+								// console.log(text);
+								sp=document.createElement('span');
+								box.appendChild(sp);
+								p=document.createElement('p');
+								box.appendChild(p);
+								p.className = 'p'
+								sp.innerHTML = time;
+								p.innerHTML = text;
+								
+							}
+
+							// box.innerHTML = text;
+							
+
+						}else{
+							alert('参数异常');
+						}
+
+
+				}
+			}
+			//进行请求初始化
+			xhr.open("GET","kuaidi.php?com="+opt+"&num="+num);
+			
+			//正式发送请求
+			xhr.send();			
+
+
+		}
+	</script>
+</body>
+</html>

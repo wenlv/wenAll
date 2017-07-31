@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./swiper.min.css">
+	<style>
+		.swiper-container {
+		    width: 600px;
+		    height: 300px;
+		    background: red;
+		    text-align:center;
+		}  
+		.wiper-slide img{
+			width:  600px;
+			display: block;
+			/* width: 100px; */
+		/* 	margin-top: 550px;
+			text-align:center; */
+		}
+	</style>
+	<script src='./jquery.min.js'></script>
+	<script src='./swiper.min.js'></script>
+</head>
+<body>
+	<div class="swiper-container">
+	    <div class="swiper-wrapper">
+	        <div class="swiper-slide" data-swiper-autoplay="2000" data-hash="slide1"><img src="./1.jpg" alt=""></div>
+	        <div class="swiper-slide" data-swiper-autoplay="2000" data-hash="slide2"><img src="./2.jpg" alt=""></div>
+	        <div class="swiper-slide" data-swiper-autoplay="2000" data-hash="slide3"><img src="./3.jpg" alt=""></div>
+	        <div class="swiper-slide" data-swiper-autoplay="2000" data-hash="slide4"><img src="./4.jpg" alt=""></div>
+	        <div class="swiper-slide" data-swiper-autoplay="2000" data-hash="slide5"><img src="./5.jpg" alt=""></div>
+	       <!--  <div class="swiper-slide">Slide 2</div>
+	        <div class="swiper-slide">Slide 3</div>
+	        <div class="swiper-slide">Slide 4</div>
+	        <div class="swiper-slide">Slide 5</div> -->
+	    </div>
+	    <!-- 如果需要分页器 -->
+	    <div class="swiper-pagination"></div>
+	    
+	    <!-- 如果需要导航按钮 -->
+	    <div class="swiper-button-prev"></div>
+	    <div class="swiper-button-next"></div>
+	    
+	    <!-- 如果需要滚动条 -->
+	    <div class="swiper-scrollbar"></div>
+	</div>
+	<script>        
+	  var mySwiper = new Swiper ('.swiper-container', {
+	    // direction: 'vertical',
+	    loop: true,
+	    // autoplay: 1000,//可选选项，自动滑动
+	    initialSlide :3,
+	    // direction : 'vertical',
+	    direction : 'horizontal',
+	    // speed:1000,
+	    // autoplayDisableOnInteraction : false,
+	    // autoplayStopOnLast : true,
+	    grabCursor : true,
+	     // parallax : true,
+	     hashnav:true,
+	     hashnavWatchState:true,
+
+	 	//  nextButton: '.swiper-button-next',
+		// prevButton: '.swiper-button-prev',
+  		// pagination : '.swiper-pagination',
+	 	// a11y: true,
+		// prevSlideMessage: 'Previous slide',
+		// nextSlideMessage: 'Next slide',
+		// firstSlideMessage: 'This is the first slide',
+		// lastSlideMessage: 'This is the last slide',
+  		// paginationBulletMessage:'Go to slide {{index}}',
+
+  		//全屏  
+  		// width : window.innerWidth,
+  		// width:500,
+  		roundLengths : true, 
+
+
+  	// 	slidesPerView: 4,
+	  // spaceBetween: 40,
+	 
+	  // breakpoints: { 
+	  //   //当宽度小于等于320
+	  //   320: {
+	  //     slidesPerView: 1,
+	  //     spaceBetweenSlides: 10
+	  //   },
+	  //  //当宽度小于等于480
+	  //   480: { 
+	  //     slidesPerView: 2,
+	  //     spaceBetweenSlides: 20
+	  //   },
+	  //   //当宽度小于等于640
+	  //   640: {
+	  //     slidesPerView: 3,
+	  //     spaceBetweenSlides: 30
+	  //   }
+	  // },
+
+	   autoHeight: true, //高度随内容变化
+
+
+	   watchSlidesProgress : true,
+		watchSlidesVisibility : true,
+
+		freeMode : true,
+		// freeModeMomentum : false,
+		freeModeMomentumRatio : 5,
+		freeModeMomentumVelocityRatio : 5,
+		freeModeMomentumBounceRatio : 5,
+		freeModeSticky : true,
+
+
+	    
+	    // 如果需要分页器
+	    pagination: '.swiper-pagination',
+	    
+	    // 如果需要前进后退按钮
+	    nextButton: '.swiper-button-next',
+	    prevButton: '.swiper-button-prev',
+	    
+	    // 如果需要滚动条
+	    scrollbar: '.swiper-scrollbar',
+	  })      
+
+	  //反方向自动切换简单示例
+		var mySwiper = new Swiper('.swiper-container',{
+		loop : true,
+		})
+		setInterval("mySwiper.slidePrev()", 2000);  
+	  </script>
+</body>
+</html>

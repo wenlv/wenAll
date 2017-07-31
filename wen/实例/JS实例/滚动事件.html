@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动事件</title>
+	<style>
+		.container{
+			width:300px;
+			height:300px;
+			border:1px solid #333;
+			margin:0 auto;
+			margin-top: 50px;
+			overflow: auto;
+		}
+		.box{
+			width:700px;
+			height:600px;
+			background: red;
+		}
+		p{
+			font-size: 30px;
+			border:1px solid #000;
+			text-align: center;
+		}
+		.box1{
+			height:500px;
+			background: purple;
+		}
+		.box2{
+			height:500px;
+			background: red;
+		}
+		.box3{
+			height:500px;
+			background: yellow;
+		}
+		.box4{
+			height:500px;
+			background: green;
+		}
+		.box5{
+			height: 500px;
+			background: tan;
+		}
+		.small{
+			width:300px;
+			height:90px;
+			border:1px solid #333;
+			position: fixed;
+			bottom: 10px;
+			left:10px;
+			background: cyan;
+		}
+		#btn{
+			width:100px;
+			height:50px;
+			position: fixed;
+			bottom: 10px;
+			right:10px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" id="container">
+		<div class="box">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, cumque quidem quo repellat pariatur voluptatum numquam aut! Eaque, illo, suscipit, minus officia consequatur voluptatibus unde architecto ipsam deleniti reprehenderit animi.
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, autem, fugiat error repudiandae rerum unde voluptatum reiciendis minus tempore molestiae harum nisi numquam eos odio atque esse animi! In, deserunt.
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, soluta, enim, non sit aperiam quas asperiores numquam recusandae rem veniam possimus doloribus consectetur qui ullam sapiente nihil fugit error at.
+		</div>
+	</div>
+	<p id="p"></p>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<div class="box3"></div>
+	<div class="box4"></div>
+	<div class="box5"></div>
+	<div class="small" id="small"></div>
+	<button id="btn">回到顶部</button>
+	<script>
+		//获取container
+		var container = document.getElementById('container');
+		container.onscroll = function(){
+			//alert('啊，滚了');
+			//获取向左滚动的距离
+			var left = this.scrollLeft;
+			var top = this.scrollTop;
+			p.innerHTML = '向左滚动的距离：'+left+',向上滚动的距离：'+top;
+		}
+
+
+		//给window绑定事件
+		window.onscroll = function(){
+			console.log(document.body.scrollTop);
+
+			//获取滚动距离
+			var top = document.body.scrollTop || document.documentElement.scrollTop;
+			small.innerHTML = '滚动的距离：'+top;
+
+			if(top > 1200){
+				btn.style.display='block';
+			}else{
+				btn.style.display='none';
+			}
+		}
+	</script>
+</body>
+</html>

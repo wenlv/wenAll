@@ -1,0 +1,30 @@
+<ion-view view-title="购物车">
+	<ion-nav-buttons side=left>
+		<button class="button button-assertive" ng-click="goHomePage()">返回</button>
+	</ion-nav-buttons>
+	<ion-content>
+		<div ng-show="isShow" >您的购物车里还没有商品哦!</div>
+		<ion-list type="list-inset">
+			<ion-item ng-repeat="good in cartList" class="item-icon-right">
+				<img ng-src="{{IMAGEURL+good.images}}" alt="" style="height:50px">
+				
+				<h3>商品名称:{{good.book_title}}</h3>
+				<p>价格:{{good.price |currency:"￥:":2}}</p>
+				<p>商家名称:{{good.username }}</p>
+				  
+				<div class="icon">
+					<button class="button button-small button-assertive"
+					ng-click="add(good)">+</button>
+					<input type="number" style="width:60px" class="button button-small  button-stable" ng-model="good.num">
+					<button class="button button-small button-assertive" ng-click="sub(good)">-</button>
+				</div>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+	<ion-footer-bar class="bar-calm">
+		<h1 class="title">总价:{{total|currency:"RMB:":2}}</h1>
+		<button ng-show="isLogin" ng-disabled="isCart"
+				class="button button-assertive item pull-right" ng-click="submitOrder()" >提交订单</button>
+		
+	</ion-footer-bar>
+</ion-view>

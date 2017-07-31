@@ -1,0 +1,29 @@
+<div class="container">
+	<h1>查看购物车</h1>
+	<div class="col-sm-12">
+		<table class="table table-bordered">
+			<tr>
+				<th>名称</th>
+				<th>单价</th>
+				<th>数量</th>
+				<th>小计</th>
+			</tr>
+			<tr ng-repeat="good in cartList">
+				<td>{{good.title}}</td>
+				<td>{{good.price}}</td>
+				<td>
+					<button class="btn btn-primary" ng-click="goodAdd(good.id)">+</button>
+					<input type="number" ng-model="good.num">
+					<button class="btn btn-primary" ng-click="goodSub(good.id)">-</button>
+				</td>
+				<td>{{good.num*good.price |currency:"RMB:":2}}</td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-12">
+		<h1>总价:{{total | currency:"RMB:":2}}</h1>
+		<div class="text-right">
+			<button class="btn btn-danger"  ng-click="submitOrder()" >提交订单</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	请输入你的分数：<input type="number" id="input"><br>
+	<button onclick="show()">提交</button>
+	<h2 id="h2"></h2>
+
+
+	<script>
+		function show(){
+		//获取input元素
+		var input = document.getElementById('input');
+		//获取input框内的value
+		var num = input.value;
+		//console.log(num);
+		//获取h2元素
+		var h = document.getElementById('h2');
+
+
+		//定义一个小红花数量的变量
+		var flower = (num>100 && '屁') || (num >= 90 && 5) || (num>=80 && 3) || (num>=70 && 2) || (num>=60 && 1) || '屁'; 	
+		console.log(flower);
+		h.innerHTML = '你得到了'+flower+'朵小红花';
+
+	}
+	</script>
+</body>
+</html>

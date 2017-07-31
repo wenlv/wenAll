@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>去除重复的元素</title>
+</head>
+<body>
+	<script>
+		var arr = ['大毛','二毛','三毛','三毛','三毛','二毛','毛毛','小毛'];
+		//定义一个函数去除重复的元素
+		function unique(arr){
+			if(!Array.isArray(arr) || arr.length<=1){
+				alert('大哥，你是搞笑的吧');
+				return;
+			}
+			//定义一个空数组
+			var index = [];
+			for(var i = 0; i < arr.length; i++){
+				if(inArray(arr[i],index)){
+					continue;
+				}
+				index.push(arr[i]);
+			}
+			return index;
+		}
+		console.log(unique(arr));
+		console.log(arr);
+		//用来判断一个元素是否在数组中
+		function inArray(index,arr){
+			//判断参数二 是否是一个数组
+			if(!Array.isArray(arr)){
+				return ;
+			}
+			for(var i = 0 ; i < arr.length; i++){
+				if(index === arr[i]){
+					return true;
+				}
+			}
+			return false;
+		}
+	</script>
+</body>
+</html>

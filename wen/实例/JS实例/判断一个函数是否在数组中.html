@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<script>
+		var array = ['a','b','c',123,456,'b'];
+		//定义一个函数来判断   元素是否在数组中
+		function inArray(index,arr){
+			//判断参数二 是否是一个数组
+			if(!Array.isArray(arr)){
+				return ;
+			}
+			for(var i = 0 ; i < arr.length; i++){
+				if(index === arr[i]){
+					return true;
+				}
+			}
+			return false;
+		}
+		console.log(inArray('abc',array));
+
+		//搜索数组中是否具有某个元素
+		console.log(array.indexOf(123));
+		console.log(array.indexOf('b'));
+		console.log(array.indexOf('abc'));
+	</script>
+</body>
+</html>

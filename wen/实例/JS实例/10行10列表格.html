@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10行10列表格</title>
+</head>
+<body>
+	<script>
+		document.write('<table border="1px" width="600px" height="400px">');
+			for(var i = 0;i<10;i++){
+				if(i%2==0){
+					document.write("<tr bgcolor='pink'>");
+				}else{
+					document.write("<tr>");
+				}
+				
+					for(var j = 0;j<10;j++){
+						document.write("<td>"+(i*10+j)+"</td>");
+					}
+				document.write("</tr>");
+			}
+		document.write('</table>');
+	</script>
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Piano</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.clearfix:after {
+			content:"";
+			display:block;
+			clear:both;
+		}
+		.clearfix {
+			zoom:1;
+		} 
+		.piano {
+			margin:20px auto;
+			width: 1190px;
+			position: relative;
+		}
+		.white{
+			float: left;
+			width: 40px;
+			height: 275px;
+			background: #f30;
+			box-shadow: 1px 1px 4px 0px #ccc;
+			margin-left: 6px;
+			text-align: center;
+			font-size: 20px;
+			line-height: 500px;
+			overflow: hidden;
+			-webkit-user-select:none;
+			font-family: "微软雅黑";
+			color: #ddd;
+		}
+		.black {
+			width: 30px;
+			height: 150px;
+			background:#000;
+			box-shadow: 1px 1px 4px 0px #333;
+			position: absolute;
+		}
+		.black1{
+			left: 27px;
+		}
+		.black2{
+			left: 73px;
+		}
+		.black3{
+			left: 119px;
+		}
+		.black4{
+			left: 165px;
+		}
+		.black5{
+			left: 211px;
+		}
+		.black6{
+			left: 257px;
+		}
+		.black7{
+			left: 303px;
+		}
+		.black8{
+			left: 349px;
+		}
+		.black9{
+			left: 395px;
+		}
+		.black10{
+			left: 441px;
+		}
+		.black11{
+			left: 487px;
+		}
+		.black12{
+			left: 533px;
+		}
+		.black13{
+			left: 579px;
+		}
+		.black14{
+			left: 625px;
+		}
+		.black15{
+			left: 671px;
+		}
+		.black16{
+			left: 717px;
+		}
+		.black17{
+			left: 763px;
+		}
+		.black18{
+			left: 809px;
+		}
+		.black19{
+			left: 855px;
+		}
+		.black20{
+			left: 901px;
+		}
+		.black21{
+			left: 947px;
+		}
+		.black22{
+			left: 993px;
+		}
+		.black23{
+			left: 1039px;
+		}
+		.black24{
+			left: 1085px;
+		}
+		.black25{
+			left: 1131px;
+		}
+		.piano>div:first-child {
+			margin-left:0;
+		}
+	</style>
+</head>
+<body>
+	<div class="piano clearfix" >
+		<div class="white" id="bgA" style="background-color:#fff;">
+			A
+			<audio src="" id="codeA"></audio>
+		</div>
+		<div class="white" id="bgB" style="background-color:#fff;">
+			B
+			<audio src="" id="codeB"></audio>
+		</div>
+		<div class="white" id="bgC" style="background-color:#fff;">
+			C
+			<audio src="" id="codeC"></audio>
+		</div>
+		<div class="white" id="bgD" style="background-color:#fff;">
+			D
+			<audio src="" id="codeD"></audio>
+		</div>
+		<div class="white" id="bgE" style="background-color:#fff;">
+			E
+			<audio src="" id="codeE"></audio>
+		</div>
+		<div class="white" id="bgF" style="background-color:#fff;">
+			F
+			<audio src="" id="codeF"></audio>
+		</div>
+		<div class="white" id="bgG" style="background-color:#fff;">
+			G
+			<audio src="" id="codeG"></audio>
+		</div>
+		<div class="white" id="bgH" style="background-color:#fff;">
+			H
+			<audio src="" id="codeH"></audio>
+		</div>
+		<div class="white" id="bgI" style="background-color:#fff;">
+			I
+			<audio src="" id="codeI"></audio>
+		</div>
+		<div class="white" id="bgJ" style="background-color:#fff;">
+			J
+			<audio src="" id="codeJ"></audio>
+		</div>
+		<div class="white" id="bgK" style="background-color:#fff;">
+			K
+			<audio src="" id="codeK"></audio>
+		</div>
+		<div class="white" id="bgL" style="background-color:#fff;">
+			L
+			<audio src="" id="codeL"></audio>
+		</div>
+		<div class="white" id="bgM" style="background-color:#fff;">
+			M
+			<audio src="" id="codeM"></audio>
+		</div>
+		<div class="white" id="bgN" style="background-color:#fff;">
+			N
+			<audio src="" id="codeN"></audio>
+		</div>
+		<div class="white" id="bgO" style="background-color:#fff;">
+			O
+			<audio src="" id="codeO"></audio>
+		</div>
+		<div class="white" id="bgP" style="background-color:#fff;">
+			P
+			<audio src="" id="codeP"></audio>
+		</div>
+		<div class="white" id="bgQ" style="background-color:#fff;">
+			Q
+			<audio src="" id="codeQ"></audio>
+		</div>
+		<div class="white" id="bgR" style="background-color:#fff;">
+			R
+			<audio src="" id="codeR"></audio>
+		</div>
+		<div class="white" id="bgS" style="background-color:#fff;">
+			S
+			<audio src="" id="codeS"></audio>
+		</div>
+		<div class="white" id="bgT" style="background-color:#fff;">
+			T
+			<audio src="" id="codeT"></audio>
+		</div>
+		<div class="white" id="bgU" style="background-color:#fff;">
+			U
+			<audio src="" id="codeU"></audio>
+		</div>
+		<div class="white" id="bgV" style="background-color:#fff;">
+			V
+			<audio src="" id="codeV"></audio>
+		</div>
+		<div class="white" id="bgW" style="background-color:#fff;">
+			W
+			<audio src="" id="codeW"></audio>
+		</div>
+		<div class="white" id="bgX" style="background-color:#fff;">
+			X
+			<audio src="" id="codeX"></audio>
+		</div>
+		<div class="white" id="bgY" style="background-color:#fff;">
+			Y
+			<audio src="" id="codeY"></audio>
+		</div>
+		<div class="white" id="bgZ" style="background-color:#fff;">
+			Z
+			<audio src="" id="codeZ"></audio>
+		</div>
+		
+		<div class="black1 black"></div>
+		<div class="black2 black"></div>
+		<div class="black3 black"></div>
+		<div class="black4 black"></div>
+		<div class="black6 black"></div>
+		<div class="black7 black"></div>
+		<div class="black8 black"></div>
+		<div class="black9 black"></div>
+		<div class="black11 black"></div>
+		<div class="black12 black"></div>
+		<div class="black13 black"></div>
+		<div class="black14 black"></div>
+		<div class="black16 black"></div>
+		<div class="black17 black"></div>
+		<div class="black19 black"></div>
+		<div class="black20 black"></div>
+		<div class="black21 black"></div>
+		<div class="black23 black"></div>
+		<div class="black24 black"></div>
+		<div class="black25 black"></div>
+	</div>
+	<script>
+		// var a = document.getElementById('codeA').getElementsByTagName('audio');
+		var a = document.getElementById('codeA');
+		var b = document.getElementById('codeB');
+		var c = document.getElementById('codeC');
+		var d = document.getElementById('codeD');
+		var er = document.getElementById('codeE');
+		var f = document.getElementById('codeF');
+		var g = document.getElementById('codeG');
+		var h = document.getElementById('codeH');
+		var i = document.getElementById('codeI');
+		var j = document.getElementById('codeJ');
+		var k = document.getElementById('codeK');
+		var l = document.getElementById('codeL');
+		var m = document.getElementById('codeM');
+		var n = document.getElementById('codeN');
+		var o = document.getElementById('codeO');
+		var p = document.getElementById('codeP');
+		var q = document.getElementById('codeQ');
+		var r = document.getElementById('codeR');
+		var s = document.getElementById('codeS');
+		var t = document.getElementById('codeT');
+		var u = document.getElementById('codeU');
+		var v = document.getElementById('codeV');
+		var w = document.getElementById('codeW');
+		var x = document.getElementById('codeX');
+		var y = document.getElementById('codeY');
+		var z = document.getElementById('codeZ');
+		var a1 = document.getElementById('bgA');
+		var b1 = document.getElementById('bgB');
+		var c1 = document.getElementById('bgC');
+		var d1 = document.getElementById('bgD');
+		var er1 = document.getElementById('bgE');
+		var f1 = document.getElementById('bgF');
+		var g1 = document.getElementById('bgG');
+		var h1 = document.getElementById('bgH');
+		var i1 = document.getElementById('bgI');
+		var j1 = document.getElementById('bgJ');
+		var k1 = document.getElementById('bgK');
+		var l1 = document.getElementById('bgL');
+		var m1 = document.getElementById('bgM');
+		var n1 = document.getElementById('bgN');
+		var o1 = document.getElementById('bgO');
+		var p1 = document.getElementById('bgP');
+		var q1 = document.getElementById('bgQ');
+		var r1 = document.getElementById('bgR');
+		var s1 = document.getElementById('bgS');
+		var t1 = document.getElementById('bgT');
+		var u1 = document.getElementById('bgU');
+		var v1 = document.getElementById('bgV');
+		var w1 = document.getElementById('bgW');
+		var x1 = document.getElementById('bgX');
+		var y1 = document.getElementById('bgY');
+		var z1 = document.getElementById('bgZ');
+		var arr = [a,b,c,d,er,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z];
+		var arr1 = [a1,b1,c1,d1,er1,f1,g1,h1,i1,j1,k1,l1,m1,n1,o1,p1,q1,r1,s1,t1,u1,v1,w1,x1,y1,z1];
+		document.onkeydown = function(en){
+			var e = en || window.event;
+			switch (e.keyCode) {
+				case 65:
+					a.src="music/a.mp3";
+					a.play();
+					a1.style.backgroundColor = "#ddd";
+					break;
+				case 66:
+					b.src="music/b.mp3";
+					b.play();
+					b1.style.backgroundColor = "#ddd";
+					break;
+				case 67:
+					c.src="music/c.mp3";
+					c.play();
+					c1.style.backgroundColor = "#ddd";
+					break;
+				case 68:
+					d.src="music/d.mp3";
+					d.play();
+					d1.style.backgroundColor = "#ddd";
+					break;
+				case 69:
+					er.src="music/e.mp3";
+					er.play();
+					er1.style.backgroundColor = "#ddd";
+					break;
+				case 70:
+					f.src="music/f.mp3";
+					f.play();
+					f1.style.backgroundColor = "#ddd";
+					break;
+				case 71:
+					g.src="music/g.mp3";
+					g.play();
+					g1.style.backgroundColor = "#ddd";
+					break;
+				case 72:
+					h.src="music/h.mp3";
+					h.play();
+					h1.style.backgroundColor = "#ddd";
+					break;
+				case 73:
+					i.src="music/i.mp3";
+					i.play();
+					i1.style.backgroundColor = "#ddd";
+					break;
+				case 74:
+					j.src="music/j.mp3";
+					j.play();
+					j1.style.backgroundColor = "#ddd";
+					break;
+				case 75:
+					k.src="music/k.mp3";
+					k.play();
+					k1.style.backgroundColor = "#ddd";
+					break;
+				case 76:
+					l.src="music/l.mp3";
+					l.play();
+					l1.style.backgroundColor = "#ddd";
+					break;
+				case 77:
+					m.src="music/m.mp3";
+					m.play();
+					m1.style.backgroundColor = "#ddd";
+					break;
+				case 78:
+					n.src="music/n.mp3";
+					n.play();
+					n1.style.backgroundColor = "#ddd";
+					break;
+				case 79:
+					o.src="music/o.mp3";
+					o.play();
+					o1.style.backgroundColor = "#ddd";
+					break;
+				case 80:
+					p.src="music/p.mp3";
+					p.play();
+					p1.style.backgroundColor = "#ddd";
+					break;
+				case 81:
+					q.src="music/q.mp3";
+					q.play();
+					q1.style.backgroundColor = "#ddd";
+					break;
+				case 82:
+					r.src="music/r.mp3";
+					r.play();
+					r1.style.backgroundColor = "#ddd";
+					break;
+				case 83:
+					s.src="music/s.mp3";
+					s.play();
+					s1.style.backgroundColor = "#ddd";
+					break;
+				case 84:
+					t.src="music/t.mp3";
+					t.play();
+					t1.style.backgroundColor = "#ddd";
+					break;
+				case 85:
+					u.src="music/u.mp3";
+					u.play();
+					u1.style.backgroundColor = "#ddd";
+					break;
+				case 86:
+					v.src="music/v.mp3";
+					v.play();
+					v1.style.backgroundColor = "#ddd";
+					break;
+				case 87:
+					w.src="music/w.mp3";
+					w.play();
+					w1.style.backgroundColor = "#ddd";
+					break;
+				case 88:
+					x.src="music/x.mp3";
+					x.play();
+					x1.style.backgroundColor = "#ddd";
+					break;
+				case 89:
+					y.src="music/y.mp3";
+					y.play();
+					y1.style.backgroundColor = "#ddd";
+					break;
+				case 90:
+					z.src="music/z.mp3";
+					z.play();
+					z1.style.backgroundColor = "#ddd";
+					break;
+			}
+
+		}
+		document.onkeyup = function(){
+			for (var aa= 0;aa<arr1.length;aa++){
+				arr1[aa].style.backgroundColor = "#fff";
+			}
+			// console.log(arr1.length);
+		}
+		console.log("乐章一:ehhjmjl 　lmljkji 　fiiknnmlkkjfghi 　ehhjmjl 　lmljkji 　fiiknnmlkkjfgih 　mmlklml 　ijkil 　mlkinmlmlk 　lmjih");
+		console.log("乐章二:LONOL LONOL LONO OOMML LONOL LQPPO LONOM MMOTS PPRRQQ QQNPOONO ONOR LSRQP PPRRQQ QQVUTUV VPOT TTSSS LSRQQRQ QRQ RQPO OQST TTSPPRQ OQST TTSPPRQRQPO PQMMOONO");
+		console.log("乐章三:QQQSP PSOOOQM RQRTQ RSPPMOP QPQSSPQVUSSTRQRSMOQPO QSUVUTSS QRSTRRQPPOPQSS QTQPOP MOQPPQS VUTUT SSOQSSTTTRQP PPUSQQSO QQPPP TQSVUTUTSS OQSS TTTTVUTUVSSQSTSSRMNO ");
+		console.log("乐章三:STVTXXTW  WWVUVWXWSV VUTUVRRRVVWVSSS SYXWXX  STVTXXTW  WWVUVWXWSVVVUTUVRRRVVWVSSS  STUVVUVV    ");
+		console.log("乐章四:LJ LI JIH HGFGHGHIJ LJ LP ONO HGFGHGHIH LMNONONMLML HIJKJKLHIJ LMNONONPOPOQL HIJKJKJIHGH LMNONOPONML HIJKJKLHHML LMNONOPOPQL, HIJKJKLHHML LMNONOPOPQL, HIJIJILHIJH LMNONOMNLKL  JJJKLJEE IIIJKIEE HHHIJIGH GFGHG FEFML IKJIH HGFIIHFFGH");
+		console.log("乐章五:MQN MOPOQ MTSTSPRQ MTSPQRQ O MQPNM MQNMOPOQ MTSTSPRQ MTSPQRQPO MPONM MNOPQONL MOPQQ  MNOPQONLMOPOO  MPONM MNOPQONL MOPQQ MNOPQO NLMOPOO OOPQONLONMNT");
+		console.log("乐章六:QQQQPONPPPO LQPOOOLQPOOP  QQQQPONPPPO LQPOOOLQPOOPPQR  RRRRQPOOOPP LSSSRQPPPQQ  MRQRQPOONOL QRQRQPOPS   LQRSRQSLQRSRQS LQRSRQOPPPQO  SSOONOOSSOONOO RRQQPPORRQQPPO  LQRSRQSLQRSRQS LQRSRQOPPPQO  SSOONOOSSOONOO RRQQPPOORQPOMOO");
+	</script>
+</body>
+</html>

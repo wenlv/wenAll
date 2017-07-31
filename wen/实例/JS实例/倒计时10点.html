@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	距离世界末日还有<span id="nowTime"></span>
+
+
+	<script type="text/javascript">
+// var allS=36610;//总秒数
+// 	function daoshu(){
+
+	
+// 	//秒数
+// 	var s=allS%60;
+
+// 	console.log(s);
+// 	//分数
+// 	var m=allS/60;
+	
+// 	if(m>=60){
+// 		m = m%60;
+// 	}
+	
+// 	m=Math.floor(m)+':';
+// 	console.log(m);
+
+// 	//时
+// 	var h=allS/3600;
+	
+// 	h=Math.floor(h)+':';
+// 	console.log(h)
+
+
+// 	var nowTime=document.getElementById('nowTime');
+// 	nowTime.innerHTML=h+m+s;
+// 	allS--;
+// }
+// 	setInterval(daoshu,100);
+var n=7810000;
+function daoshu(){
+
+
+var myTime=new Date(n);
+// console.log(myTime);
+var h=myTime.getHours()+':';
+// console.log(h);
+var m=myTime.getMinutes()+':';
+// console.log(m);
+var s=myTime.getSeconds();
+// console.log(s);
+var nowTime=document.getElementById('nowTime');
+	nowTime.innerHTML=h+m+s;
+n-=1000;
+}
+setInterval(daoshu,0.000001)
+	</script>
+</body>
+</html>

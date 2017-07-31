@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myController">
+		
+	
+		<h1>注册</h1>
+		手机号: <input type="text" ng-model="tel"><span ng-bind="sendMessage"></span>
+		<br>
+		验证码: <input type="text" ng-model="code"> <button ng-bind="sendTxt" ng-disabled="isDis" ng-click="send()"></button>
+
+
+		<br>
+		<button ng-click="reg()">注册</button>
+	</div>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		angular.module('myApp',[])
+			.controller('myController',function	($scope,$interval,$http){
+				$scope.sendTxt="获取验证码";
+				var sec=3;	//定义一个倒计时总秒数
+				$scope.isDis=false;
+				var run=undefined;
+				$scope.send=function(){
+					// alert($scope.tel)
+					run=$interval(function(){
+						if(sec<=0){//时间到了之后执行
+							$interval.cancel(run);
+							run=undefined;
+							$scope.sendTxt="重新获取验证码";
+							$scope.isDis=false;
+							sec=3;
+						}else{//倒计时过程
+							$scope.sendTxt=sec+"秒后可重新发送";
+							$scope.isDis=true;
+							sec--;
+						}
+					},1000);
+					$http({
+						method:"POST",
+						url:"http://localhost/H507/Lesson/angularjs-05/reg/ecd_php_demo/index.php",
+						data:"tel="+$scope.tel,
+						headers:{"Content-Type":"application/x-www-form-urlencoded"},
+					    }).then(function(data){
+						        console.log(data);
+						        if(data.data.code==1 && data.data.sendData.result==0){
+						        	$scope.sendMessage=data.data.data;
+						        }else if(data.data.code==3){
+						        	$scope.sendMessage=data.data.data;
+						        }else if(data.data.code==4){
+						        	$scope.sendMessage=data.data.data;
+						        }else{
+						        	$scope.sendMessage="没有原因,就是不对";
+						        }
+
+
+					    },function(error){
+					        console.log(error);
+						})
+
+				}
+
+				$scope.reg=function(){//注册
+					$http({
+						method:"POST",
+						url:"http://localhost/H507/Lesson/angularjs-05/reg/ecd_php_demo/reg.php",
+						data:"tel="+$scope.tel+"&code="+$scope.code,
+						headers:{"Content-Type":"application/x-www-form-urlencoded"},
+					    }).then(function(data){
+						        console.log(data);
+						        
+
+
+					    },function(error){
+					        console.log(error);
+						})
+				}
+			})
+	</script>
+</body>
+</html>

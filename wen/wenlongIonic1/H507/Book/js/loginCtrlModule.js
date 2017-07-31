@@ -1,0 +1,45 @@
+(function(){
+	angular.module("loginCtrlModule",[])
+	.controller("loginController",["$scope","postDataService",
+		"messageService","$location","USERDATA",
+		function($scope,postDataService,
+			messageService,$location,USERDATA){
+			$scope.user={
+				name:"tom",
+				password:"123456"
+			};
+			$scope.loginClick=function(){
+				messageService.showLoading("正在登录中..");
+				postDataService.postRequst(
+					"userInfoLogin.php",
+					{
+						username:$scope.user.name,
+						password:hex_md5($scope.user.password)
+					},
+					function(response){
+						messageService.hideLoading();
+						console.log(response);
+						//登录成功页面跳转到主页
+						//存储用户的数据
+						//下单需要使用用户的id  数据
+						if(response.data.code==0){
+							messageService.showMessageBox("登录成功");
+							//存储数据
+							USERDATA.user=response.data.data;
+							USERDATA.isLogin=true;
+
+							$location.path("/bookList");
+						}else{
+							messageService.showMessageBox(response.data.data);
+							//清空改用户的密码
+							$scope.user.password="";
+						}
+					},
+					function(error){
+						console.log(error);
+						messageService.hideLoading();
+						messageService.showMessageBox("服务器错误");
+					})
+			}
+		}])
+})()

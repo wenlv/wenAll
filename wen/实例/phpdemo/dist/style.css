@@ -1,0 +1,18 @@
+body{
+	padding-top:40px;
+}
+.logo-image{
+	-webkit-transform:translate(0, -56px);
+	-moz-transform:translate(0, -56px);
+	transform:translate(0, -56px);
+}
+.main-content{
+	margin-top:20px;
+}
+a#login_a:focus{
+	outline:none;
+}
+
+footer{
+	text-align:center;
+}

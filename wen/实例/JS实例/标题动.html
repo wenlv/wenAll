@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>内置对象--String</title>
+</head>
+<body>
+	<script>
+		//属性		length  字符串的长度
+		var string = 'Lorem ipsum dolor ';
+		console.log('string的长度：'+string.length);
+
+		var string = '疼么?疼！那算了吧?不!';
+		console.log('string的长度：'+string.length);
+		//遍历字符串
+		for(var i = 0; i < string.length; i++){
+			document.write(string[i]+"<br>");
+		}
+
+		//方法
+		//N01.  anchor  给字符串添加一个锚点
+		var s = '弄啥咧';
+		document.write(s.anchor('page1')+"<hr>")
+
+		//N02   big  字体变大
+		document.write(s.big()+"<hr>");
+
+		//N03.  blink()  闪烁  闪现
+		document.write(s.blink()+"<hr>");
+
+		//N04. charAt()   返回指定位置的字符
+		document.write(s.charAt(0)+"<hr>");
+		document.write(s.charAt(2)+"<hr>");  
+		
+		document.title = '【您有一条新短消息】！请注意查收。'
+		console.log(document.title);
+		setInterval(function(){
+			var s = document.title.slice(1);
+			var f = document.title.charAt(0);
+			document.title = s + f;
+		},200);
+		//N05  concat();  连接字符串   +
+		document.write(s.concat('?不弄啥!')+"<hr>");
+
+		//N06  fixed()    打印机字体 <tt>标签
+		document.write(s.fixed()+"<hr>");
+
+		//N07  fontcolor()  指定文本颜色  <font>标签
+		document.write(s.fontcolor('green')+"<hr>");
+
+		//N08  fontsize()  指定字体大小  1-7的数值
+		document.write(s.fontsize('1')+"<hr>");
+		document.write(s.fontsize('2')+"<hr>");
+		document.write(s.fontsize('3')+"<hr>");
+		document.write(s.fontsize('4')+"<hr>");
+		document.write(s.fontsize('5')+"<hr>");
+		document.write(s.fontsize('6')+"<hr>");
+		document.write(s.fontsize('7')+"<hr>");
+
+		
+
+	</script>
+</body>
+</html>

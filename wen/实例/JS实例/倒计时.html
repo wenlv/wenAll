@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时</title>
+	<style>
+		h1{
+			font-size: 100px;
+			text-align: center;
+			color: green;
+		}
+
+		h1.active{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<h1></h1>
+	<script>
+		//获取h1
+		var h = document.getElementsByTagName('h1')[0];
+		var num = 31;
+		//使用单次定时
+		/*toOver();
+		function toOver(){
+			if(num<=0){
+				h.innerHTML = '完蛋了';
+				h.className='active';   //添加一个类
+				return;
+			}
+			num--;
+			num = num<10?'0'+num:num;
+			var s = '距离世界末日还有'+num+'秒';
+			h.innerHTML = s;
+			setTimeout(toOver,100);
+
+		}*/
+
+		//使用多次定时
+		var timer = setInterval(toOver,100);
+		toOver();
+		function toOver(){
+			if(num<=0){
+				h.innerHTML = '完蛋了';
+				h.className='active'; 
+				clearInterval(timer);
+				return;
+			}
+			num--;
+			num = num<10?'0'+num:num;
+			var s = '距离世界末日还有'+num+"秒";
+			h.innerHTML = s;
+		}
+	</script>
+</body>
+</html>

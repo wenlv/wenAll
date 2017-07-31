@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.container{
+			width:600px;
+			height:50px;
+			border:1px solid #ccc;
+			margin: 0 auto;
+			margin-top: 50px;
+			border-radius: 10px;
+		}
+		#box{
+			height:50px;
+			background: pink;
+			border-radius: 10px;
+			transition:all 3s linear;
+			width:0%;
+		}
+	</style>
+</head>
+<body>
+	<button onclick="running()">开始</button>
+	<div class="container">
+		<div id="box"></div>
+	</div>
+	<script>
+		//使用过渡
+		var box = document.getElementById('box');
+		function running(){
+			box.style.width="100%";
+		}
+	</script>
+
+</body>
+</html>

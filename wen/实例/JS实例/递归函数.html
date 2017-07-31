@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>递归函数</title>
+</head>
+<body>
+	<script>
+		function demo(n){  
+			if(n<0){
+				return;
+			}else{
+				document.write(n+"<br>");
+				demo(n-1);
+			}		
+		}
+		demo(5);
+		/*
+		*   demo(5)   输出 5    demo(4)
+		*   demo(4)   输出 4    demo(3) 
+		*   demo(3)   输出 3    demo(2) 
+		*   demo(4)   输出 2    demo(1) 
+		*   demo(1)   输出 1    demo(0) 
+		*   demo(0)   输出 0    demo(-1)
+		*    return  
+		*/
+		document.write('<hr>');
+		function show(n){
+			if(n<0){
+				return;
+			}else{
+				document.write(n+"<br>"); debugger;  //调试
+				show(n-1);
+				document.write(n+"<br>");
+			}	
+		}
+		show(5);
+		/*
+		* show(5)  输出5   show(4)   输出5(卡住了)
+		* show(4)  输出4   show(3)   输出4(卡住了)
+		* show(3)  输出3   show(2)   输出3(卡住了)
+		* show(2)  输出2   show(1)   输出2(卡住了)
+		* show(1)  输出1   show(0)   输出1(卡住了)
+		* show(0)  输出0   show(-1)  输出0 1 2 3 4  5
+		*/ 
+
+		//使用递归求阶乘
+		function getNum(n){
+			if(n<=1){
+				return n; 
+			}
+			return n*getNum(n-1); 
+		}
+		console.log(getNum(3));
+		/*
+		*getNum(3)   3*getNum(2)
+		*getNum(2)   3*2*getNum(1)
+		*getNum(1)   3*2*1
+		*/
+		console.log(getNum(5));  //5*4*3*2*1
+
+		//使用for循环求阶乘
+		function getN(n){
+			var num = 1;
+			for(var i = 1;i<=n;i++){
+				 num *= i;	   //num = num*i
+			}
+			return num;
+		}
+		console.log(getN(5));
+	</script>
+</body>
+</html>

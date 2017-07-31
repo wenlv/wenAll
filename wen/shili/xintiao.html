@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>心跳</title>
+	<style>
+		body{
+			background: #FFA5A5;
+		}
+		*{
+			margin:0;
+			padding:0;
+		}
+		.box{
+			width:500px;
+			height:500px;
+			margin:0 auto;
+			margin-top: 50px;
+			position: relative;
+		}
+		.box div{
+			position: absolute;
+			background: #d5093c;
+			animation:myan 0.2s infinite;
+		}
+		.left,.right{
+			width:200px;
+			height:200px;
+			border-radius:100px;
+		}
+		.left{
+			left:60px;
+			top:60px;
+		}
+		.right{
+			left:200px;
+			top:60px;
+		}
+		.center{
+			z-index: 100;
+			width:200px;
+			height:200px;
+			top:130px;
+			left:130px;
+			transform:rotatez(45deg);
+		}
+
+		@keyframes myan{
+			0%{
+				transform:scale(1) rotatez(45deg);
+				box-shadow: 0px 0px 40px #d5093c;
+			}
+			50%{
+				transform:scale(1.1) rotatez(45deg);
+				box-shadow: 0px 0px 60px #d5093c;
+			}
+			100%{
+				transform:scale(1) rotatez(45deg);
+				box-shadow: 0px 0px 40px #d5093c;
+			}
+
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="left"></div>
+		<div class="center"></div>
+		<div class="right"></div>
+	</div>
+</body>
+</html>

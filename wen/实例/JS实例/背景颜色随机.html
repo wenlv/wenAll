@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件</title>
+	<style>
+		.box{
+			width:400px;
+			height:300px;
+			border:1px solid #ccc;
+			-webkit-user-select:none;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		Lorem ipsum dolor sit amet.
+	</div>
+
+	<script>
+		//获取盒子
+		var box = document.getElementsByTagName('div')[0];
+
+		box.onclick=function(){
+			//获取随机数
+			var r = Math.floor(Math.random()*100000000)%256;
+			var g = Math.floor(Math.random()*100000000)%256;
+			var b = Math.floor(Math.random()*100000000)%256;
+			box.style.backgroundColor='rgb('+r+','+g+','+b+")";
+			//宽度在12-30之间
+			var num = Math.floor(Math.random()*100000000)%19 +12;
+			console.log(num);
+			box.style.fontSize=num+'px';
+		}
+	</script>
+</body>
+</html>

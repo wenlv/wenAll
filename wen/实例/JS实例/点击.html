@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数的声明</title>
+</head>
+<body>
+	<button id="btn">点击</button><br>
+	<script>
+		//No2.  使用匿名函数
+		//demo();不能调用
+
+		var demo = function(){
+			for(var i = 0;i<10;i++){
+				document.write(i+"<br>");
+			}
+		}
+		demo();
+
+
+
+		var btn = document.getElementById('btn');
+		//点击事件
+		btn.onclick = function(){    //匿名函数
+			alert('ok');
+		}
+	</script>
+	<script>
+		demo();
+	</script>
+</body>
+</html>

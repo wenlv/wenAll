@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>参数</title>
+</head>
+<body>
+	<script>
+		//'use strict';
+		//arguments   --将参数组成一个类数组对象
+		function demo(a,b,c,d,e,f){
+			/*console.log(a);
+			console.log(b);
+			console.log(c);
+			console.log(d);
+			console.log(e);
+			console.log(f);*/
+			console.log(arguments);    //将参数组成一个数组
+			console.log(arguments.length);
+			console.log("");
+			for(var i = 0;i<arguments.length;i++){
+				console.log(arguments[i]);    //循环将参数输出到控制台
+			}
+
+			//计算所有参数的和
+			var num = 0;
+			for(var j = 0;j<arguments.length;j++){
+				num += arguments[j];
+			}
+			console.log(num);
+		}
+
+		demo(2,3,4,5,6,7);
+
+
+
+		var arguments = 'abc';   //严格模式下   不能使用arguments作为变量名
+		console.log(arguments);
+	</script>
+</body>
+</html>

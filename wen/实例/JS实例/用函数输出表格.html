@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定义函数</title>
+</head>
+<body>
+	<script>
+	//3．自定义一个函数printTable($rows,$cols,$content,$width=400,$border=1);用来动态输出表格。其中参数：$rows:行数,$cols:列数,$content:填充内容,$width宽度,$border边框线。
+		function printTab(row,col,content,width,border){
+			var w = width==undefined?400:width;
+			var b = border==undefined?1:border;
+			if(isNaN(row) || isNaN(col) || row<=0 || col <= 0 ){
+				alert('请认识输入参数');
+				return;
+			}
+			document.write('<table width='+w+' border='+b+'>');		
+				for(var i = 0; i<row;i++){
+					document.write('<tr>');
+						for(var j = 0;j<col;j++){
+							document.write('<td>'+content+'</td>');
+						}
+					document.write('</tr>');
+				}
+			document.write('</table>')
+		}
+		printTab(5,4,'abc',600);
+		document.write("<hr>");
+		printTab(5,4,123);
+	</script>
+</body>
+</html>

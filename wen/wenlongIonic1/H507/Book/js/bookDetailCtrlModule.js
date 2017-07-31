@@ -1,0 +1,30 @@
+(function(){
+	angular.module("bookDetailCtrlModule",[])
+	.controller("bookDetailController",[
+		"$scope","$routeParams",
+		"IMAGEURL","getDataService",
+		"messageService",
+		function($scope,$routeParams,IMAGEURL,
+			getDataService,messageService){
+			$scope.IMAGEURL=IMAGEURL;
+			//开始发送请求
+			messageService.showLoading();
+			getDataService.getRequest(
+				"bookId.php",
+				{id:$routeParams.id},
+				function(response){
+					messageService.hideLoading();
+					console.log(response);
+					if(response.data.code==0){
+						$scope.book=response.data.data;
+					}else{
+						messageService.showMessageBox(response.data.data);
+					}
+				},
+				function(error){
+					messageService.hideLoading();
+					console.log(error);
+					messageService.showMessageBox("服务器错误");
+				})
+		}])
+})()

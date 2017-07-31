@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="erweima">
+		
+	</div>
+	<img src="15.jpg" alt="" width="200" height="200" style="display:none;">
+	<img src="039.jpg" alt="" width="200" height="200" style="display:none;">
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="jquery-qrcode-0.14.0.min.js"></script>
+	<script type="text/javascript">
+			console.log($('img')[0])
+			var myUrl = document.URL;
+			$("#erweima").qrcode({
+		    // render method: 'canvas', 'image' or 'div'
+		    render: 'canvas',
+
+		    // version range somewhere in 1 .. 40
+		    minVersion: 1,
+		    maxVersion: 40,
+
+		    // error correction level: 'L', 'M', 'Q' or 'H'
+		    ecLevel: 'H',
+
+		    // offset in pixel if drawn onto existing canvas
+		    left: 0,
+		    top: 0,
+
+		    // size in pixel
+		    size: 400,
+
+		    // code color or image element
+		    fill: '#000',
+
+		    // background color or image element, null for transparent background
+		    background:null,
+
+		    // content
+		    text: myUrl,
+
+		    // corner radius relative to module width: 0.0 .. 0.5
+		    radius: 0,
+
+		    // quiet zone in modules
+		    quiet: 0,
+
+		    // modes
+		    // 0: normal
+		    // 1: label strip
+		    // 2: label box
+		    // 3: image strip
+		    // 4: image box
+		    mode:0,
+
+		    mSize: 0.1,
+		    mPosX: 0.5,
+		    mPosY: 0.5,
+
+		    label: '罗炯',
+		    fontname: '楷体',
+		    fontcolor: 'blue',
+
+		    image:null
+		});
+	</script>
+</body>
+</html>

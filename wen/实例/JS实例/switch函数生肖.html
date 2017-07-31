@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多向分支--生肖判断</title>
+</head>
+<body>
+	请输入您的出生年份： <input type="text" id="input"><br>
+	<button onclick="show()">确定</button><br>
+	<h3 id="h3"></h3>
+
+	<script>
+		//定义show函数
+		function show(){
+			//获取出生年份
+			var num = document.getElementById('input').value;
+			//判断用户输入的内容是不是符合要求
+			if(isNaN(num)){alert('兄弟。你搞啥呢');return;}
+			//console.log(num);
+			//获取生肖的函数
+			console.log(getS(num));
+			//获取h3
+			var h = document.getElementById('h3');
+			h.innerHTML = '您的生肖是：'+getS(num);
+		}
+
+		//定义一个函数获取生肖
+		function getS(n){
+			//定义一个生肖的变量
+			var sheng = null;
+			n %= 12;
+			switch(n){    //传一个参数
+				case 0: sheng = '猴'; 	break;
+				case 1:sheng = '鸡';  	break;
+				case 2:sheng = '狗';	break;
+				case 3:
+					sheng = '猪';
+				break;
+				case 4:
+					sheng = '鼠';
+				break;
+				case 5:
+					sheng = '牛';
+				break;
+				case 6:
+					sheng = '虎';
+				break;
+				case 7:
+					sheng = '兔';
+				break;
+				case 8:
+					sheng = '龙';
+				break;
+				case 9:
+					sheng ='蛇';
+				break;
+				case 10:
+					sheng ='马';
+				break;
+				case 11:
+					sheng ='羊';
+				break;
+				default:
+					sheng ='坑';
+				break;
+			}
+
+			return sheng;
+		}
+
+
+		console.log(getS(2000));
+	</script>
+</body>
+</html>

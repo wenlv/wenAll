@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打灰机</title>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+		#plane{
+			width:40px;
+			height:48px;
+			background:url('./images/hj.png');
+			position: absolute;
+		}
+		html{
+			overflow: hidden;
+		}
+		.shell{
+			width:3px;
+			height:17px;
+			background: url('./images/shell.png');
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="plane" style="left:300px;top:30px;"></div>
+	<div class="shell" style="display:none;"></div>
+	<div class="shell" style="display:none;"></div>
+	<div class="shell" style="display:none;"></div>
+	<div class="shell" style="display:none;"></div>
+	<div class="shell" style="display:none;"></div>
+	<div class="shell" style="display:none;"></div>
+	<div class="shell" style="display:none;"></div>
+	<div class="shell" style="display:none;"></div>
+	<script>
+		//获取飞机
+		var plane = document.getElementById('plane');
+		//获取视口的宽高
+		var width = window.innerWidth || document.documentElement.clientWidth;
+		var height = window.innerHeight || document.documentElement.clientHeight;
+		document.onkeydown = function(en){
+			var e = en || window.event;
+			console.log(e.keyCode);
+
+			switch(e.keyCode){
+				//向左跑
+				case 37:
+					var left = plane.offsetLeft - 10;
+					if(left <= -40){
+						left = width;
+					}
+					plane.style.left = left + 'px';
+				break;
+				//向右跑
+				case 39:
+					var left = plane.offsetLeft + 10;
+					if(left >= width){
+						left = -40;
+					}
+					plane.style.left = left + 'px';
+				break;
+				//向下跑
+				case 40:	
+					var top = plane.offsetTop + 10;
+					if(top >= height){
+						top = -48;
+					}
+					plane.style.top = top + 'px';
+				break;
+				//向上跑
+				case 38:
+					var top  = plane.offsetTop - 10;
+					if(top <= -48){
+						top = height;
+					}
+					plane.style.top = top + 'px';
+				break;
+				//发射
+				case 32:
+					//发射函数
+					fire(plane.offsetLeft,plane.offsetTop);
+				break;
+			}
+
+		}
+
+		//发射函数
+		function fire(left,top){
+			var shell = document.getElementsByTagName('div');
+			//console.log(shell.style.display);
+			for(var i = 1; i < shell.length; i++){
+				if(shell[i].style.display=='none'){
+				shell[i].style.display='block';
+				shell[i].style.left = (left+18.5) + 'px';
+				shell[i].style.top = top + 'px';
+				return;
+				}
+			}	
+		}
+
+
+
+		//让子弹飞
+		var timer = setInterval(running,100);
+		function running(){
+			var shell = document.getElementsByTagName('div');
+			for(var j = 1; j<shell.length;j++){
+				if(shell[j].style.display=='block'){
+				var top = shell[j].offsetTop;
+				top -= 20;
+				shell[j].style.top = top + 'px';
+			}
+			//把炮弹回收
+			if(shell[j].offsetTop <= -17){
+				shell[j].style.display='none';
+			}
+		}
+			
+		}
+
+
+	</script>
+</body>
+</html>

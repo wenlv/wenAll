@@ -1,0 +1,41 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<p>图书详情</p>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-sm-6">
+				<img ng-src="{{IMAGEURL+book.images[0].image_name}}" alt="" class="img-thumbnail img-responsive">
+			</div>
+			<div class="col-sm-6">
+				<dl class="dl-horizontal">
+					<dt>标题</dt>
+					<dd>{{book.title}}</dd>
+					<dt>作者</dt>
+					<dd>{{book.author}}</dd>
+					<dt>价格</dt>
+					<dd>{{book.price}}</dd>
+				</dl>
+			</div>
+		</div>
+		<div class="row">
+			<h2>商品详情</h2>
+			<div class="col-sm-12">
+				<p ng-bind-html="book.desc"></p>
+			</div>
+		</div>
+		<div class="row">
+			<h2>显示相关的商品</h2>
+			<div class="col-sm-{{12/book.relation.length}}" ng-repeat="relateBook in book.relation">
+				<a ng-href="#!/bookDetail/{{relateBook.relate_bookid}}">
+					<img ng-src="{{IMAGEURL+relateBook['images'][0].image_name}}" alt="" class="img-responsive img-circle">
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel-footer">
+		<a ng-href="#!/bookList">返回商品列表</a>
+	</div>
+
+</div>

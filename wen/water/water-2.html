@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流</title>
+	<script src='./jquery-1.12.4.min.js'></script>
+	<style>
+		body{
+			background-color: #f1f1f1;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 1000px;
+			margin: 0 auto;
+			border: 1px solid #ccc;
+
+		}
+		ul:after{
+			content: '';
+			display:block;
+			clear: both;
+		}
+		ul li{
+			float: left;
+			list-style: none;
+			width: 25%;
+			box-sizing: border-box;
+			padding: 5px;
+
+		}
+
+		ul li div{
+			background-color: #fff;
+			text-align: center;
+			 border: 1px solid #ccc;
+			 box-sizing: border-box;
+			 padding: 10px;
+			 margin-bottom: 10px;
+
+		}
+
+		ul li div img{
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>
+			<div>
+				<img src="" alt="">
+				<p></p>
+			</div>
+		</li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+
+
+	<script>
+		$(function(){
+			var s=0;
+			getDate(0,10);
+			s+=10;
+
+			//绑定滚动高度
+			$(document).scroll(function(){
+				//获取滚动高度
+				var scroll_height=$(document).scrollTop();
+				//获取视口的高度
+				var screen_height=$(window).outerHeight();
+				//获取文档的高度
+				var document_height=$(document).outerHeight();
+
+				console.log(document_height);
+
+				if(document_height-(screen_height+scroll_height)<=300){
+					getDate(s,4);
+					s+=4;
+				}
+			})
+		})
+
+
+		function getDate(start,end){
+			$.ajax({
+				url:'water-2.php',
+				type:'get',
+				data:{start:start,end:end},
+				dataType:'json',
+				success:function(data){
+					//console.log(data);
+					//将数据遍历到四个li中
+					$.each(data,function(key,val){
+						//遍历li  得到那个最短
+						var first=$('ul li').first();
+						$.each($('ul li'),function(k,v){
+							if($(v).outerHeight()<first.outerHeight()){
+								first=$(v);
+							}
+						})
+
+						$('<div>').append($("<img src='"+val['image']+"''>")).append($("<p>"+val['title']+"</p>")).appendTo(first);
+
+					})
+					
+					
+					
+				}
+			})
+		}
+	</script>
+</body>
+</html>

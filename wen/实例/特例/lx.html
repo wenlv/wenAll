@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='./jquery-1.12.4.min.js'></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 400px;
+			margin: 0 auto;
+			margin-top: 50px;
+			border: 1px solid #ccc;
+		}
+		ul:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		ul li{
+			width: 98px;
+			height: 50px;
+			border: 1px solid #ccc;
+			list-style: none;
+			float: left;
+			line-height: 50px;
+			text-align: center;
+			cursor: pointer;
+		}
+		#box{
+			width: 400px;
+			height: 300px;
+			border: 1px solid #ccc;
+			margin: 0 auto;
+		}
+		ul li:hover{
+			background: red;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>国内新闻</li>
+		<li>国际时事</li>
+		<li>军事新闻</li>
+		<li>综合新闻</li>
+	</ul>
+	<div id="box">
+		
+	</div>
+
+
+	<script>
+		$.each($('ul li'),function(k,v){
+			var s=0;
+			getDate(0,4);
+			s+=4;
+			$(this).click(function(){
+				console.log($(this).text());
+				getDate(s,4);
+				s+=4;
+			})
+		})
+		
+
+
+		function getDate(start,end){
+			// console.log($(this).index());
+				$.ajax({
+				url:'lx.php',
+				type:'get',
+				data:{start:start,end:end},
+				dataType:'json',
+				success:function(data){
+					// console.log(data);
+					//将数据遍历到四个li中
+					$('#box').empty();
+					$.each(data,function(key,val){
+						
+						$('#box').append($("<p>"+val['title']+"</p>"));
+
+
+					})
+				}
+			})
+		}
+	</script>
+</body>
+</html>

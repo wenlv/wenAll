@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>window对象</title>
+	<style>
+		.container{
+			height:2000px;
+			width:1500px;
+			background: pink;
+			font-size: 35px;
+		}
+		#btn{
+			position: fixed;
+			bottom:20px;
+			left:10px;
+		}
+		#btn2{
+			position: fixed;
+			bottom:20px;
+			right:10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iusto optio qui suscipit nulla rem non! A, quam, vitae, deserunt, reprehenderit ullam eveniet tenetur ipsam earum voluptatum doloremque nostrum saepe!
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iusto optio qui suscipit nulla rem non! A, quam, vitae, deserunt, reprehenderit ullam eveniet tenetur ipsam earum voluptatum doloremque nostrum saepe!
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iusto optio qui suscipit nulla rem non! A, quam, vitae, deserunt, reprehenderit ullam eveniet tenetur ipsam earum voluptatum doloremque nostrum saepe!
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iusto optio qui suscipit nulla rem non! A, quam, vitae, deserunt, reprehenderit ullam eveniet tenetur ipsam earum voluptatum doloremque nostrum saepe!
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iusto optio qui suscipit nulla rem non! A, quam, vitae, deserunt, reprehenderit ullam eveniet tenetur ipsam earum voluptatum doloremque nostrum saepe!
+		nostrum saepe!
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iusto optio qui suscipit nulla rem non! A, quam, vitae, deserunt, reprehenderit ullam eveniet tenetur ipsam earum voluptatum doloremque nostrum saepe!
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iusto optio qui suscipit nulla rem non! A, quam, vitae, deserunt, reprehenderit ullam eveniet tenetur ipsam earum voluptatum doloremque nostrum saepe!
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iusto optio qui suscipit nulla rem non! A, quam, vitae, deserunt, reprehenderit ullam eveniet tenetur ipsam earum voluptatum doloremque nostrum saepe!
+		nostrum saepe!
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iusto optio qui suscipit nulla rem non! A, quam, vitae, deserunt, reprehenderit ullam eveniet tenetur ipsam earum voluptatum doloremque nostrum saepe!
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iusto optio qui suscipit nulla rem non! A, quam, vitae, deserunt, reprehenderit ullam eveniet tenetur ipsam earum voluptatum doloremque nostrum saepe!
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque iusto optio qui suscipit nulla rem non! A, quam, vitae, deserunt, reprehenderit ullam eveniet tenetur ipsam earum voluptatum doloremque nostrum saepe!
+	</div>
+	<button onclick="scrollTo(100,100)">点击</button>
+	<button onclick="scrollTo(0,0)">点击</button>  <!--内容滚动到。。-->
+	<button onclick="scrollBy(-10,-10)" id="btn">scrollBy</button>
+	<button id="btn2">回到顶部</button>
+
+	<script>
+		var btn = document.getElementById("btn2");
+		var timer = null;
+		btn2.onclick = function(){
+
+		
+			timer = setInterval(run,30);
+		}
+		function run(){
+			var top = document.body.scrollTop || document.documentElement.scrollTop;
+			if(top == 0){
+				clearInterval(timer);
+				return;
+			}
+			window.scrollBy(0,-100);
+		}
+	</script>
+</body>
+</html>

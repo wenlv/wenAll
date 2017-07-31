@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="introjs.css">
+</head>
+<body>
+	<h1 data-step="1" data-intro="第一">这是第一步</h1>
+	<h2 data-step="2" data-intro="第二">这是第二步</h2>
+	<button data-step="3" data-intro="第三">第三部</button>
+	<p data-step="4" data-intro="第四">这是第四步</p>
+
+	<script type="text/javascript" src="intro.js"></script>
+	<script type="text/javascript">
+	
+	// ① introJs().start();
+	introJs().setOptions({    
+            'prevLabel': '← 上一步',    
+            'nextLabel': '下一步 →',    
+            'skipLabel': '跳过',    
+            'doneLabel': '完成',  
+            // 'showBullets': false,  //是否点点跳转(避免onchangebug)    
+        	// 'showButtons': false,  //是否按钮跳转
+        	// 'showProgress': true,	//是否使用进度条
+        	'tooltipPosition':'auto', //开启提示框的自动定位
+        	'positionPrecedence':['left', 'right', 'bottom', 'top'], //提示框的位置,必须以数组形式选择
+        	// steps:[{       //json格式,可定义提示信息的样式
+        	// 	element:'#a',	//若不选择元素,则,直接弹出
+        	// 	intro:"<i>好的</i>"
+        	// }]
+        	'tooltipClass':'customDefault' //开启自定义的提示框样式
+        }).start().onexit(function() {//非常规退出    
+            console.log("非常规 ");    
+        }).oncomplete(function() {//正常完成    
+            console.log("常规");    
+        })
+
+
+
+
+        // ②使用JSON法定义数据和按钮太麻烦
+        // ③将 doneLabel按钮改成 跳转页面按钮 如下
+      //   document.getElementById('startButton').onclick = function() {
+      //   introJs().setOption('doneLabel', 'Next page').start().oncomplete(function() {
+      //     window.location.href = 'second.html?multipage=true';
+      //   });
+      // };
+      // ④ 点状提示不建议使用
+	</script>
+</body>
+</html>

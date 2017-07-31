@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var str = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit加入百度，加入网页搜索你可以影响世界,将简历发送至：http://www.baidu.com.cn/admin/info/config/index.phpLaboriosam, libero, repellendus iste eum necessitatibus nemo cumque ipsum quos accusamus maiores et voluptas eaque provident excepturi expedita consequuntur;'
+		//要求将字符串中的url匹配出来
+		document.write(str+'<hr>')
+		var reg = /((?:http|https):\/\/)([\.\w-]+)(\/(?:\w+\/)+)(\w+\.(php|jps|html|xml|xhtml))/;
+		console.log(str.match(reg));
+
+		document.write('完整的url：'+str.match(reg)[0]+"<br>");
+		document.write('协议：'+str.match(reg)[1]+"<br>");
+		document.write('域名：'+str.match(reg)[2]+"<br>");
+		document.write('路径：'+str.match(reg)[3]+"<br>");
+		document.write('文件名：'+str.match(reg)[4]+"<br>");
+		document.write('后缀名：'+str.match(reg)[5]+"<br>");
+
+	</script>
+</body>
+</html>

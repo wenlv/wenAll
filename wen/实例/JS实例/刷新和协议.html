@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>location</title>
+	<style>
+		p{
+			color:blue;
+			text-decoration: underline;
+			cursor: pointer;
+			-webkit-user-select:none;
+			-moz-user-select:none;
+			-ms-user-select:none;
+			-o-user-select:none;
+			user-select:none;
+		}
+		p:active{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+
+	<!--自定义一个超链接-->
+	<p onclick="location.href='http://www.baidu.com'">百度一下</p>
+	<script>
+		//location 的属性 
+		document.write('当前文件的url：'+location.href+"<br>");
+		//location.href="http://www.baidu.com";
+		document.write('当前文件的协议：'+location.protocol+"<br>");
+		document.write('当前文件的主机名和端口号：'+location.host+"<br>");
+		document.write('当前文件的主机名：'+location.hostname+"<br>");
+		document.write('当前文件的端口号：'+location.port+"<br>");
+		document.write('当前文件的路径信息：'+location.pathname+"<br>");
+		document.write('当前文件的查询信息：'+location.search+"<br>");
+		document.write('当前文件的锚点：'+location.hash+"<br>");
+		//location.search = 'name="小明"&pwd="123456"';
+
+
+		//location的方法
+		//1.  刷新
+		/*setTimeout(function(){
+			location.reload();   //每三秒刷新一次
+		},3000);*/
+
+		//2. 文档替换
+		//location.replace('http://www.baidu.com');
+
+		//3. 加载新的文档
+		//location.assign('http://www.baidu.com');
+	</script>
+</body>
+</html>

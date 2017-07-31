@@ -1,0 +1,18 @@
+(function(){
+	angular.module("bookApp",[
+		"ngRoute",
+		"ngSanitize",
+		"ngAnimate",
+		"appRouteModule",
+		"bookListCtrlModule",
+		"getDataModule",
+		"hostConfigModule",
+		"messageModule",
+		"bookDetailCtrlModule",
+		"loginCtrlModule",
+		"postDataModule",
+		"bookCartCtrlModule",
+		"bookCartDataModule",
+		"showOrderCtrlModule"
+		])
+})()

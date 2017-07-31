@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box1{
+			width: 100px;
+			height: 100px;
+			background: #1e1;
+		}
+		.box2{
+			width: 100px;
+			height: 100px;
+			background: #12e;
+		}
+		.box3{
+			width: 100px;
+			height: 100px;
+			background: #e21;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<div class="box3"></div>
+
+
+	<script type="text/javascript" src="anime.min.js"></script>
+	<script type="text/javascript">
+		// var myAnimation = anime({
+		//   targets: ['.box1','.box2'],//目标
+		//   translateX: '30rem',//X方向的偏移量
+		//   translateY: '10em',//Y方向的偏移量
+		//   rotate:1800,//选择角度
+		//   borderRadius: 0,//圆角
+		//   duration:3000,	//运行期间
+		//   loop: 2,	//循环数字+1次
+		//   autoplay:true,		//自动播放,默认true
+		//   direction:"alternate",	//方向  默认正常normal  反向reverse, 交替alternate
+		//   // easing:"easeInBounce",	//贝赛尔曲线
+		//   elasticity:400,	//弹性 默认400
+		//   // round:1000    //圆 默认false
+		// });
+		var myAnimation1 = anime({
+		  targets: '.box3',//目标
+		  translateX: '30rem',//X方向的偏移量
+		  translateY: '10em',//Y方向的偏移量
+		  rotate:{
+		  	value:1000,		//旋转角度
+		  	duration:20000,	//旋转期间
+		  	easing: 'easeInOutQuad'//旋转贝塞尔
+		  },//选择角度
+		  borderRadius: 0,//圆角
+		  duration:3000,	//运行期间
+		  loop: 2,	//循环数字+1次
+		  autoplay:true,		//自动播放,默认true
+		  direction:"alternate",	//方向  默认正常normal  反向reverse, 交替alternate
+		  // easing:"easeInBounce",	//贝赛尔曲线
+		  elasticity:400,	//弹性 默认400
+		  // round:1000    //圆 默认false
+		});
+
+
+	</script>
+</body>
+</html>

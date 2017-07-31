@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单事件----提高用户体验</title>
+	<style>
+		tr td.error{
+			color:red;
+		}
+		tr td.success{
+			color:green;
+		}
+
+	</style>
+</head>
+<body>
+	<table width="500px">
+		<form action="" onsubmit="return checkForm()" name="myform">
+		<tr>
+			<td width="90px">用户名：</td>
+			<td width="150px"><input type="text"name='username'></td>
+			<td id="t1" width="260px"></td>
+		</tr>	
+		<tr>
+			<td width="90px">密码：</td>
+			<td width="300px"><input type="password"name='pwd'></td>
+			<td id="t2"></td>
+		</tr>
+		<tr>
+			<td width="90px">确认密码：</td>
+			<td width="300px"><input type="password"name='repwd'></td>
+			<td id="t3"></td>
+		</tr>
+		<tr>
+			<td width="90px">邮箱：</td>
+			<td width="300px"><input type="text"name='email'></td>
+			<td id="t4"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td colspan="2"><button>提交</button></td>
+		</tr>
+		</form>	
+	</table>
+
+	<script>
+		//验证用户名
+		//获取用户名
+		var username = document.myform.username;
+		var user = '';
+			username.onblur = function(){
+				//console.log(this.value);
+				user = this.value;
+				checkUser();
+			}
+			function checkUser(){
+				if(!user.match(/^[A-z]\w{5,11}$/)){
+						t1.innerHTML='用户名格式不正确';
+						t1.className="";
+						t1.className="error";
+						return false;
+					}
+					t1.innerHTML='用户名格式正确';
+					t1.className="";
+					t1.className="success";
+					return true;
+			}
+		//验证密码    --6-12位的数字
+		//获取密码
+		var pwd = document.myform.pwd;
+		var pw = '';
+		pwd.onblur = function(){
+			pw = this.value;
+			checkPwd();
+		}
+		function checkPwd(){
+				if(!pw.match(/^\d{6,12}$/)){
+						t2.innerHTML='密码格式不正确';
+						t2.className="";
+						t2.className="error";
+						return false;
+					}
+					t2.innerHTML='密码格式正确';
+					t2.className="";
+					t2.className="success";
+					return true;
+			}
+
+
+		//验证函数
+		function checkForm(){
+			return checkUser() && checkPwd();
+		}
+
+	</script>
+</body>
+</html>

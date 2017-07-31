@@ -1,0 +1,27 @@
+<ion-modal-view ng-controller="registController">
+	<ion-header-bar>
+		<button class="button button-calm" ng-click="backToHome()">返回</button>
+		<h1 class="title">用户注册</h1>
+		<!-- <button class="button button-calm" ng-click="regist()" pull-right>注册</button> -->
+	</ion-header-bar>
+	<ion-content>
+		<form name="myForm">
+			<div class="list">
+				<label class="item item-input">
+					<span class="input-label">用户名</span>
+					<input type="text" name="name" required  ng-model="user.name">
+				</label>
+				<label class="item item-input">
+					<span class="input-label">密码</span>
+					<input type="password" name="password" required ng-model="user.password">
+				</label><label class="item item-input">
+					<span class="input-label">电话</span>
+					<input type="tel" name="tel" required ng-model="user.tel">
+				</label>
+			</div>
+			<div class="padding-horizontal">
+				<button ng-disabled="!myForm.$valid" class="button button-balanced button-block" ng-click="registUser()">注册</button>
+			</div>
+		</form>
+	</ion-content>
+</ion-modal-view>

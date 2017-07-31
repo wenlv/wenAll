@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>日历</title>
+	<style>
+		tr{
+			text-align: center;
+		}
+		tr td:first-child,tr th:first-child{
+			color:red;
+		}
+		tr td:last-child,tr th:last-child{
+			color:green;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		function show(day,week){
+			//判断
+			if(day > 31 || isNaN(day) || isNaN(week) || day<28){
+				alert('你咋恁牛逼呢');
+				return;
+			}
+			var week = week%7;
+
+			//得到需要多少行
+			var trs  = Math.ceil((day+week)/7);  
+			document.write('<table width="600" border="1">');
+				document.write('<tr bgcolor="#f2f2f2">');
+					document.write("<th>星期日</th>")
+					document.write("<th>星期一</th>")
+					document.write("<th>星期二</th>")
+					document.write("<th>星期三</th>")
+					document.write("<th>星期四</th>")
+					document.write("<th>星期五</th>")
+					document.write("<th>星期六</th>")
+				document.write('</tr>');
+				for(var i = 0;i<trs;i++){
+					document.write('<tr>');
+						for(var j = 1; j<=7;j++){
+							var num = i*7+j-week;
+							if(num > 0 && num<= day){
+								document.write("<td>"+num+"</td>");
+							}else{
+								document.write("<td></td>");
+							}					
+						}
+					document.write('</tr>')
+				}
+			document.write('</table>');
+		}
+
+		/*
+		*星期日   0
+		*星期一   1
+		*星期二   2
+		*星期三   3
+		*星期四   4
+		*星期五   5
+		*星期六   6
+		*/
+		/*Math.ceil   1.00003   2  进一取整
+		Math.floor  1.99999   1     舍一取整*/
+		show(31,2);
+	</script>
+</body>
+</html>

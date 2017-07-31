@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>关系运算符</title>
+</head>
+<body>
+	请输入你的分数：<input type="number" id="input"><br>
+	<button onclick="show()">提交</button>
+	<h2 id="h2"></h2>
+	<script>
+		//关系运算符
+		var n = 100;
+		var m = '100';
+		console.log(n==m);
+		console.log(n===m);
+		console.log(n !== m);    //除了 === 其他都是!==
+
+
+
+
+/***************************/	
+	//定义一个函数
+	function show(){
+		//获取input元素
+		var input = document.getElementById('input');
+		//获取input框内的value
+		var num = input.value;
+		console.log(num);
+		//获取h2元素
+		var h = document.getElementById('h2');
+
+
+		
+
+		//判断
+		if(num>100){
+			h.innerHTML = '你咋不上天呢';
+			}else if(num>=90){
+			h.innerHTML = '你得到了5朵小红花';
+			} else if(num>=80){
+			h.innerHTML = '你得到了3朵小红花';
+			} else if(num>=70){
+				h.innerHTML = '你得到了2朵小红花'
+			} else if(num >= 60){
+				h.innerHTML = '你得到了1朵小红花'
+			} else if(num >=0){
+				h.innerHTML = '你得到个屁';
+			}else{
+				h.innerHTML = '人才呀';
+		}
+	}
+
+
+	</script>
+</body>
+</html>

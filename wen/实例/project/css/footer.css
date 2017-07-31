@@ -1,0 +1,30 @@
+/****页面尾部****/
+.footer{
+	width:100%;
+	background: #d4d4d4;
+	margin-top: 40px;
+}
+.foot_main{
+	width:1000px;
+	background: #d4d4d4;
+	margin:0 auto;
+	
+	text-align: center;
+	overflow: hidden;
+	padding-bottom:50px;
+}
+.foot_main p.first{
+	margin-top: 43px;
+	line-height: 50px;
+	font-size: 13px;
+}
+.foot_main p.first a,.foot_main p.last a{
+	color:#333;
+	font-size: 13px;
+}
+.foot_main p.last{
+	line-height: 50px;
+}
+.foot_main img{
+	margin-left: 20px;
+}

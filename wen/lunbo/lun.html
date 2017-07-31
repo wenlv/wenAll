@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./jquery.min.js"></script>
+	<style>
+		.container{
+			width:400px;
+			position: relative;
+			margin:0 auto;
+		}
+		.box{
+			position: relative;
+			width:400px;
+			height: 250px;
+			overflow: hidden;
+		}
+		.big{
+			width:4000px;
+			position: absolute;
+			height: 250px;
+			left:-400px;
+		}
+		.big:after{
+			display: block;
+			clear: both;
+			content: '';
+		}
+		.big img{
+			width:400px;
+			float: left;
+		}
+		.spanlist{
+			position: absolute;
+			bottom:10px;
+			left:120px;
+		}
+		.spanlist span{
+			display: inline-block;
+			width:20px;
+			line-height: 20px;
+			border-radius: 10px;
+			background: #ccc;
+			text-align: center;
+			cursor: pointer;
+		}
+		.spanlist span.active{
+			background: red;
+			color:white;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box">
+			<div class="big">
+				<img src="l4.jpg">
+				<img src="l1.jpg">
+				<img src="l2.jpg">
+				<img src="l3.jpg">
+				<img src="l4.jpg">
+				<img src="l1.jpg">
+			</div>
+		</div>
+		<div class="spanlist">
+			<span class="active">1</span>
+			<span>2</span>
+			<span>3</span>
+			<span>4</span>
+		</div>
+	</div>
+	<script>
+		var index = 2; //从 索引2开始
+		var timer = setInterval(playing,1000);
+		function playing(){
+			if(index == 6){ //5有动画
+				$('.big').css('left','-400px');
+				index = 2;
+			}
+			$('.big').animate({
+				'left':(-index*400)+'px'
+			},500)
+			
+			if(index == 5){
+				$('span').eq(0).addClass('active').siblings().removeClass('active');			
+			}else{
+				$('span').eq(index-1).addClass('active').siblings().removeClass('active');
+			}
+			index++;
+		}
+		//给container绑定事件
+		$('.container').mouseenter(function(){
+			clearInterval(timer);
+			//给span绑定事件
+			$('span').click(function(){
+				$(this).addClass('active').siblings().removeClass('active');
+				$('.big').animate({
+				'left':(-($(this).index()+1)*400)+'px'
+				},500);
+				index = $(this).index() + 2;//重置index
+			})
+		}).mouseleave(function(){
+			timer = setInterval(playing,1000);
+			$('span').off();				//解除事件绑定
+		})
+	</script>
+</body>
+</html>

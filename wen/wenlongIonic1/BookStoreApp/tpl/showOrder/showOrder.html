@@ -1,0 +1,43 @@
+<ion-view view-title="订单中心">
+	<ion-nav-buttons side=left>
+		<button class="button button-assertive" ng-click="backHomePage()">返回</button>
+	</ion-nav-buttons>
+	<ion-content scroll="true" on-scroll="onScrollEvent()" scroll-event-interval="10">
+		 <ion-refresher
+                pulling-text="数据加载中..."
+                on-refresh="doRefresh()"
+                on-pulling="onPulling()"
+                pulling-icon="ion-hammer"
+                spinner="ios">
+        </ion-refresher>
+		<ion-list type="list-inset">
+			<ion-item ng-repeat="order in orders" class="item-icon-right">
+				<div class="row responsive-sm" >
+					<div class="col balanced">订单号:{{order[0].order_id}}</div>
+					<!-- <div class="col balanced">用户名:{{order[0].ordername}}</div> -->
+							
+				</div>
+				<div class="row">
+					<!-- <div class="col-25">订单详情id</div> -->
+					<div class="col">商品名称</div>
+					<div class="col">商品价格</div>
+					<div class="col">商品数量</div>
+				</div>
+				<div class="row " ng-repeat="orderdetail in order">
+					<!-- <div class="col calm">{{orderdetail.orderdetail_id}}</div> -->
+					<div class="col-50 ">{{orderdetail.book_title}}</div>
+					<div class="col-25 ">{{orderdetail.book_price}}</div>
+					<div class="col-25 ">{{orderdetail.book_num}}</div>	
+				</div>
+				<div class="row">
+					<div class="col balanced">提交时间:{{order[0].order_addtime}}</div>	
+				</div>
+			</ion-item>
+		</ion-list>
+		 <ion-infinite-scroll
+                on-infinite="loadMore()"
+                distance="1%"
+                ng-if="hasNextPage()">
+        </ion-infinite-scroll>
+	</ion-content>
+</ion-view>

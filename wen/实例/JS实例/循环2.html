@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>循环结构</title>
+</head>
+<body>
+	<script>
+		/*
+		*循环的三要素 
+		*1. 初始值
+		*2. 判断条件
+		*3. 自增减	
+		**/
+
+		/*
+		非常不可取
+		document.write(0+'<br>');
+		document.write(1+'<br>');
+		document.write(2+'<br>');
+		document.write(3+'<br>');
+		document.write(4+'<br>');
+		document.write(5+'<br>');
+		document.write(6+'<br>');
+		document.write(7+'<br>');
+		document.write(8+'<br>');
+		document.write(9+'<br>');*/
+		//使用循环在页面中输出0-9
+		//使用方法一：  while(){}
+
+		var i = 0;  //初始值
+		while(i<10){        //判断条件
+			document.write(i+"<br>");
+			i++;           //自增
+		}
+		console.log(i);
+
+		document.write('<hr>');
+
+		//使用方法二   do{}while()
+
+		var j = 0;
+		do{
+			document.write(j+"<br>");
+			j++;
+		}while(j<10);
+
+		document.write('<hr>');
+		/*********区别**********/
+			var k = 11;
+		  do{
+		  	document.write(k+'<br>');
+		  	k++;
+		  }while(k<10);
+		  console.log(k);
+		  document.write("<hr>");
+
+		  var a = 11;
+		  while(a<10){
+		  	document.write(a+"<br>");
+		  	a++;
+		  }
+		   document.write("<hr>");
+
+		   //使用方法三   for(){}
+		
+		   for(var i = 0;i<10;i++){ 
+		   		document.write(i+"<br>");
+		   }
+		    document.write("<hr>");
+		    var j = 0;   //可以将初始值写在外面，但是for里面的;不能少
+		   for(;j<10;j++){ 
+		   		document.write(j+"<br>");
+		   }
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>判断自有属性</title>
+	<style>
+		ul{
+			list-style: none;
+		}
+		li{
+			line-height: 40px;
+			border:1px solid #ccc;
+			width:200px;
+			padding: 5px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>内衣</li>
+		<li>内衣</li>
+		<li>内衣</li>
+		<li>内衣</li>
+		<li>内衣</li>
+		<li>内衣</li>
+	</ul>
+	<hr>
+	<script>
+		//获取所有的li
+		var list = document.getElementsByTagName('li');
+		console.log(list);//list是一个类数组对象
+		for(var i in list){
+			document.write(i+':'+list[i]+"<br>");
+		}
+		document.write('<hr>');
+
+
+		for(var j in list){
+			 //j(属性名)  是不是list的自有属性   返回true  | false
+			if(list.hasOwnProperty(j)){   
+				document.write(list[j]+"<br>");
+			}
+		}
+	</script>
+</body>
+</html>
