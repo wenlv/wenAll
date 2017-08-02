@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>码云</title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" > 
+<link rel="stylesheet" href="css/base.css"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="head">
+	<span>乡村基</span>
+</div>
+<div class="payf">
+	<p class="img"><img src="images/i_03.png" width="100"></p>
+    <p class="ptb"><a href="#">点击生成我的推广码<i class="ico ico1"></i></a></p>
+</div>
+<div class="simg clearfix"><img src="images/i_06.png"></div>
+<div class="mt10 vic">
+	<ul class="clearfix">
+    	<li><a href="#"><i class="ico ico2"></i>一键wifi</a></li>
+        <li><a href="#"><i class="ico ico3"></i>叫车/代驾</a></li>
+        <li><a href="#"><i class="ico ico4"></i>看直播</a></li>
+        <li><a href="#"><i class="ico ico5"></i>玩游戏</a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+    </ul>
+</div>
+<div class="footer">由码云提供技术支持和服务</div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+(function(){
+	angular.module("dev",[])
+	.directive('ngTestUpload', function() {  
+                return {  
+                    restrict: 'ACE',  
+                    link: function(scope, element, attr) {  
+                        element.on('change', function() {  
+                            scope.file = this.files[0];  
+                        })  
+                    },  
+                    scope: {  
+                        file: '=ngTestUpload'  
+                    }  
+                }  
+            });
+})()

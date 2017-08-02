@@ -1,0 +1,28 @@
+(function(){
+	angular.module("startApp",[
+	"ionic",
+	"messageModule",
+	"appRouterModule",
+	"ctrtMocule",
+	"historyCtrlModule",
+	"getDataModule",
+	"configModule",
+	"registCtrlModule",
+	"fileModule",
+	"certifiCtrModule",
+	"companyCtrlModule",
+	"payCtrlModule",
+	"successCtrlModule",
+	"payMoneyCtrlModule",
+	"keyCtlModule",
+	'angularFileUpload',
+	"scanCtrlModule",
+	"postDataModule",
+	"loginCtrlModule",
+	"httpPostConfigModule",
+	"sessionStorageModule"
+	
+	
+
+	])
+})()

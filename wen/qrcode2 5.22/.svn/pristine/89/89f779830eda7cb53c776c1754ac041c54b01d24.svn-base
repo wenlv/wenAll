@@ -1,0 +1,138 @@
+<ion-view view-title="产品购买">
+ 	<ion-content class="pay-cont-center" >
+ 		<form name="payForm" novalidate >
+	 		<div class="list list-inset">
+		 		 <div class="item paypading itemborder feimargin">
+		 		 	<div class="pay-title padding-left" >费率选择:</div>
+		 		 </div>
+		 		 <div class="item paypading itemborder">
+		 		 	<ion-list class="feilv ">
+						  <input type="radio" name="feilv" class="productRadio" ng-value="50" ng-click="rateOne()" ng-checked="isfeeRateOne" ng-model="rateone"/>  0.5%费率，开通费0元
+						  <input type="radio" name="feilv" class="productRadio" ng-value="35" ng-click="rateTwo()" ng-checked="isfeeRateTwo" ng-model="rateone"/>  0.35%费率，开通费99元
+					</ion-list>
+		 		 </div>
+		 		<div class="item paypading itemborder" style="padding-bottom:0px;background:#E8E8E8;border-bottom:0px solid red!important">
+		 			<div class="list" >
+		 				<div class="item paypading itemborder">
+		 					<div class="pay-title padding-left" >产品选择:</div>
+		 				</div>
+		 				<div class="item paypading itemborder" >
+		 					<ion-list class="paypading">
+							  	<div class="item paypading itemborder">
+							  		<div class="pay-item-explain" >
+								  		<ion-checkbox   ng-click="code()"  ng-model="user.code" ng-checked="istrue" class="feeCheck" style="padding:10px 14px;"> </ion-checkbox>
+				 					</div>
+				 					<div class="pay-item-explain " >电子码 (1元/个终端ID)</div>
+				 					<div class="pay-item-explain royal" ng-click="lookDesc()" >(查看说明)</div>
+				 					<div class="icon" >
+				 						<button class="pay-item-sub" ng-click="eleCodeSub()" ng-disable="codeSub">-</button>
+										<input type="number" class="pay-item-contain"  ng-model="user.eleCode" ng-disable="codeSub">
+										<button class="pay-item-add" ng-click="eleCodeAdd()" ng-disable="codeSub">+</button>
+				 					</div>
+							  	</div>
+			 					<div class="item paypading itemborder">
+			 						<div class="pay-item-explain" >
+								  		<ion-checkbox   ng-click="sticker()"  ng-model="user.sticker" ng-checked="isSticker" class="feeCheck" style="padding:10px 14px;"> </ion-checkbox>
+				 					</div>
+				 					<div class="pay-item-explain " >桌 &nbsp;&nbsp;&nbsp;贴 (5元/个终端ID)</div>
+				 					<div class="pay-item-explain royal" style="" ng-click="lookTable()">(查看样张)</div>
+				 					<div class="icon" >
+				 						<button class="pay-item-sub" ng-click="tabStickerSub()" ng-disable="StickerSub">-</button>
+										<input type="number" class="pay-item-contain" ng-model="user.tabsticker" ng-disable="StickerSub">
+										<button class="pay-item-add" ng-click="tabStickerAdd()" ng-disable="StickerSub">+</button>
+				 					</div>
+			 					</div>
+			 					<div class="item paypading ">
+			 						<div class="pay-item-explain" >
+								  		<ion-checkbox   ng-click="decca()"  ng-model="user.decca" ng-checked="isDecca" class="feeCheck" style="padding:10px 14px;"> </ion-checkbox>
+				 					</div>
+				 					<div class="pay-item-explain " >台&nbsp;&nbsp;卡 (20元/个终端ID)</div>
+				 					<div class="pay-item-explain royal" ng-click="lookTag()">(查看样张)</div>
+				 					<div class="icon" style="margin-left:">
+				 						<button class="pay-item-sub" ng-click="deccaSub()" ng-disable="deccaSub">-</button>
+										<input type="number" class="pay-item-contain" ng-model="user.tabdecca" ng-disable="deccaSub">
+										<button class="pay-item-add" ng-click="deccaAdd()" ng-disable="deccaSub">+</button>
+				 					</div>
+			 					</div>
+							</ion-list>
+		 				</div>
+		 			</div>
+		 			<div class="item paypading itemborder" ng-if="isAddr">
+		 				<div class="list listheight" style="1px solid red;">
+		 					<div class="item paypading itemborder">
+		 						<div class="pay-title padding-left" >快递地址:</div>
+		 					</div>
+		 					<div class="item ">
+						 		<select id="province" ng-model="user.pro" ng-options="pros.name for pros in provinces" ToArea="tiProv" ng-click="select()" ng-change="proToCity()" style="width:120px;">
+					                <option value="">请选择省份</option>
+					            </select>
+					            <select ng-model="user.city" ng-options="cit.name for cit in cities"  ng-selected="user.city.name" ng-click="ToCity()" ng-change="cityToArea()" style="width:100px;">
+					            	<option value="" >请选择省市</option>
+					            </select>
+           						<select ng-model="user.area" ng-options="are.name for are in areas" ng-selected="user.area.name" style="width:100px;" ng-click="ToArea()" ng-change="Area()">
+           							<option value="" >请选择省区</option>
+           						</select>
+		 					</div>	
+		 				</div>
+		 			</div>
+		 			<div class="item item-input itemborder padding-left padding-right" style="margin-bottom:1px;" ng-if="isAddr">
+						    <input type="text" placeholder="详细地址" required name="address" ng-model="user.address" class="border" style="padding-left: 5px;;"> 
+			 		</div>
+			 		<div class="item paypading itemborder">			 			
+		 				<div class="payfloat padding-left"  >快递费:</div>
+		 				<div class="payfloat marginleft" ng-module="expressfee">￥{{expressfee |number:2}}</div>
+			 		</div>
+			 		<div class="item paypading itemborder">			 			
+		 				<div class="payfloat padding-left"  >收件人:</div>
+		 				<div class="payfloat marginleft border" >
+		 					<input type="text" name="addressee" required ng-minlength="1" ng-maxength="10" ng-change="ddressee()" ng-model="user.addressee"/>
+		 				</div>
+			 		</div>
+			 		<div class="item paypading itemborder " style="border-bottom:0px solid #ccc!important;">			 			
+		 				<div  class="payfloat padding-left">联系电话:</div>
+		 				<div class="payfloat margintel border" >
+		 					<input type="number" name="telNumber" required ng-minlength="5" ng-maxength="15" ng-change="telNumber()" ng-model="user.telNumber"/>
+		 				</div>
+			 		</div>
+			 		<div class="item" style="margin:10px 0px;">
+			 			<div class="item-left pull-left">
+			 				<div class="addressee-name pull-left">收件人:</div>
+			 				<input type="text" name="addressee"  placeholder="收件人姓名" class="addressee pull-left" required ng-minlength="1" ng-maxength="10" ng-change="ddressee()" ng-model="user.addressee"/>
+			 			</div>
+			 			<div class="item-right pull-left">
+			 				<div class="addressee-name pull-left">联系电话:</div>
+			 				<input type="number" name="telNumber" placeholder="收件人电话号码" class="addressee pull-left" required ng-minlength="5" ng-maxength="15" ng-change="telNumber()" ng-model="user.telNumber"/>
+			 			</div>
+			 		</div>
+			 		<div class="item" style="border: 1px solid #cfcfcf;margin:10px 0px;">
+			 			<div class="item-left pull-left">
+			 				<div class="addressee-name pull-left">收件人:</div>
+			 				<input type="text" name="addressee"  placeholder="收件人姓名" class="addressee pull-left" required ng-minlength="1" ng-maxength="10" ng-change="ddressee()" ng-model="user.addressee"/>
+			 			</div>
+			 			<div class="item-right pull-left">
+			 				<div class="addressee-name pull-left">联系电话:</div>
+			 				<input type="number" name="telNumber" placeholder="收件人电话号码" class="addressee pull-left" required ng-minlength="5" ng-maxength="15" ng-change="telNumber()" ng-model="user.telNumber"/>
+			 			</div>
+			 		</div>
+			 		<!--<div class="item  paypading">
+			 			<div class="pay-title paytotal padding-left"  >订单总计:￥{{user.total |number:2}}</div>
+						<button class="button button-calm buttonpay" ng-disabled="!payForm.$valid" ng-click="payMoney()">去支付</button>
+						<!--<button class="button button-calm buttonpay" ng-click="goPay()">去支付</button>-->
+			 		<!--</div>-->
+		 		</div>
+	 		</div>
+ 		</form>
+ 		<!--查看样张-->
+ 		<div style="width: 60%;margin:0 auto;position:absolute;top:20%;left:20%;z-index:999" ng-show="showImg">
+ 			<i class="icon ion-close-circled pull-right" ng-click="closeLook()" style="font-size:30px;position:absolute;top:0px;right:0;color:red"></i>
+ 			<img ng-src="{{lookDescImg}}" src="http://imgsrc.baidu.com/forum/pic/item/cefc1e178a82b9017ad72597738da9773912ef18.jpg" style="width:100%;display:block" alt="" />
+ 		</div>
+ 	</ion-content>
+	<ion-footer-bar align-title="center" class="foot" style="height:70px!important;background:#E8E8E8;box-sizing: border-box;">
+		
+		<!--<div class="pay-title paytotal padding-left" style="box-sizing: border-box;" >订单总计:￥{{user.total |number:2}}</div>-->
+		<!--<button class="button button-calm " style="width:90%;height:60px;font-size:20px;color:#fff!important;background:#CACACA;margin:0 auto;border-radius:60px;" ng-disabled="!payForm.$valid" ng-click="payMoney()">去支付</button>-->
+		<button class="button button-calm " style="width:90%;height:60px;font-size:20px;color:#fff!important;background:#CACACA;margin:0 auto;border-radius:60px;" ng-click="goPay()">去支付</button>
+
+	</ion-footer-bar>
+</ion-view>

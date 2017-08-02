@@ -1,0 +1,52 @@
+(function(){
+	angular.module("certifiCtrModule",[])
+		.controller("certifiController",[
+			"$scope","$state","$cordovaCamera",
+			function($scope,$state,$cordovaCamera){
+				console.log("222");
+				$scope.$on("$destroy",function(event,data){
+               	 console.log("registController destroy");
+            	})
+				$scope.certPerUser=function(){
+					console.log("555");
+					$state.go("company");
+				}
+				$scope.certComUser=function(){
+					console.log("666");
+					$state.go("company");
+				}
+				$scope.showActionSheet=function(){
+					console.log("699");
+				}
+				
+				document.addEventListener("deviceready", function () {
+
+				    var options = {
+				      quality: 50,
+				      destinationType: Camera.DestinationType.DATA_URL,
+				      sourceType: Camera.PictureSourceType.CAMERA,
+				      allowEdit: true,
+				      encodingType: Camera.EncodingType.JPEG,
+				      targetWidth: 100,
+				      targetHeight: 100,
+				      popoverOptions: CameraPopoverOptions,
+				      saveToPhotoAlbum: false,
+				      correctOrientation:true
+				    };
+				
+				    $scope.showActionSheet= function(){
+				      $cordovaCamera.getPicture(options).then(function(imageData) {
+				        var image = document.getElementById('imageFile');
+				        image.src = "data:image/jpeg;base64," + imageData;
+				      }, function(err) {
+				        // error
+				        console.log(err);
+				      });
+				
+				    }, false;
+			    })
+			}
+		])
+
+		
+})()

@@ -1,0 +1,124 @@
+(function(){
+	angular.module("registCtrlModule",[])
+		.controller("registController",[
+			"$scope","$rootScope","$state",
+			"getDataService","USERDATA","$interval",
+			"messageService","$ionicModal",
+			"modalDataService","$window",
+			function($scope,$rootScope,$state,
+				getDataService,USERDATA,$interval,
+				messageService,$ionicModal,
+				modalDataService,$window){
+				$scope.user={};
+				//获取验证码60s后重新获取
+				 $scope.codetime = "获取验证码";
+				 $rootScope.noClick=false;				 
+				//获取手机验证码
+				 var timer = null; 
+				$scope.registGain=function(){
+					   $scope.time = 60;  
+                       $rootScope.noClick=true;
+                       timer = $interval(function(){  
+                           $scope.time = $scope.time - 1;  
+                           $scope.codetime = $scope.time+"秒后重新获取";  
+                           if($scope.time === 0) {  
+                               $scope.codetime = "获取验证码";  
+                               $interval.cancel(timer);  
+                               $rootScope.noClick=false;
+                           }
+                       }, 1000); 
+                       //发短信请求验证码
+                       getCode();
+				}
+				//密码显示
+				$scope.isPassShow=true;
+				$scope.show=function(){
+					$scope.isPassShow=!$scope.isPassShow;
+				}
+				//下一步验证
+				$scope.registUser=function(){
+					getGoodData();
+				}
+				
+				//get发送请求请求验证码
+				function getCode(){
+					getDataService.getRequest("sms/sendSms",
+                        {
+                        	userPhone:$scope.user.telphone,
+                        	serviceType:0
+                        },
+                        function(data){
+                            if(data.data.returnCode==1){
+                            	$scope.user.smsCode=data.data.data.smsCode;
+                            }else if(data.data.returnCode==2){
+                            	messageService.showMessage(data.data.returnMsg);
+                            	//登录超时重新登录页面
+                            	$ionicModal.fromTemplateUrl("tpl/login/login.html",{
+									animation:'slide-in-up'
+								}).then(function(modal){
+									$scope.modal=modal;
+									$scope.modal.show();
+									modalDataService.myModal=modal;
+								});
+                            }else{
+                            	$scope.codetime = "获取验证码";
+                            	$interval.cancel(timer);  
+                            	$rootScope.noClick=false;
+                            	messageService.showMessage(data.data.returnMsg);
+                            } 
+                        },
+                        function(error){
+                           messageService.showMessage(error);
+                        }
+                    );
+				}
+				
+				//查看协议
+				$scope.scanProtocol=function(){
+					$ionicModal.fromTemplateUrl("tpl/regist/registprotocol.html",{
+						animation:'slide-in-up'
+					}).then(function(modal){
+						$scope.modal=modal;
+						$scope.modal.show();
+						modalDataService.myModal=modal;
+					});
+				}
+				//get发送数据请求注册
+                function getGoodData(){
+                    getDataService.getRequest("merchantInfo/register",
+                        {
+                        	merchantName:$scope.user.name,
+                        	sysAccount:$scope.user.telphone,
+                        	pwd:$scope.user.password,
+                        	smsCode:$scope.user.code
+                        },
+                        function(data){
+                            if(data.data.returnCode==1){
+                            	localStorage.setItem("curMerchantId",data.data.data.merchantId);
+                            	localStorage.setItem("sysAccount",data.data.data.sysAccount);
+                            	//成功注册后跳到下一步
+                            	$state.go("certification");
+                            }else if(data.data.returnCode==2){
+                            	messageService.showMessage(data.data.returnMsg);
+                            	//登录超时重新登录页面
+                            	$ionicModal.fromTemplateUrl("tpl/login/login.html",{
+									animation:'slide-in-up'
+								}).then(function(modal){
+									$scope.modal=modal;
+									$scope.modal.show();
+									modalDataService.myModal=modal;
+								});
+                            }else{
+                            	$scope.codetime = "获取验证码";
+                            	$interval.cancel(timer);  
+                            	$rootScope.noClick=false;
+                            	messageService.showMessage(data.data.returnMsg);
+                            }
+                        },
+                        function(error){
+							messageService.showMessage(error);
+                        }
+                    );
+                }
+    	}])
+})()

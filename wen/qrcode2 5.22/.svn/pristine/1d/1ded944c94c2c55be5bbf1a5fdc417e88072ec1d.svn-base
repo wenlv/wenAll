@@ -1,0 +1,45 @@
+(function(){
+	angular.module("appRouterModule",[])
+		.config(["$stateProvider","$urlRouterProvider",
+            function($stateProvider,$urlRouterProvider){
+                $urlRouterProvider.otherwise("/scan");
+                $stateProvider
+                        .state("scan",{
+                            url:"/scan",
+                            templateUrl:"tpl/home/scan.html",
+                            controller:"scanController"
+                        })
+                        .state("paymoney",{
+                            url:"/paymoney",
+                            templateUrl:"tpl/pay/paymoney.html",
+                            controller:"paymoneyController"
+                        })
+                        .state("regist",{
+                            url:"/regist",
+                            templateUrl:"tpl/regist/regist.html",
+                            controller:"registController"
+                        })
+                        .state("certification",{
+                            url:"/certification",
+                            templateUrl:"tpl/regist/certification.html",
+                            controller:"certifiController"
+                        })
+                        .state("company",{
+                            url:"/company",
+                            templateUrl:"tpl/regist/company.html",
+                            controller:"companyController"
+                        })
+                        .state("payproduct",{
+                            url:"/payproduct",
+                            templateUrl:"tpl/regist/payproduct.html",
+                            controller:"payProductController"
+                        })
+                          .state("paysuccess",{
+                            url:"/paysuccess",
+                            templateUrl:"tpl/regist/paysuccess.html",
+                            controller:"paysuccessController"
+                        })
+
+                     	
+        }])
+})()

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<a href="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1493031999&di=7ae0dd2988e1f836b7623e34d8cd718b&src=http://h.hiphotos.baidu.com/image/pic/item/3bf33a87e950352a5936aa0a5543fbf2b2118b59.jpg">测试</a>
+	</body>
+	<scrtipt>
+		window.location.href="https://qr.alipay.com/bax093239xouheusig1x80e4";
+	</scrtipt>
+</html>

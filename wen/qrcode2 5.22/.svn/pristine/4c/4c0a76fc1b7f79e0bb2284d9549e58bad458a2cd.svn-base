@@ -1,0 +1,67 @@
+(function(){
+	angular.module("payMoneyCtrlModule",[])
+		.controller("paymoneyController",[
+			"$scope","$state","$ionicModal","keyService",
+			function($scope,$state,$ionicModal,keyService){
+				console.log("sdfsd");
+				$scope.user={};
+				$scope.keyboard= keyboard;
+				$scope.board= keyboard;
+				function keyboard(){	
+					var text=angular.element(document.getElementById("text1"));
+					console.log(text);
+					
+					function key(key){
+						$scope.$apply($scope.user.getMoney=key);
+					}
+					keyService.getKey(text,"",key,keyboard);
+
+				}
+//				$scope.keyboard=function(){
+//					console.log("sdfsd");
+//					$ionicModal.fromTemplateUrl('tpl/pay/paykeyboard.html', {  
+////					  animation:'slide-in-up'
+//						scope: $scope 
+//					}).then(function(modal) {  
+//						$scope.modal=modal;
+//						$scope.modal.show();
+//					  $scope.modalNumberKeyboard = modal;  
+//					});  
+//					   
+//					$scope.currentNumber="";  
+//					$scope.num={"a":1,"b":2,"c":3,"d":4,"e":5,"f":6,"g":7,"h":8,"i":9,"j":0,"k":".","l":"C"};  
+//					$scope.doInput=function(n){  
+//					    if(n=="C"){//清除键  
+//					   		$scope.currentNumber="";  
+//					    }else if(n=="."){// .键  
+//						    if( $scope.currentNumber!=""&&$scope.currentNumber.indexOf(".")==-1){  
+//						       $scope.currentNumber=$scope.currentNumber+""+n;  
+//						        console.log($scope.currentNumber);
+//							    $scope.user.payMoney=$scope.currentNumber;
+//							    console.log($scope.user.payMoney);
+//						    }  
+//						}else if(n==0){//0键  
+//						   	if($scope.currentNumber==""||$scope.currentNumber!=0||$scope.currentNumber.indexOf(".")!=-1){  
+//						    	$scope.currentNumber=$scope.currentNumber+""+n;  
+//							}  
+//						}else if(n!=0&&n!="."&&n!="C"){//1-9键  
+//						    if($scope.currentNumber=="0"){  
+//						    	$scope.currentNumber=n;  
+//							}else{  
+//						       $scope.currentNumber=$scope.currentNumber+""+n;  
+//						    }  
+//					 	}  
+//					};  
+//					var currentInput;  
+//				    $scope.showKeyBoard=function(t){  
+//					   $scope.modalNumberKeyboard.show();  
+//					   currentInput=t;  
+//					};  
+//					$scope.finishInput=function(){  
+//					    eval('$scope.'+currentInput+'=$scope.currentNumber==""?"0":$scope.currentNumber;'); 
+//					 	$scope.modalNumberKeyboard.hide();  
+//					}  
+//				}
+			}
+		])
+})()

@@ -1,0 +1,24 @@
+<ion-modal-view ng-controller="loginController" >
+	<ion-header-bar align-title="center">
+		<button class="button button-calm" ng-click="backToHome()">返回</button>
+		<h1 class="title" >用户登录</h1>
+		<button class="button button-calm" ng-click="changeAdmin()" >切换账户</button>
+	</ion-header-bar>
+	<ion-content>
+		<form name="loginForm">
+			<div class="list">
+				<label class="item item-input login-border-bottom ">
+					<span class="input-label feil-color login-left ">账号:</span>
+					<input type="text" required placeholder="请输入您的账号" ng-disabled="{{isReadOnly}}" ng-model="user.loginname" class="login-input" >
+				</label>
+				<label class="item item-input login-border-bottom">
+					<span class="input-label feil-color login-left">密码:</span>
+					<input type="password" required placeholder="请输入您的账号" ng-model="user.loginpassword" class="login-input">
+				</label>
+			</div>
+			<div class="padding-horizontal login-margin-top">
+				<button ng-disabled="!loginForm.$valid" class="button regist-cont-next" ng-click="loginUser()">登录</button>
+			</div>
+		</form>
+	</ion-content>
+</ion-modal-view>

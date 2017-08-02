@@ -1,0 +1,46 @@
+(function(){
+	angular.module("loginCtrlModule",[])
+		.controller("loginController",["$scope","$state",
+            "postDataService","messageService",
+            "USERDATA","$location","historyUrlService",
+            function($scope,$state,postDataService,
+            	messageService,USERDATA,$location,
+            	historyUrlService){
+				$scope.user={};
+                $scope.loginUser = function(){
+                    postDataService.postRequst(
+                        "merchantInfo/login",
+                        {
+                            sysAccount:$scope.user.loginname,
+                            pwd:$scope.user.loginpassword
+                        },
+                        function (response){
+                            console.log(response);
+                            USERDATA.user=response.data.data;
+//                          console.log($location.path());
+//                          console.log($location.url());
+//                          // 登录成功页面跳转到主页
+//                          var path=$location.path();
+//                         var url= path.substr(1);
+//                         console.log(url);
+//                         typeof(url);
+	//                       $state.go(url);
+	//                       history.Go(-1);
+							var  url = historyUrlService.getBackUrl();
+							if(url == ""){
+								historyUrlService.goUrlByState("index");
+							}else{
+								historyUrlService.goUrlBuyUrl(url);
+							}
+                        },
+                        function(error){
+                            console.log(error);
+                            messageService.showMessage(error);
+                        }
+                    )
+
+
+
+                }
+        }])
+})()

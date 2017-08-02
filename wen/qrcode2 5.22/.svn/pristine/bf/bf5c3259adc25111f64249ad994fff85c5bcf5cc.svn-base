@@ -1,0 +1,5 @@
+(function(){
+    angular.module("configModule",[])
+        .constant("HOSTURL","http://192.168.55.132:8080/manage/")
+         .constant("USERDATA",{})
+})()

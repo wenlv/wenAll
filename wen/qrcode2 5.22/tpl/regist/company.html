@@ -1,0 +1,50 @@
+<ion-view view-title="银行信息验证">
+ 	<ion-content class="pay-cont-center" >
+ 		<form name="bankForm" novalidate>
+			<div class="list list-inset">
+				<div class="item  item-input " style="margin-top:2px;padding-left:10px;padding-right:10px;">
+					<span class=" input-left bank-name-width" >开户银行</span>
+					<div   style="width:80%;height:40px;display:flex;margin-left:0px;margin-right:0px!important;">
+						<select name="" id="" style="width:100%;height:40px;-webkit-appearance: none;background:url(../qrcode2/images/arrow.png) no-repeat 98% 15px;border:1px solid #00BFFF!important;border-radius:2px;padding-left:5px;color:#8E8E8E!important;margin-left:0px;margin-right:0px!important;text-indent:0.01px;text-overflow:'';" ng-model="user.bankOption" ng-change="bankSelect()">
+							<option value="中信银行" ng-selected="0">中信银行 </option>
+							<option value="兴业银行" >兴业银行</option>
+							<option value="中国民生银行" >中国民生银行</option>
+							<option value="中国工商银行">中国工商银行</option>
+							<option value="中国建设银行">中国建设银行</option>
+							<option value="中国银行">中国银行</option>
+							<option value="中国农业银行">中国农业银行</option>
+							<option value="交通银行">交通银行</option>
+							<option value="招商银行">招商银行</option>
+							<option value="浦发银行">浦发银行</option>
+						</select>
+					</div>
+				</div>
+				<div class="item item-input  bank-background" style="padding-right:10px">
+					<span class=" input-left bank-name-width" >开户名称</span>
+					<input type="text" name="bankName" placeholder="没有获取到您的开户名称" required style="border:1px solid #00BFFF;-webkit-appearance: none;background:#fff;border-radius:2px;font-size:16px;padding-left:5px;padding-right:4px;height:40px;margin-right:0px;margin-left:0px!important;" ng-minlength="2" disabled="true"  ng-model="user.bankName" ng-maxlength="30" />	
+				</div>
+				<div class="item item-input bank-background" style="padding-right:10px">
+					<span class="input-left bank-name-width" >银行账户</span>
+					<input type="number" name="bankAccount" placeholder="请输入16位或19位银行卡号" required ng-change="bankNumber()"  ng-model="user.bankNumber" style="border:1px solid #00BFFF;border-radius:2px;font-size:16px;padding-left:5px;padding-right:4px;height:40px;margin-right:0px;margin-left:0px!important;" ng-pattern="/^(\d{16}|\d{19})$/" />
+				</div>
+			</div>
+			<div class="item bank-background" >
+				<div class="list">
+					<div class=" picture-title ">
+						请拍摄如下<span class="color-red">(清晰)</span>照片进行认证
+					</div>
+					<div class="company-picture_item" >
+					 	<input type="file" class="cert-tab-img cert-img-input company-picture"  id="getImg" ng-required="{{isYin}}"  ng-file-select="onFileSelectFive($files)"  accept="image/*"   ng-model="user.getImgYin" ng-change="getfile()" id="imgInp" />
+					 	<div class="company-img-height" >
+       						<img ng-src="{{getFileFive}}" class="photograph" alt="" />		
+       					</div>
+					 	<div class="cert-tab-font margin-top">结算银行账户照片</div>					
+					</div>
+				</div>  
+			</div>
+			 <div class="item" >
+	 		 	<button class="button regist-cont-next" ng-disabled="!bankForm.$valid" ng-click="companyUser()">下一步</button>	
+	 		</div>
+		</form>
+ 	</ion-content>
+</ion-view>

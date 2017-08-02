@@ -1,0 +1,167 @@
+(function() {
+angular.module("payMoneyCtrlModule", [])
+	.controller("paymoneyController", [
+			"$scope", "$state", "keyService",
+			"getDataService", "USERDATA",
+			"$location","messageService",
+			function($scope, $state, keyService,
+				getDataService, USERDATA,
+				$location,messageService) {
+				//初始化页面
+				$scope.user = {};
+				$scope.user.getMoney = 0.00;
+				$scope.user.seller = "xxx";
+				//点击时调用数字键盘
+				$scope.keyboard = keyboard;
+				$scope.board = keyboard;
+				
+				//是否可以支付
+				var canPay=0;
+				//调用数字键盘函数
+				function keyboard() {
+					var text = angular.element(document.getElementById("text1"));
+
+					function key(key) {
+						$scope.$apply($scope.user.getMoney = key);
+					}
+					keyService.getKey(text, "", key, keyboard);
+				};
+				var close;
+				//离开之前关闭数字键盘
+				$scope.$on("$ionicView.beforeLeave", function() {
+					console.log("homeController 离开之前");
+					
+					keyService.getKey(close);
+					//                 var close= angular.element(document.getElementById("close"));
+					//                 var close= document.getElementById("close");
+					//                  console.log(close);
+					//                 close.removeChild(self.el);
+					////                 var close= angular.element(document.getElementById("close"));
+					//                 console.log(close);
+					//                body.removeChild(self.el);
+				
+				});
+
+				
+				//判断判断微信或者支付宝
+				var payEnv = getTransType();
+				function getTransType() {
+					// 判断微信还是支付宝
+					if(/MicroMessenger/.test(window.navigator.userAgent)) {
+						// 微信 
+						canPay++;
+						$scope.user.getPay = '微信支付';
+						$scope.isApliay=false;
+						$scope.isWeiXin=true;
+						$scope.isChecked=true;
+						return 'weixin';
+					} else if(/AlipayClient/.test(window.navigator.userAgent)) {
+						// 支付宝 
+						canPay++;
+						$scope.user.getPay = "支付宝支付";
+						$scope.isApliay=true;
+						$scope.isWeiXin=false;
+						$scope.isChecked=true;
+						return 'alipay';
+					} else {
+						$scope.user.getPay = "其他支付";
+						$scope.isApliay=false;
+						$scope.isWeiXin=false;
+						$scope.isChecked=false;
+						return payEnv = 'others';
+					}
+				}
+				$scope.user.pay=payEnv ;
+				//获取token
+				getDataService.getRequest("merchantInfo/requestToken", null,
+					function(data) {
+						if(data.data.returnCode == 1) {
+							USERDATA.token=data.data.data;
+							canPay++;
+						} else {
+							messageService.showMessage(data.data.returnMsg);
+						}
+	
+					},
+					function(error) {
+						console.log("错误");
+						messageService.showMessage(error);
+					}
+				);
+		
+				//商户查询
+				var dataParams = {
+					merchantId: USERDATA.merchantId
+				};
+				getDataService.getRequest("merchantInfo/queryMerchantInfo", dataParams,
+					function(data) {
+						console.log(data);
+						if(data.data.returnCode == 1) {
+							console.log(data);
+							console.log(data.data.data.status);
+//							$scope.user.canpay=data.data.data.status;
+							USERDATA.merchantName=data.data.data.merchantName;
+							$scope.user.seller = data.data.data.merchantName;
+							if(data.data.data.status!==4){
+								canPay++;
+//								$scope.user.canpay=canPay;
+								$scope.goPayCommer=function(){
+									
+									if(canPay==2){
+										$scope.isPay=true;
+										getPayParams();
+										messageService.showMessage(data.data.returnMsg);
+									}else{
+										$scope.isPay=false;
+										messageService.showMessage("无法支付");
+									}
+								}
+							}else{
+								$scope.isPay=false;
+								messageService.showMessage("已经禁止向该商户付款");
+							}
+							//商户状态 4，canPay++;
+						} else {
+							messageService.showMessage(data.data.returnMsg);
+						}
+	
+					},
+					function(error) {
+						messageService.showMessage(error);
+					}
+				);
+				
+				
+//				$scope.goBai=function(){
+//					window.location = "http://www.baidu.com";
+//				}
+				//点击时去支付
+				function getPayParams(){
+					var payParams = {
+						tradeAmt:$scope.user.getMoney,
+						merchantId: USERDATA.merchantId,
+						codeId:USERDATA.codeId,
+						transType:payEnv,
+//						transType:"alipay",
+						orderName:USERDATA.merchantName,
+						tokenName:USERDATA.token
+					};
+					getDataService.getRequest("incomeOrder/addOrder", payParams,
+						function(data) {
+							if(data.data.returnCode == 1) {	
+								window.location = data.data.data.codeUrl;
+							} else {
+								messageService.showMessage(data.data.returnMsg);
+							}
+						},
+						function(error) {
+							messageService.showMessage(error);
+						}
+					);
+				}
+				
+
+
+	}
+])
+})()

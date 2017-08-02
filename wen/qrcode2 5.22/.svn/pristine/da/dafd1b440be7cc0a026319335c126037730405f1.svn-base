@@ -1,0 +1,44 @@
+<ion-view view-title="注册">
+ 	<ion-content class="pay-cont-center" >
+ 		<form name="myForm" novalidate >
+	 		<div class="list list-inset" >
+		 		<div class="item item-pading item-top">
+		 			<label class="item item-input regist-tel-inp" >
+					   <input type="text" placeholder="请输入商户简称"  name="username" ng-model="user.name" required class="regist-padding regist-font regist-line"/>
+					 </label>		 			
+		 		</div>
+		 		 <div class="item item-pading ">
+		 		 	<label class="item item-input regist-tel-inp" >
+					    <input type="number" placeholder="请输入11位手机号码"  name="telphone"  required ng-model="user.telphone" ng-pattern="/^1([358][0-9]|4[57]|7[0135678])\d{8}$/" ng-minlength="11" ng-maxlength="11" class="regist-padding regist-font regist-line" >
+					  </label>
+		 		 </div>
+		 		<div class="item item-pading regist-validate-background" >
+		 			<label class="item item-input regist-tel-inp regist-validate-label" >
+		 				<input type="number" placeholder="请输入验证码"  class="regist-validate-code"  required ng-model="user.code"/>
+		 			 </label>
+		 			 <button class="button  regist-button-code"  ng-click="registGain()" ng-disabled='noClick' >{{codetime}}</button>
+		 		</div>
+		 		<div class="item item-pading regist-password-background"  >
+		 		 	<div class="item" style="border:1px solid #ccc;padding:0px;height:40px" >
+					    <input type="password" placeholder="请输入6-12位密码" name="password" style="width:85%;float:left" required ng-show="isPassShow" ng-pattern="/^[a-zA-Z\d_]{6,12}$/" ng-model="user.password" class="regist-padding regist-font regist-line pass-width"> 
+					    <input type="text" placeholder="请输入6-12位密码" name="password" required style="width:85%;float:left"  ng-show="!isPassShow" ng-pattern="/^[a-zA-Z\d_]{6,12}$/"  ng-model="user.password" class="regist-padding regist-font regist-line"> 
+					    <i class=" ion-ios-eye pull-right" style="display:flex;font-size:35px;margin-top:0px;margin-right:10px;" ng-click="show()" ></i>
+					</div>
+		 		 </div>
+		 		 <div class="item item-pading">
+		 		 	<ion-list class="pull-right" >
+					  <ion-checkbox ng-model="filter.blue" required ng-model="user.protocol"  class="protSelect protSelect-checked" > </ion-checkbox>
+					  <div ng-click="scanProtocol()" class="protSelect protSelect-checked-title" >《同意用户协议》</div>
+					</ion-list>
+		 		 </div>
+		 		 <!--验证码可删-->
+		 		 <div class="item item-pading" ng-module="user.smsCode">
+		 		 	{{user.smsCode}} 
+		 		 </div>
+		 		 <div class="item item-pading">
+		 		 	<button class="button regist-cont-next" ng-disabled="!myForm.$valid" ng-click="registUser()">下一步</button>	 		 	
+		 		 </div> 
+	 		</div>
+ 		</form>
+ 	</ion-content>
+</ion-view>

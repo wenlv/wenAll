@@ -1,0 +1,16 @@
+
+(function(){
+    angular.module("postDataModule",[])
+        .provider("postDataService",function(){
+            this.$get = ["$http","HOSTURL",
+                function($http,HOSTURL){
+                   return {
+                       postRequst:function(url,data,success,fail){
+                           $http.post(HOSTURL+url,data)
+                               .then(success,fail);
+                       }
+                   }
+            }]
+        })
+})();
+

@@ -1,0 +1,23 @@
+(function(){
+	angular.module("ctrtMocule",[])
+		.controller("scanController",["$scope",function($scope){
+            $scope.$on("$destroy",function(event,data){
+                console.log("scanController destroy");
+            })
+        }])
+        .controller("pageBController",["$scope",function($scope){
+            $scope.$on("$destroy",function(event,data){
+                console.log("pageBController destroy");
+            })
+        }])
+//      .controller("pageCController",["$scope",function($scope){
+//          $scope.$on("$destroy",function(event,data){
+//              console.log("pageCController destroy");
+//          })
+//      }])
+        .controller("pageDController",["$scope",function($scope){
+            $scope.$on("$destroy",function(event,data){
+                console.log("pageDController destroy");
+            })
+        }])
+})()

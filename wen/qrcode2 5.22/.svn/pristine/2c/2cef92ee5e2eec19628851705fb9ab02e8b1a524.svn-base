@@ -1,0 +1,122 @@
+(function(){
+	angular.module("scanCtrlModule",[])
+		.controller("scanController",[
+			"$scope","$rootScope","$state","getDataService",
+			"messageService","$location","USERDATA",
+			"historyUrlService","modalDataService","$ionicModal",
+			"$sce","$sceDelegate","$window","commonService",
+			function($scope,$rootScope,$state,
+				getDataService,messageService,
+				$location,USERDATA,historyUrlService,
+				modalDataService,$ionicModal,
+				$sce,$sceDelegate,$window,commonService){
+				console.log("首页");
+				
+				//判断判断微信或者支付宝
+				var payEnv = getTransType();
+				function getTransType() {
+					// 判断微信还是支付宝
+					if(/MicroMessenger/.test(window.navigator.userAgent)) {
+						// 微信 
+						return 'wx';
+					} else if(/AlipayClient/.test(window.navigator.userAgent)) {
+
+						return 'alipay';
+					} else {
+						return payEnv = 'others';
+					}
+				}
+//				commonService.getTransType();
+				//测试登录 需删掉
+				$scope.goLogin=function(){
+//					 $scope.paySrc = $sce.trustAsResourceUrl("http://baidu.com");
+//					alert(window.location);
+//					window.location="http://www.baidu.com";
+//					window.location="weixin://wxpay/bizpayurl?pr=Wwu6QJx"
+//					window.location='http://www.baidu.com';
+//				alert($location.url);
+//					$location.hash("webchat");
+//					historyUrlService.setBackUrl(window.location.href);
+////					$state.go("login");
+
+					$ionicModal.fromTemplateUrl("tpl/login/login.html",{
+						animation:'slide-in-up'
+					}).then(function(modal){
+						$scope.modal=modal;
+						$scope.modal.show();
+						modalDataService.myModal=modal;
+					});
+//					var local=$window.localStorage.setItem("user","job");
+//					var local=$window.localStorage.setItem("user","job");
+					var local=$window.localStorage['user']="job";
+//					var local=$window.sessionStorage['user']="job";
+					if(local){
+						console.log("1");
+						console.log(local);
+						console.log($window.localStorage['user']);
+					}else{
+						console.log("2");
+					}
+				}
+				
+				//可删掉
+//				$scope.goPayMoney=function(){
+//          		$state.go("paymoney");
+//          	}
+				//判断商户是或可以支付
+				getDataService.getRequest("bind/queryBindInfoByCodeId",
+                   {
+                   	 codeId:$location.search().codeId
+                   },
+                    function(data){
+                        console.log(data);
+                        if(data.data.returnCode==1){
+                        	//处理url参数
+							USERDATA.codeId=$location.search().codeId;
+							USERDATA.merchantId=data.data.data.merchantId;
+
+                        	//验证成功后去支付
+                        	$scope.goPayMoney=function(){
+                        		if(payEnv =="wx"){
+									alert("weixin");
+//									window.location="http://192.168.55.133:8020/qrcode2/index.html#/paymoney"
+//									window.location="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx7dbedebd42b16dde&redirect_uri=http://192.168.55.133:8020/qrcode2/index.html#/paymoney&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
+									window.location="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx7dbedebd42b16dde&redirect_uri=http%3a%2f%2fapp.71bill.com%2ftest.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
+//									window.location="https://www.baidu.com"
+
+								}else{
+									alert("bbbbweixin");
+									$state.go("paymoney");
+								}
+                        		
+                        	}
+
+                        }else if(data.data.returnCode==2){
+                        	messageService.showMessage(data.data.returnMsg);
+                        	//登录超时重新登录页面
+                        	$ionicModal.fromTemplateUrl("tpl/login/login.html",{
+								animation:'slide-in-up'
+							}).then(function(modal){
+								$scope.modal=modal;
+								$scope.modal.show();
+								modalDataService.myModal=modal;
+							});
+                        }else{
+                        	messageService.showMessage(data.data.returnMsg);
+                        	$scope.goPayMoney=function(){
+                        		messageService.showMessage(data.data.returnMsg);
+                        	}
+                        }
+                        
+                    },
+                    function(error){
+                    	messageService.showMessage(error);
+                       console.log("错误");
+                       
+                    }
+                );
+                
+               
+			}
+		])
+})()

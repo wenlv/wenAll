@@ -1,0 +1,119 @@
+(function(){
+	angular.module("registCtrlModule",[])
+		.controller("registController",[
+			"$scope","$rootScope","$state",
+			"getDataService","USERDATA","$interval",
+			"messageService","sessionStorageService",
+			"historyUrlService",
+			function($scope,$rootScope,$state,
+				getDataService,USERDATA,$interval,
+				messageService,sessionStorageService,
+				historyUrlService){
+				$scope.user={};
+				//获取验证码60s后重新获取
+				 $scope.codetime = "获取验证码";
+				 $rootScope.noClick=false;
+				
+				$scope.goLogin2=function(){
+					historyUrlService.setBackUrl(window.location.href);
+					$state.go("login");
+				}
+				
+				$scope.registGain=function(){
+						$scope.time = 60;  
+                       var timer = null;  
+                       $rootScope.noClick=true;
+                       timer = $interval(function(){  
+                           $scope.time = $scope.time - 1;  
+                           $scope.codetime = $scope.time+"秒后重新获取";  
+                           if($scope.time === 0) {  
+                               $scope.codetime = "获取验证码";  
+                               $interval.cancel(timer);  
+                               $rootScope.noClick=false;
+                           }  
+                       }, 1000); 
+                       //发短信请求验证码
+                       getCode();
+				}
+				//下一步验证
+				$scope.registUser=function(){
+//					getGoodData();
+					$state.go("certification");
+				}
+				//get发送请求请求验证码
+				function getCode(){
+					getDataService.getRequest("sms/sendSms",
+                        {
+                        	userPhone:$scope.user.telphone,
+                        	serviceType:0
+                        },
+                        function(data){
+                            console.log(data);
+                            if(data.data.returnCode==1){
+                            	console.log(data);
+                            	$scope.user.smsCode=data.data.data.smsCode;
+                            	console.log($scope.user.smsCode);
+                            	console.log("有");
+
+                            }else{
+                            	console.log("无");
+                            	messageService.showMessage(data.data.returnMsg);
+                            }
+                            
+                        },
+                        function(error){
+                           console.log("错误");
+                           messageService.showMessage(error);
+                        }
+                    );
+				}
+				//get发送数据请求注册
+                function getGoodData(){
+                    getDataService.getRequest("merchantInfo/register",
+                        {
+                        	merchantName:$scope.user.name,
+                        	sysAccount:$scope.user.telphone,
+                        	pwd:$scope.user.password,
+                        	smsCode:$scope.user.code
+                        },
+                        function(data){
+                            console.log(data);
+                            if(data.data.returnCode==1){
+                            	var local=sessionStorageService.setObject("user_session",data.data);
+//								var local=window.localStorage.getItem("userName");
+								if(local){
+									console.log("session");
+									console.log(local);
+								}else{
+									console.log("wwww");
+									console.log(local);
+								}
+								
+                            	console.log("成功");
+                            	USERDATA.user=data.data.data;
+                            	console.log(USERDATA);
+                            	messageService.showMessage("正在加载中...");
+                            	//成功注册后跳到下一步
+                            	$state.go("certification");
+                           }else if(data.data.returnCode==2){
+                            	messageService.showMessage(data.data.returnMsg);
+                            	//记录当前页面的url
+                            	historyUrlService.setBackUrl(window.location.href);
+                            	//跳到登录页面
+								$state.go("login");
+                            }else{
+                            	console.log("失败");
+                            	messageService.showMessage(data.data.returnMsg);
+                            }
+                            
+                        },
+                        function(error){
+                           console.log("错误");
+//                         $state.go("certification");
+							messageService.showMessage(error);
+                        }
+                    );
+                }
+
+    	}])
+})()

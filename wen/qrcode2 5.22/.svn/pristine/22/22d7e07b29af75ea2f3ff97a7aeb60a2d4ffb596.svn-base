@@ -1,0 +1,33 @@
+<ion-view view-title="付款页面">
+    <ion-content class="pay-cont-center" id="payContent">
+        <div class="item" >
+    		<div class="pay-content-center  pay-cont-width" >
+    			<div class="pull-left pay-top-color" >向</div>
+    			<div class="pull-left pay-top-busses" >{{user.seller}}</div>
+    			<div class="pull-left pay-top-color" >付款</div>
+    		</div>
+        </div>
+        <div class="item">
+        	<div class="pay-content-money pay-money-item" id="text1"  ng-model="user.getMoney" ng-change="board()" ng-click="keyboard()">
+        		{{user.getMoney |currency:'￥'}}
+        		<span class="pay-money-span" >(元整)</span> 
+        	</div>
+        </div>
+        <div class="item pay-money-check" >
+        	<div class="pay-content-center  pay-check-title" >请与商家核对应付金额</div>
+        </div>
+        <div class="item pay-cont-wei pay-payment" >
+        	<div class="payment-title" >支付方式</div>
+        	<input type="checkbox" name="goPay" ng-checked="true" ng-show="isChecked" class="pay-cont-wei-gopay payment-input " />
+        	<i class="iconfont iconfont-payment iconfont-payment-apliay" ng-show="isApliay">&#xe63c;</i>
+        	<i class="iconfont iconfont-payment iconfont-payment-weixin" ng-show="isWeiXin"  >&#xe69e;</i>
+        	<div class="iconfont-title">{{user.getPay }} </div>	
+        </div>
+        <div class="item pay-submit-background" >
+        	<button class="button button-positive pay-submit-cont" ng-disabled="isPay" ng-click="goPayCommer()" >确认支付</button>
+        </div>
+        <div class="item">
+        	<div class="pay-content-center balanced pay-jishu">由51mayun.com提供技术支持</div>
+        </div>
+    </ion-content>
+</ion-view>

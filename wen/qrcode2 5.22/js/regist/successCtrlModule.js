@@ -1,0 +1,11 @@
+(function(){
+	angular.module("successCtrlModule",[])
+		.controller("paysuccessController",[
+			"$scope","$state",
+			function($scope,$state){
+				$scope.goHome=function(){
+					$state.go("scan");
+				}
+			}
+		])
+})()

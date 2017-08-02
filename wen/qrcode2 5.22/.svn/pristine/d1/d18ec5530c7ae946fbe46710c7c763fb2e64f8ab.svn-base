@@ -1,0 +1,17 @@
+<ion-view view-title="WIFI">
+ 	<ion-content class="pay-cont-center" >
+ 		<div class="list backgroundwhite wifi" >
+        	<div class="item">
+    			<a  class="button  ion-wifi button-calm button-clear wifi-icon icon-wifi"></a>
+    			<div class="wifiName">已连接	{{wifiConnect}}</div>
+    			<button class="button regist-cont-next button-wifi"  ng-click="wifiLink()">一键连接免费 WI-FI</button>	 
+	        </div>
+			 <a id={{w.wifiname}} class="item item-icon-left item-icon-right" ng-repeat="w in wifiNames" ng-click="selectWifi(w)">
+			    <i class="icon ion-wifi"></i>
+			    {{w.wifiname}}
+			    <i class="icon ion-android-done"  style="display: none;"></i>
+			    <!--<i class="icon ion-android-done"  ng-show="isWifi"></i>-->
+			</a>
+	    </div>
+ 	</ion-content>
+</ion-view>

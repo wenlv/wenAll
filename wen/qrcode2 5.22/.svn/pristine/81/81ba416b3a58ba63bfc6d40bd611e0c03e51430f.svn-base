@@ -1,0 +1,69 @@
+(function() {
+	angular.module("scanCtrlModule", [])
+		.controller("scanController", [
+			"$scope","$state", "getDataService",
+			"messageService", "$location", "USERDATA",
+			"modalDataService", "$ionicModal",
+			function($scope,$state,
+				getDataService, messageService,
+				$location, USERDATA,modalDataService, 
+				$ionicModal) {
+				//判断判断微信或者支付宝
+				var payEnv = getTransType();
+				function getTransType() {
+					// 判断微信还是支付宝
+					if(/MicroMessenger/.test(window.navigator.userAgent)) {
+						// 微信 
+						return 'wx';
+					} else if(/AlipayClient/.test(window.navigator.userAgent)) {
+						return 'alipay';
+					} else {
+						return payEnv = 'others';
+					}
+				}
+				$scope.goLogin=function(){
+					$ionicModal.fromTemplateUrl("tpl/login/login.html",{
+						animation:'false'
+					}).then(function(modal){
+						$scope.modal=modal;
+						$scope.modal.show();
+						modalDataService.myModal=modal;
+					});
+				}
+				//
+				//点击付款时
+				$scope.goPayMoney = function() {
+					//判断是否可以付款
+					if(canPayMoney){
+						if(payEnv == "wx") {					
+							window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx7dbedebd42b16dde&redirect_uri=http%3a%2f%2fapp.71bill.com%2ftest.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
+						} else {					
+							$state.go("paymoney");
+						}
+					}else{
+						messageService.showMessage("无法向商户付款");
+					}
+				}
+				//判断商户是否可以支付
+				var canPayMoney=false;
+				getDataService.getRequest("bind/queryBindInfoByCodeId", {
+						codeId: $location.search().codeId
+					},
+					function(data) {
+						if(data.data.returnCode == 1) {
+							//处理url参数并将数据存到local
+							 localStorage.setItem("codeId", $location.search().codeId);
+						     localStorage.setItem("merchantId", data.data.data.merchantId);;
+							canPayMoney=true;
+						}  else {
+							messageService.showMessage(data.data.returnMsg);
+							
+						}
+					},
+					function(error) {
+						messageService.showMessage(error);
+					}
+				);
+			}
+		])
+})()

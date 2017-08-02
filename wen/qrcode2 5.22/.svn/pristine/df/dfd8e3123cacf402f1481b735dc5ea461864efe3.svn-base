@@ -1,0 +1,122 @@
+(function(){
+	angular.module("companyCtrlModule",[])
+		.controller("companyController",[
+			"$scope","$state","getDataService",
+			"USERDATA",'$upload',"HOSTURL",
+			function($scope,$state,getDataService,USERDATA,
+				$upload,HOSTURL){
+				$scope.$on("$destroy",function(event,data){
+               	 console.log("registController destroy");
+            	})
+				$scope.user={};
+				$scope.bankSelect=function(){
+					console.log($scope.user.bankOption);
+				}
+				$scope.companyUser=function(){
+//					$state.go("payproduct");
+					
+					var bankparam={
+						merchantId:USERDATA.user.merchantId,
+						bankType:$scope.user.bankOption,
+						bankName:$scope.user.bankName,
+						bankAccount:$scope.user.bankAccount,
+						bankImg:$scope.getFileFive
+					}
+					identity(bankparam);
+				}
+				
+				//点击上传银行账户照片
+				 $scope.getFileFive="http://img03.tooopen.com/images/20131102/sy_45238929299.jpg";
+				$scope.onFileSelectFive =function($files) {
+       			 	console.log($files);
+       			 	//$files:是已选文件的名称、大小和类型的数组
+			        for (var i = 0; i < $files.length; i++) {      
+			            var file = $files[i];
+			            console.log(file);
+			            console.log(file.name);
+			            var img='img/'+file.name;
+
+			            console.log($scope.getFile);
+			            var param={
+			            	file:file.name,
+			            	serviceType:0
+			            }
+			            console.log(window.navigator);
+			            /*文件上传函数*/
+			            $scope.upload = $upload.upload({
+			                url:HOSTURL+ "fileUpload/uploadFileList", //上传的url
+			                method: 'POST' ,
+//			                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			                //withCredentials: true,
+			                data: param,
+			                file: file, // or list of files ($files) for html5 only
+			                //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
+			                // customize file formData name ('Content-Disposition'), server side file variable name. 
+			                //fileFormDataName: myFile, //or a list of names for multiple files (html5). Default is 'file' 
+			                // customize how data is added to formData. See #40#issuecomment-28612000 for sample code
+			                formDataAppender: function(formData, key, val){
+			                	console.log(formData);
+			                	console.log(key);
+			                	console.log(val);
+			                }
+			            }).progress(function(evt) {//上传进度
+			            	 $scope.geterror="上传中";
+			                console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+			                
+			            }).success(function(data, status, headers, config) {
+			                // 文件上传成功处理函数
+			                console.log(data);
+			                console.log(status);
+			                console.log(headers);
+			                console.log(config);
+			                console.log(img);
+			                 $scope.geterror="成功";
+			                 $scope.getFileFive='https://www.baidu.com/img/bd_logo1.png';
+  
+			            }).error(function(data, status, headers, config) {
+			                //失败处理函数
+			                console.log('上传失败');
+			                $scope.geterror=img;
+//			                $scope.getFile=img;
+			                $scope.getFileFive='http://file06.16sucai.com/2016/0330/0f069c5de3de49fa895eb5117d63c829.jpg'; 
+			            });
+			        };
+			    };
+			    
+				//验证银行信息
+				function identity(param){
+                	console.log(USERDATA.user);
+                	if(USERDATA.user){
+						getDataService.getRequest(
+							"merchantDetailInfo/bankAccountCertification",
+	                        param,
+	                        function(data){
+	                            console.log(data);
+	                            console.log(param);
+	                            if(data.data.returnCode==1){
+	                            	console.log("成功");
+	                            	console.log(data);
+	//                          	USERDATA.user=data.data.data;
+	//                          	console.log(USERDATA);
+	                            	//成功注册后跳到下一步
+	                            	$state.go("payproduct");
+	                            }else{
+	                            	console.log("失败");
+	                            }
+	                            
+	                        },
+	                        function(error){
+	                           console.log("错误");
+	                        }
+	                    );
+					}else{
+						console.log("验证失败");
+						//没有登录 返回注册页面
+						$state.go("regist");
+					}
+                    
+                }
+			}
+		])
+		
+})()

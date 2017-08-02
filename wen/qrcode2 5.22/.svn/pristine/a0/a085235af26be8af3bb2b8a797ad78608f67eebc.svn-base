@@ -1,0 +1,14 @@
+<ion-view view-title="home">
+    <!--<ion-nav-buttons side="right">
+        <button ng-show="!isLogin"
+                class="button button-assertive"
+                ng-click="loginClick()">登录</button>
+        <button ng-show="isLogin"
+                class="button button-balanced"
+                ng-click="loginOut()">{{username}}登出</button>
+    </ion-nav-buttons>-->
+    <ion-content>
+        <h1>Home页面显示</h1>
+        <button class="button button-balanced" ng-click="goToDetail()">点击到详情页面</button>
+    </ion-content>
+</ion-view>

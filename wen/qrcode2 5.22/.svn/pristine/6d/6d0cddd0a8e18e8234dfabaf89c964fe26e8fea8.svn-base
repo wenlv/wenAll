@@ -1,0 +1,7 @@
+<ion-view view-title="购买成功">
+ 	<ion-content class="pay-cont-center" >
+ 		<h1 class="balanced" style="margin-top:35%">恭喜您支付成功哦!</h1>
+ 		<h1 class="balanced" style="margin:20px auto">关注微信公众号:'码云聚合支付'可以查看详细信息哦！</h1>
+ 		<button class="button button-balanced" ng-click="goHome()">返回首页</button>
+ 	</ion-content>
+</ion-view>

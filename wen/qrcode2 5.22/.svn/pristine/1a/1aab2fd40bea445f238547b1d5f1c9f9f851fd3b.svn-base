@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>fileReader对象</title>
+	<style>
+		#box{
+			border:1px solid #333;
+		}
+	</style>
+</head>
+<body>
+	<form action="" onsubmit="return false" enctype="multipart/form-data">
+		选择图片：<input type="file" name="picture" id="inp"> <br>
+		
+	</form>
+	<div id="box"></div>
+	<script>
+	
+			var inp = document.getElementById('inp');
+			inp.onchange = function(){				
+				var reader  =  new FileReader();	
+				reader.readAsDataURL(this.files[0]); 
+				console.log(reader);
+				console.log(this.files[0]);
+				reader.onloadend = function(en){
+					console.log(en);
+				var img = document.createElement('img');
+					img.src = en.target.result;
+				document.getElementById('box').appendChild(img);
+			}
+			/**执行文件上传**/
+			var formData = new FormData();
+			//参数一:  上传的文件名   参数二： 文件
+			formData.append('picture',this.files[0]); 
+
+			//实例化xmlhttprequest对象
+			var xhr = new XMLHttpRequest();
+			
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4 && xhr.status == 200){
+					console.log('文件上传成功');
+				}
+			}
+			xhr.open('post','3.php');
+
+			xhr.send(formData); 
+
+
+
+		}
+			
+
+	</script>
+</body>
+</html>

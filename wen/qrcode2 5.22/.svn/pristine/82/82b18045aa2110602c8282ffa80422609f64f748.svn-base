@@ -1,0 +1,114 @@
+<ion-view view-title="产品购买">
+ 	<ion-content class="pay-cont-center" >
+ 		<form name="payForm" novalidate >
+	 		<div class="list list-inset">
+		 		 <div class="item">
+		 		 	<div class="pay-title" >费率选择:</div>
+	 		 		<ion-list class="feilv">
+						  <input type="radio" name="feilv" style="vertical-align: middle;"/>  0.5%费率，开通费0元
+						  <input type="radio" name="feilv" style="margin-left:20px;vertical-align: middle;" />  0.35%费率，开通费99元
+					</ion-list>
+		 		 </div>
+		 		<div class="item">
+		 			<div class="pay-title" >产品选择:</div>
+		 			<div class="list">
+		 				<div class="item">
+		 					<div class="pay-item-select">电子码 (1元/个终端ID)</div>
+		 					<div class="pay-item-explain" >(查看说明)</div>
+		 					<div class="icon" style="margin-left:">
+		 						<button class="pay-item-sub" >-</button>
+								<input type="number" class="pay-item-contain" >
+								<button class="pay-item-add" >+</button>
+		 					</div>
+		 				</div>
+		 				<div class="item">
+		 					<div class="pay-item-select">桌贴 (5元/个终端ID)</div>
+		 					<div class="pay-item-explain" style="">(查看样张)</div>
+		 					<div class="icon" style="margin-left:">
+		 						<button class="pay-item-sub" >-</button>
+								<input type="number" class="pay-item-contain" >
+								<button class="pay-item-add" >+</button>
+		 					</div>
+		 				</div>
+		 				<div class="item">
+		 					<div class="pay-item-select">台卡 (20元/个终端ID)</div>
+		 					<div class="pay-item-explain" style="">(查看样张)</div>
+		 					<div class="icon" style="margin-left:">
+		 						<button class="pay-item-sub" >-</button>
+								<input type="number" class="pay-item-contain" >
+								<button class="pay-item-add" >+</button>
+		 					</div>
+		 				</div>
+		 			</div>
+		 			<div class="item">
+		 				<div class="pay-title" >快递地址:</div>
+		 				<div class="list">
+		 					<div class="item">
+		 						<select name="pro" id="" >
+		 							<option value="0">请选择省份</option>
+		 							<option value="1">浙江</option>
+		 							<option value="1">江苏</option>
+		 							<option value="1">广东</option>
+		 						</select>
+		 						<select name="citys" id="">
+		 							<option value="0">请选择市</option>
+		 							<option value="1">杭州市</option>
+		 							<option value="2">宁波市</option>
+		 							<option value="3">温州市</option>
+		 						</select>
+		 						<select name="area" id="">
+		 							<option value="0">请选择区</option>
+		 							<option value="1">宝山区</option>
+		 							<option value="2">松江区</option>
+		 							<option value="3">徐汇区</option>
+		 						</select>
+		 					</div>	
+		 				</div>
+		 			</div>
+		 			<div class="item">
+		 			 	<label class="item item-input " >
+						    <input type="text" placeholder="详细地址" name="address" style="border:1px solid #ccc;padding:0px 5px"> 
+						</label>
+			 		</div>
+			 		<div class="item">			 			
+		 				<div style="border:1px solid red;float:left" >快递费:</div>
+		 				<div style="border:1px solid red;float:left;margin-left:45px">0.00元</div>
+			 		</div>
+			 		<div class="item">			 			
+		 				<div style="border:1px solid red;float:left;height:45px" >收件人:</div>
+		 				<div style="border:1px solid red;float:left;margin-left:45px">
+		 					<input type="text" />
+		 				</div>
+			 		</div>
+			 		<div class="item">			 			
+		 				<div  style="border:1px solid red;float:left;height:35px" >联系电话:</div>
+		 				<div style="border:1px solid red;float:left;margin-left:30px">
+		 					<input type="number" />
+		 				</div>
+			 		</div>
+			 		<div class="item">
+			 			<div class="pay-title" style="border:1px solid red;width:100px;float:left">订单总计:{{total}}</div>
+						<button class="button button-calm" style="min-width:100px;min-height:50px!important">去支付</button>
+			 		</div>
+		 		</div>
+		 		<!--<div class="item">
+		 		 	<label class="item item-input " >
+					    <input type="text" placeholder="详细地址" name="address" class="regist-padding"> 
+					  </label>
+		 		 </div>
+		 		 <div class="item">
+		 		 	<ion-list style="float:right">
+					  <ion-checkbox ng-model="filter.blue" required ng-model="user.protocol"> 《同意用户协议》</ion-checkbox>
+					</ion-list>
+		 		 </div>-->
+		 		 <!--<div class="item">-->
+		 		 	<!--<a ui-sref="certification" class="regist-cont-next">下一步</a>-->
+		 		 	<!--<button class="button regist-cont-next" ng-disabled="!myForm.$valid" ng-click="registUser()">下一步</button>-->
+		 		 	<!--<button class="button regist-cont-next"  ng-click="registUser()">下一步</button>-->
+		 		 	
+		 		 <!--</div>-->
+		 		 
+	 		</div>
+ 		</form>
+ 	</ion-content>
+</ion-view>

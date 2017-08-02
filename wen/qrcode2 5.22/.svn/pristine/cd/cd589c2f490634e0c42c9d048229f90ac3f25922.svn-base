@@ -1,0 +1,44 @@
+<ion-view view-title="注册">
+ 	<ion-content class="pay-cont-center" >
+ 		<form name="myForm" novalidate >
+	 		<div class="list list-inset">
+		 		<!--<div class="item">
+		 			<input type="text" placeholder="商户名称" ng-model="user.name" required class="regist-cont-inp regist-padding"/>
+		 		</div>-->
+		 		 <div class="item">
+		 		 	<label class="item item-input regist-tel-inp" >
+					    <input type="number" placeholder="请输入11位电话号码" name="telphone" required ng-model="user.telphone" ng-pattern="/^1([358][0-9]|4[57]|7[0135678])\d{8}$/" ng-minlength="11" ng-maxlength="11" class="regist-padding" >
+					    <!--<i class="icon ion-search placeholder-icon padding-right" ></i>-->
+					  </label>
+					 <span  ng-show="myForm.telphone.$dirty && myForm.telphone.$invalid" class="assertive">请输入11位电话号码</span>
+		 		 </div>
+		 		<div class="item">
+		 			<input type="number" placeholder="请输入验证码" class="regist-cont-code regist-padding" required ng-model="user.code"/>
+		 			<button class="button button-dark regist-button-code" ng-click="registGain()" ng-disabled='noClick'>{{codetime}}</button>
+		 		</div>
+		 		<div class="item">
+		 		 	<label class="item item-input regist-tel-inp" >
+					    <input type="password" placeholder="请输入密码" name="password" required ng-pattern="/[a-zA-Z0-9]/" ng-maxlength="12" ng-minlength="6" ng-model="user.password" class="regist-padding"> 
+					    <i class="icon ion-ios-eye placeholder-icon padding-right"></i>
+					  </label>
+					  <span  ng-show="myForm.password.$dirty && myForm.password.$invalid" class="assertive">请输入6-12位数字或字母</span>
+		 		 </div>
+		 		 <div class="item">
+		 		 	<ion-list style="float:right">
+					  <ion-checkbox ng-model="filter.blue" required ng-model="user.protocol" class="protSelect"> 《同意用户协议》</ion-checkbox>
+					</ion-list>
+		 		 </div>
+		 		 <div class="item" ng-module="user.smsCode">
+		 		 	{{user.smsCode}}
+		 		 </div>
+		 		 <div class="item">
+		 		 	<!--<a ui-sref="certification" class="regist-cont-next">下一步</a>-->
+		 		 	<!--<button class="button regist-cont-next" ng-disabled="!myForm.$valid" ng-click="registUser()">下一步</button>-->
+		 		 	<button class="button regist-cont-next"  ng-click="registUser()">下一步</button>
+		 		 	
+		 		 </div>
+		 		 
+	 		</div>
+ 		</form>
+ 	</ion-content>
+</ion-view>

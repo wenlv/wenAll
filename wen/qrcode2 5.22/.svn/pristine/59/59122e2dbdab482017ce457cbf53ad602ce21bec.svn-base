@@ -1,0 +1,181 @@
+(function() {
+angular.module("payMoneyCtrlModule", [])
+	.controller("paymoneyController", [
+			"$scope", "$state", "keyService",
+			"getDataService", "USERDATA",
+			"$location","messageService","$sce","postDataService",
+			function($scope, $state, keyService,
+				getDataService, USERDATA,
+				$location,messageService,$sce,postDataService) {
+				//初始化页面
+				$scope.user = {};
+				$scope.user.getMoney = 0;
+				$scope.user.seller = "xxx";
+				//进来后直接显示数字键盘
+				keyboard();
+				//点击时调用数字键盘
+				$scope.keyboard = keyboard;
+				$scope.board = keyboard;
+				
+				//是否可以支付
+				var canPay=0;
+				//调用数字键盘函数
+				function keyboard() {
+					var text = angular.element(document.getElementById("text1"));
+					
+					console.log(text);
+					function key(key) {
+						$scope.$apply($scope.user.getMoney = key);
+					}
+//					keyService.getKey(text, "", key, keyboard);
+					keyService.getKey(text, "", key);
+					
+				};
+		
+				var close;
+				//离开之前关闭数字键盘
+				$scope.$on("$ionicView.beforeLeave", function() {
+					var keyId = angular.element(document.getElementById("__w_l_h_v_c_z_e_r_o_divid"));
+					keyId.remove(keyId);
+				});
+
+				
+				//判断判断微信或者支付宝
+				var payEnv = getTransType();
+				function getTransType() {
+					// 判断微信还是支付宝
+					if(/MicroMessenger/.test(window.navigator.userAgent)) {
+						// 微信 
+						$scope.user.getPay = '微信支付';
+						$scope.isApliay=false;
+						$scope.isWeiXin=true;
+						$scope.isChecked=true;
+//						return 'weixin';
+						return 'wx';
+					} else if(/AlipayClient/.test(window.navigator.userAgent)) {
+						// 支付宝 
+						$scope.user.getPay = "支付宝支付";
+						$scope.isApliay=true;
+						$scope.isWeiXin=false;
+						$scope.isChecked=true;
+						return 'alipay';
+					} else {
+						$scope.user.getPay = "其他支付";
+						$scope.isApliay=false;
+						$scope.isWeiXin=false;
+						$scope.isChecked=false;
+						return payEnv = 'others';
+					}
+				}
+				$scope.user.pay=payEnv ;
+				//获取token
+				getDataService.getRequest("merchantInfo/requestToken", null,
+					function(data) {
+						if(data.data.returnCode == 1) {
+							USERDATA.token=data.data.data;
+							canPay++;
+						} else {
+							messageService.showMessage(data.data.returnMsg);
+						}
+	
+					},
+					function(error) {
+						console.log("错误");
+						messageService.showMessage(error);
+					}
+				);
+		
+				//商户查询
+				var dataParams = {
+					merchantId: USERDATA.merchantId
+				};
+				getDataService.getRequest("merchantInfo/queryMerchantInfo", dataParams,
+					function(data) {
+						if(data.data.returnCode == 1) {
+//							$scope.user.canpay=data.data.data.status;
+							USERDATA.merchantName=data.data.data.merchantName;
+							$scope.user.seller = data.data.data.merchantName;
+							if(data.data.data.status==4){
+								canPay++;	
+							}else{
+//								$scope.isPay=false;
+								messageService.showMessage("已经禁止向该商户付款");
+							}
+							//商户状态 4，canPay++;
+						} else {
+							messageService.showMessage(data.data.returnMsg);
+						}	
+					},
+					function(error) {
+						messageService.showMessage(error);
+					}
+				);
+				
+
+				//点击时去支付
+				$scope.goPayCommer=function(){				
+					if(canPay==2){
+						if($scope.user.getMoney>0){
+							getPayParams();
+						}else{
+							messageService.showMessage("金额不合法");
+						}
+//										
+					}
+				}
+				//微信时调用
+				if(payEnv=="wx"){
+					alert(USERDATA.merchantId);
+					//getUserOpenId();
+				}
+				//点击支付时调用支付接口付款
+				function getPayParams(){
+					var payParams = {
+						tradeAmt:$scope.user.getMoney,
+						merchantId: USERDATA.merchantId,
+						codeId:USERDATA.codeId,
+						transType:payEnv,
+						orderName:USERDATA.merchantName,
+						tokenName:USERDATA.token,
+						openId:openId?openId:"",
+						callBackUrl:callBackUrl?callBackUrl:""
+					};
+					 postDataService.postRequst("incomeOrder/addOrder", payParams,
+						function(data) {
+							if(data.data.returnCode == 1) {	
+								window.location = data.data.data.codeUrl;								
+							}else{
+                            	messageService.showMessage(data.data.returnMsg);
+                            }
+						},
+						function(error) {
+							messageService.showMessage(error);
+						}
+					);
+				}
+				var openId,callBackUrl;
+				//微信时调用支付
+				function getUserOpenId(){
+					var openParams = {
+						code:$location.search().code
+					};
+					 postDataService.postRequst("wxMerchantInfo/getOpenId", payParams,
+						function(data) {
+							if(data.data.returnCode == 1) {	
+								openId=data.data.data;
+								callBackUrl="1706pc2379.iask.in:36389/qrcode2/index.html#/paysuccess";
+							}else{
+                            	messageService.showMessage(data.data.returnMsg);
+                            }
+						},
+						function(error) {
+							messageService.showMessage(error);
+						}
+					);
+				}
+				
+
+
+	}
+])
+})()

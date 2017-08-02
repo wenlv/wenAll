@@ -1,0 +1,90 @@
+<ion-view view-title="商户名称">
+    <ion-content class="background">
+        <div class="list backgroundwhite " >
+        	<div class="item padding">
+        		<!--<a ui-sref="paymoney" >
+    				<img src="./images/i_03.png" alt="" class="payImg" />
+    			</a>-->
+    			<div ng-click="goPayMoney()">
+    				<img src="./images/i_03.png" alt="" class="payImg" />
+    			</div>
+	        </div>
+	        <!--<div class="item pay-regist " style="padding-top: 8px;">
+	        	<a  ui-sref="regist" >
+	        		点击生成我的付款码
+	        		<i class="icon ion-android-arrow-forward"></i>
+	        	</a>
+	        </div>-->
+	        <!--<div class="item ad-img" style="padding:0px">
+	        	<img src="./images/i_06.png" alt=""  />
+	        </div>-->
+	       <div class="item ad-img" style="padding:0px">
+		       	 <ion-slide-box>
+				  <ion-slide>
+				    <img src="./images/i_06.png" alt=""  />
+				  </ion-slide>
+				  <ion-slide>
+				    <img src="./images/i_06.png" alt=""  />
+				  </ion-slide>
+				  <ion-slide on-slide-changed="slideHasChanged(index)">
+				    <img src="./images/i_06.png" alt=""  />
+				  </ion-slide>
+				</ion-slide-box>
+	       </div>
+	       
+	        <div class="item" style="padding:0px">
+	        	<ul class="list" >
+	        		<li class="item row item-padding" >
+	        			<div class="icon col-33 col-center icon-border icon-border-bottom icon-border-right icon-border-top" >
+	        				<a class="button  ion-wifi button-calm button-clear iconimg icon-wifi"></a>
+	        				<p>一键WiFi</p>
+	        			</div>
+	        			<div class="icon col-33 col-center icon-border icon-border-bottom icon-border-right icon-border-top" >
+	        				<a class="button  ion-android-car button-calm button-clear iconimg icon-car"></a>
+	        				<p>叫车/代驾</p>
+	        			</div>
+	        			<div class="icon col-33 col-center icon-border icon-border-bottom icon-border-top" >
+	        				<a href="http://api.05710xbyy.com/api.php?uid=e001" class="button  ion-social-youtube-outline button-calm button-clear iconimg icon-tv" style="font-size:33px!important"></a>
+	        				<p><a href="http://api.05710xbyy.com/api.php?uid=e001" style="color:#333;text-decoration: none;">看直播</a></p>
+	        			</div>
+	        		</li>
+	        		<li class="item row item-padding " >
+	        			<div class="icon col-33 col-center icon-border icon-border-bottom icon-border-right " >
+	        				<a class="button  ion-ios-game-controller-b button-calm button-clear iconimg icon-game"></a>
+	        				<p>玩游戏</p>
+	        			</div>
+	        			<div class="icon col-33 col-center icon-border icon-border-bottom icon-border-right" >
+	        				<a class="button  button-calm button-clear"></a>
+	        				<p></p>
+	        			</div>
+	        			<div class="icon col-33 col-center icon-border icon-border-bottom icon-border-right" >
+	        				<a class="button  button-calm button-clear"></a>
+	        				<p></p>
+	        			</div>
+	        		</li>
+	        	</ul>
+	        </div>
+	        <!--<div class="item background foot-margin" >
+	        	<div class="index-foot" >点击生成我的店铺收款码</div>
+	        </div>-->
+        </div>
+    </ion-content>
+	<ion-footer-bar align-title="center" class="foot"  >
+	  
+	  <h1 class="title" style="height:50px;border:0px solid #fff!important">
+	  	 <!--<div class="item pay-regist " style="padding-top: 8px;">
+	        	<a  ui-sref="regist"  >
+	        		点击生成我的付款码
+	        		<i class="icon ion-android-arrow-forward"></i>
+	        	</a>
+	        </div>-->
+
+        	<a  ui-sref="regist"  style="margin:50px auto;font-family:sans-serif;font-size:14px;color:dodgerblue;text-decoration: underline;background:#f5f5f5">
+        		申请我的店铺收款码
+        		
+        	</a>
+
+	  </h1>
+	  
+	</ion-footer-bar>
+</ion-view>

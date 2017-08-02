@@ -1,0 +1,52 @@
+(function() {
+	// 通用的get请求服务  可以在其他项目中使用
+	angular.module("getDataModule", [])
+		.service("getDataService", ["$http", "HOSTURL",
+			function($http, HOSTURL) {
+				this.getRequest = function(url, data, success, fail) {   
+					$http.get(HOSTURL + url, { params: data })
+						.then(function (data) {					
+							if(data.data.returnCode == 1) {
+								if(success != null) {
+									success(data.data.data);
+								}
+							} else if(data.data.returnCode == 2) {
+								//过期  跳转登录
+								//messageService.showMessage(data.data.returnMsg);
+							} else {
+								//messageService.showMessage(data.data.returnMsg);
+							}
+						}, function(error) {
+							//messageService.showMessage(error);
+							//                         $state.go("certification");
+							if(fail != null) {
+								fail(error);
+							}
+						});
+				}
+				
+				this.getRequest = function(url, data, success) {   
+					$http.get(HOSTURL + url, { params: data })
+						.then(function (data) {					
+							if(data.data.returnCode == 1) {
+								if(success != null) {
+									success(data.data.data);
+								}
+							} else if(data.data.returnCode == 2) {
+								//过期  跳转登录
+								//messageService.showMessage(data.data.returnMsg);
+							} else {
+								//messageService.showMessage(data.data.returnMsg);
+							}
+						}, function(error) {
+							//messageService.showMessage(error);
+							//                         $state.go("certification");
+							if(fail != null) {
+								fail(error);
+							}
+						});
+				}
+				
+			}
+		])
+})();

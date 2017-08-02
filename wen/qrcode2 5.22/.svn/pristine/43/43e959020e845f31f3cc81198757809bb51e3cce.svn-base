@@ -1,0 +1,80 @@
+(function() {
+	angular.module("loginModule", [])
+		.controller("loginController", ["$scope", "$state",
+			"postDataService", "messageService",
+			"USERDATA", "$location", "historyUrlService",
+			"modalDataService",
+			function($scope, $state, postDataService,
+				messageService, USERDATA, $location,
+				historyUrlService, modalDataService) {
+				$scope.user = {};
+				if(USERDATA.user) {
+					$scope.user.loginname = USERDATA.user.sysAccount;
+//					$scope.user.loginname.DISABLED = true;
+					$scope.isReadOnly=true;
+				}else{
+					$scope.isReadOnly=false;
+				}
+				
+				$scope.loginUser = function() {
+					postDataService.postRequst(
+						"merchantInfo/login", {
+							sysAccount: $scope.user.loginname,
+							pwd: $scope.user.loginpassword
+						},
+						function(response,status,headers, config) {
+							console.log(status);
+							console.log(headers);
+							console.log(config);
+//							data, status, headers, config
+							console.log(response);
+							if(response.data.returnCode == 1) {
+								if(USERDATA.user) {
+									USERDATA.user = response.data.data;
+									modalDataService.myModal.remove();
+								} else {
+									//刷新或每天首次登录时给数据
+									switch(response.data.data.status) {
+										case 1:
+											modalDataService.myModal.remove();
+											USERDATA.user = response.data.data;
+//											
+//											$state.go("certification");
+											$state.go("certification",{merchantId:response.data.data.merchantId});
+//											$state.go("company",{merchantId:response.data.data.merchantId});
+											break;
+										case 2:
+											modalDataService.myModal.remove();
+											USERDATA.user = response.data.data;
+											$state.go("company");
+											break;
+										case 3:
+											modalDataService.myModal.remove();
+											messageService.showMessage(response.data.returnMsg);
+											USERDATA.user = response.data.data;
+											$state.go("payproduct");
+											break;
+										case 5:
+											messageService.showMessage(response.data.returnMsg);
+										break;
+										case 6:
+											messageService.showMessage(response.data.returnMsg);
+											break;
+									}
+								}
+
+								//	                            	
+							} else {
+								messageService.showMessage(response.data.returnMsg);
+							}
+
+						},
+						function(error) {
+							messageService.showMessage(error);
+						}
+					)
+				}
+				
+			}
+		])
+})()

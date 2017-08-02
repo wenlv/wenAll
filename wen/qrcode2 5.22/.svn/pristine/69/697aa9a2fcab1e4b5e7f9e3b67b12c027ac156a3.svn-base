@@ -1,0 +1,29 @@
+<ion-modal-view class="modalKey" >  
+    <ion-header-bar class="bar bar-header bar-positive">  
+       <h1 class="title" ng-bind="currentNumber" ></h1>  
+    </ion-header-bar>  
+    <ion-content class="padding">  
+        <div class="col col-offset-10">  
+	        <button class="button button-outline button-positive" ng-click="doInput(num.f);" >6</button>  
+	        <button class="button button-outline button-positive" ng-click="doInput(num.g);" >7</button>  
+	        <button class="button button-outline button-positive" ng-click="doInput(num.h);" >8</button>  
+	        <button class="button button-outline button-positive" ng-click="doInput(num.i);" >9</button>  
+        </div>  
+        <div class="col col-offset-10">  
+	        <button class="button button-outline button-positive" ng-click="doInput(num.b);" >2</button>  
+	        <button class="button button-outline button-positive" ng-click="doInput(num.c);" >3</button>  
+	        <button class="button button-outline button-positive" ng-click="doInput(num.d);" >4</button>  
+	        <button class="button button-outline button-positive" ng-click="doInput(num.e);" >5</button>  
+        </div>  
+        <div class="col col-offset-10">  
+	        <button class="button button-outline button-positive" ng-click="doInput(num.a);" >1</button>  
+	        <button class="button button-outline button-positive" ng-click="doInput(num.j);" >0</button>  
+	        <button class="button button-outline button-positive" ng-click="doInput(num.k);" >.</button>  
+	        <button class="button button-outline button-positive" ng-click="doInput(num.l);" >C</button>  
+        </div>  
+        <div class="col col-offset-10">  
+	        <button class="button button-outline button-positive" ng-click="modalNumberKeyboard.hide()" >取消</button>  
+	        <button class="button button-outline button-positive" ng-click="finishInput()">确定</button>  
+        </div>  
+     </ion-content>  
+</ion-modal-view>  

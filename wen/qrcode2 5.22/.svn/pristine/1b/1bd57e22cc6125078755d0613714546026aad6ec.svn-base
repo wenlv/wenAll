@@ -1,0 +1,124 @@
+(function() {
+	angular.module("loginModule", [])
+		.controller("loginController", ["$scope", "$state",
+			"getDataService", "messageService",
+			"USERDATA", "$location","modalDataService",
+			"$ionicModal","modalDataService",
+			function($scope, $state, getDataService,
+				messageService, USERDATA, $location,
+				 modalDataService,$ionicModal,modalDataService) {
+				$scope.user = {};
+				if(localStorage.getItem("sysAccount")) {
+					$scope.user.loginname = localStorage.getItem("sysAccount");
+					$scope.isReadOnly=true;
+				}else{
+					$scope.isReadOnly=false;
+				}
+				//判断判断微信或者支付宝
+				var payEnv = getTransType();
+				function getTransType() {
+					// 判断微信还是支付宝
+					if(/MicroMessenger/.test(window.navigator.userAgent)) {
+						// 微信 
+						return 'wx';
+					} else if(/AlipayClient/.test(window.navigator.userAgent)) {
+						// 支付宝
+						return 'alipay';
+					} else {
+						// 其他 
+						return payEnv = 'others';
+					}
+				}
+				//返回按钮可删
+				$scope.backToHome=function(){
+					modalDataService.myModal.remove();
+				}
+				//切换账户
+				$scope.changeAdmin=function(){
+					 localStorage.clear();
+					 $scope.isReadOnly=false;
+					 $scope.user.loginname="";
+					 modalDataService.myModal.remove();
+					 $ionicModal.fromTemplateUrl("tpl/login/login.html",{
+						animation:'false'
+					}).then(function(modal){
+						$scope.modal=modal;
+						$scope.modal.show();
+						modalDataService.myModal=modal;
+					});
+				}
+				//点击登录
+				$scope.loginUser = function() {
+					getDataService.getRequest(
+						"merchantInfo/login", {
+							sysAccount: $scope.user.loginname,
+							pwd: $scope.user.loginpassword
+						},
+						function(response,status,headers, config) {
+							if(response.data.returnCode == 1) {
+								if(localStorage.getItem("sysAccount")) {
+									modalDataService.myModal.remove();
+								} else {
+									//刷新或每天首次登录时给数据
+									switch(response.data.data.status) {
+										//1.已注册-待实名认证
+										case 1:
+											modalDataService.myModal.remove();
+											localStorage.setItem("curMerchantId",response.data.data.merchantId);
+                            	            localStorage.setItem("sysAccount",response.data.data.sysAccount);
+
+											$state.go("certification",{merchantId:response.data.data.merchantId});
+											break;
+										//2:已实名-待绑定银行卡
+										case 2:
+											modalDataService.myModal.remove();
+											localStorage.setItem("curMerchantId",response.data.data.merchantId);
+                            	            localStorage.setItem("sysAccount",data.data.data.sysAccount);
+											$state.go("company");
+											break;
+										//3：已绑卡-待审核	
+										case 3:
+											modalDataService.myModal.remove();
+											messageService.showMessage(response.data.returnMsg);
+											localStorage.setItem("curMerchantId",response.data.data.merchantId);
+                            	            localStorage.setItem("sysAccount",response.data.data.sysAccount);
+											if(payEnv == "wx") {		
+			                            		//微信转到微信专用的
+												window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx7dbedebd42b16dde&redirect_uri=http%3a%2f%2fapp.71bill.com%2ftestCode.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
+											} else {		
+												//成功注册后跳到下一步
+												$state.go("payproduct");
+											}
+											break;
+										//4：正常
+										case 4:
+											modalDataService.myModal.remove();
+											localStorage.setItem("curMerchantId",response.data.data.merchantId);
+                            	            localStorage.setItem("sysAccount",response.data.data.sysAccount);
+                            	            messageService.showMessage(response.data.returnMsg);
+											$state.go("scan");
+										break;
+										//5：拒绝
+										case 5:
+											messageService.showMessage(response.data.returnMsg);
+										break;
+										//6：禁用
+										case 6:
+											messageService.showMessage(response.data.returnMsg);
+											break;
+									}
+								}
+								//	                            	
+							} else {
+								messageService.showMessage(response.data.returnMsg);
+							}
+						},
+						function(error) {
+							messageService.showMessage(error);
+						}
+					)
+				}
+				
+			}
+		])
+})()

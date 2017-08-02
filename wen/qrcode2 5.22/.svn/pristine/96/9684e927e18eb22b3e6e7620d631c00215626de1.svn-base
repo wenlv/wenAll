@@ -1,0 +1,23 @@
+(function(){
+	angular.module("fileCon",[])
+	.controller("testCtrl",[
+		"$scope","$rootScope",function($scope,$rootScope){
+		 $rootScope.demo = function() {  
+		 	var url="./images/";
+		 	if($scope.testFile){
+		 		 console.log($scope.testFile.name); 
+		 		 url=url+$scope.testFile.name
+		 		 $scope.file=url;
+		 		 console.log(url);
+		 	}
+            console.log($scope.testFile);  
+//          var reader  =  new FileReader();
+//          reader.readAsDataURL($scope.testFile);
+//          reader.onloadend = function(en){
+//          	console.log(en.target.result);
+//          	$scope.file=en.target.result;
+//          }
+//          $scope.file=$scope.testFile.name;
+        }  
+	}])
+})()

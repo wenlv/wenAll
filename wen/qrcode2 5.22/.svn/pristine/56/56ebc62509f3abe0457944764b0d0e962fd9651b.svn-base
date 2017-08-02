@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<meta name="renderer" content="webkit">
+    <title>码云</title>
+    <link rel="stylesheet" href="./module/css/ionic.min.css">
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./font/iconfont.css" />
+</head>
+<body ng-app="startApp">
+    <ion-nav-view></ion-nav-view>
+	<!--<script src="./js/common/md5.js"></script>-->
+    <script src="./module/js/ionic.bundle.js"></script>
+    <script src="./js/common/app.js"></script>
+    <script src="./js/common/messageModule.js"></script>
+    <script src="./js/common/appRouterModule.js"></script>
+    <script src="./js/common/configModule.js"></script>
+    <script src="./js/common/getDataModule.js"></script>
+    <script src="./js/regist/registCtrlModule.js"></script>
+    <script src="./js/regist/certifiCtrModule.js"></script>
+    <script src="./js/regist/companyCtrlModule.js"></script>
+    <script src="./js/regist/payCtrlModule.js"></script>
+    <script src="./js/regist/successCtrlModule.js"></script>
+    <script src="./js/pay/payMoneyCtrlModule.js"></script>
+    <script src="./js/pay/keyCtlModule.js"></script>
+    <script src="./js/common/FileUpload.js"></script>
+    <script src="./js/home/scanCtrlModule.js"></script>
+    <script src="./js/common/modalDataModule.js"></script>
+    <script src="./js/login/loginModule.js"></script>
+    <script src="./js/wifi/wifiModule.js"></script>
+    
+    
+  
+
+
+
+   
+ 
+ 
+
+
+</body>
+</html>

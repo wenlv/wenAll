@@ -1,0 +1,50 @@
+(function(){
+	angular.module("scanCtrlModule",[])
+		.controller("scanController",[
+			"$scope","$rootScope","$state","getDataService",
+			"messageService","$location","USERDATA","historyUrlService",
+			function($scope,$rootScope,$state,
+				getDataService,messageService,
+				$location,USERDATA,historyUrlService){
+				console.log("首页");
+				
+				//测试登录 需删掉
+//				$scope.goLogin=function(){
+//					historyUrlService.setBackUrl(window.location.href);
+//					$state.go("login");
+//				}
+				
+				//可删掉
+//				$scope.goPayMoney=function(){
+//          		$state.go("paymoney");
+//          	}
+				getDataService.getRequest("bind/queryBindInfoByCodeId",
+                   {
+                   	 codeId:$location.search().codeId
+                   },
+                    function(data){
+                        console.log(data);
+                        if(data.data.returnCode==1){
+                        	//处理url参数
+							USERDATA.codeId=$location.search().codeId;
+							USERDATA.merchantId=data.data.data.merchantId;
+
+                        	//验证成功后去支付
+                        	$scope.goPayMoney=function(){
+                        		$state.go("paymoney");
+                        	}
+
+                        }else{
+                        	messageService.showMessage(data.data.returnMsg);
+                        }
+                        
+                    },
+                    function(error){
+                    	messageService.showMessage(error);
+                       console.log("错误");
+                       
+                    }
+                );
+			}
+		])
+})()

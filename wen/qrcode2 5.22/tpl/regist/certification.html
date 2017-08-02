@@ -1,0 +1,144 @@
+<ion-view view-title="注册">
+	<ion-content></ion-content>
+	<ion-tabs class="tabs-striped tabs-top">
+		<!--个人注册-->
+		<ion-tab title="个人注册" on-select="onTabSelected()">
+			<ion-scroll overflow-scroll="false" class="cert-overflow">
+				<button ng-click="selectTabWithIndex(2)" class="cert-tab-button ">
+					<form name="certForm" novalidate enctype="multipart/form-data">
+						<div class="list list-inset " >
+							<div class="item  item-input cert-name-margin cert-top-margin" style="margin-top:25px!important;padding-right:0px;margin-right:0px;">
+								<span class="input-left " style="display:block;">真实姓名</span>
+								<input type="text" name="username" placeholder="请输入您的真实姓名" required ng-minlength="2" ng-change="ceshi()" ng-model="user.username"  ng-maxlength="6"  required ng-minlength="2" style="padding-right:5px;border:1px solid #00BFFF;border-radius:2px;font-size:16px;padding-left:5px;height:40px;margin-right:0px;margin-left:18px!important;"/>
+							</div>
+							<div class="item  item-input cert-name-margin cert-img-margin" >
+								<span class=" input-left" style="display:block;">身份证号</span>
+								<input type="number" name="shenfen" placeholder="请输入身份证号" required  ng-model="user.shenfen" ng-change="ceshi()" ng-pattern="/(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$)/" style="border:1px solid #00BFFF;border-radius:2px;padding-right:5px;font-size:16px;padding-left:5px;height:40px;margin-right:0px;margin-left:18px!important;" />	
+							</div>
+						</div>
+						<div class="item cert-photo-background" >
+							<div class="list">
+								<div class=" picture-title" >
+									请拍摄如下<span class="color-red">(清晰)</span>照片进行认证
+								</div>
+								<div class="item cert-img-background">
+									<div class="cert-tab-itemimg picture-content pull-left"  id="myBtn" >
+	           							<input type="file" class="cert-tab-img cert-img-input"  id="getImg" ng-required="{{isShen}}"  ng-file-select="onFileSelect($files)"  accept="image/*"   ng-model="user.getImgShen" ng-change="getfile()" id="imgInp" />
+	           							<div class="cert-tab-img cert-img-style">
+	           								<img ng-src="{{getFile}}" class="photograph" alt=""/>
+	           							</div>
+									 	<div class="cert-tab-font" >身份证正面照</div>
+									</div>
+									<div class="cert-tab-itemimg picture-content pull-right"  >
+								 		<input type="file" class="cert-tab-img cert-img-input "  id="getImg" ng-required="{{isFen}}"  ng-file-select="onFileSelects($files)"  accept="image/*"   ng-model="user.getImgFen" ng-change="getfile()" id="imgInp" />
+	           							<div class="cert-tab-img cert-img-style" >
+	           								<img ng-src="{{getFileTwo}}" class="photograph" alt="" />
+	           							</div>
+								 		<div class="cert-tab-font">身份证反面照</div>
+							 		</div>
+								</div>
+								<div class="item cert-photo-padding " >
+									<div class="cert-tab-itemimg picture-content pull-left"  id="myBtn" >
+	           							<input type="file" class="cert-tab-img cert-img-input"  id="getImg" ng-required="{{isZheng}}"  ng-file-select="onFileSelects3($files)"  accept="image/*"   ng-model="user.getImgZheng" ng-change="getfile()" id="imgInp" />
+	           							<div class="cert-tab-img cert-img-style" >
+	           								<img ng-src="{{getFileT3}}" class="photograph" alt="" />
+	           							</div>
+								 		<div class="cert-tab-font">手持身份证照</div>
+									</div>
+									<div class="cert-tab-itemimg picture-content pull-right"  id="myBtn" >
+	           							<input type="file" class="cert-tab-img cert-img-input"  id="getImg" ng-required="{{isDoor}}"  ng-file-select="onFileSelects4($files)"  accept="image/*"   ng-model="user.getImgDoor" ng-change="getfile()" id="imgInp" />
+	           							<div class="cert-tab-img cert-img-style" >
+	           								<img ng-src="{{getFileDoor}}" class="photograph" alt="" />
+	           							</div>
+								 		<div class="cert-tab-font">门头照</div>
+									</div>
+								</div>
+								<div class="item cert-img-background cert_img_top" >
+									<div class="cert-tab-itemimg picture-content pull-left"  id="myBtn" >
+	           							<input type="file" class="cert-tab-img cert-img-input"  id="getImg" ng-required="{{isCheckstand}}"  ng-file-select="onFileSelects5($files)"  accept="image/*"   ng-model="user.getImgCheckstand" ng-change="getfile()" id="imgInp" />
+	           							<div class="cert-tab-img cert-img-style" >
+	           								<img ng-src="{{getFileCheckstand}}" class="photograph" alt="" />
+	           							</div>
+								 		<div class="cert-tab-font">收银台照</div>
+									</div>
+								</div>
+							</div>  
+						</div>
+				 		<button class="button regist-cont-next cert-button-submit"  ng-disabled="!certForm.$valid" ng-click="certPerUser()">下一步</button>
+				</form>
+				</button>
+			</ion-scroll>
+		</ion-tab>
+		<!--公司注册-->
+		<ion-tab title="公司注册" on-select="onComSelected()">
+			<ion-scroll overflow-scroll="false" class="cert-overflow">
+				<!--你好，公司！-->
+				<button ng-click="selectTabWithIndex(2)" class="cert-tab-button cert-bussis-button">
+	      	<form name="certcomForm" novalidate enctype="multipart/form-data">
+				<div class="list list-inset">
+					<div class="item  item-input cert-name-margin cert-img-margin" >
+						<span class=" input-left" style="display:block;">公司名称</span>
+						<input type="text" name="company" placeholder="请输入公司名称" style="border:1px solid #00BFFF;border-radius:2px;font-size:16px;padding-left:5px;height:40px;margin-right:0px;margin-left:40px!important;padding-right:5px;" required ng-minlength="2"  ng-model="user.companyname" ng-maxlength="30" />
+					</div>
+					<div class="item item-input  cert-name-margin cert-img-margin">
+						<span class="input-left" style="display:block">营业执照号</span>
+						<input type="text" name="business" placeholder="请输入营业执照号" required style="width:80%;border:1px solid #00BFFF;border-radius:2px;display:block;font-size:16px;padding-left:5px;padding-right:5px;height:40px;margin-right:0px;margin-left:40px!important;" ng-model="user.businessId"   />
+					</div>
+				</div>
+				<div class="item cert-photo-background" >
+					<div class="list">
+						<div class="picture-title" >
+							请拍摄如下<span class="color-red">(清晰)</span>照片进行认证
+						</div>
+						<div class="item cert-img-background padding-row" >
+							 <div class="cert-tab-itemimg picture-content pull-left ">
+							 	<input type="file" class="cert-tab-img cert-img-input" id="getImg" ng-required="{{isYing}}"  ng-file-select="onFileSelectss($files)"  accept="image/*"   ng-model="user.getImgYing" ng-change="getfile()" id="imgInp" />
+	   							<div class="cert-tab-img cert-img-style" >
+	           						<img ng-src="{{getFileThree}}" class="photograph" alt="" />		
+	           					</div>
+							 	<div class="cert-tab-font" >营业执照照片(三证合一)</div>
+							 </div>
+					 		<div class="cert-tab-itemimg picture-content pull-right " >
+					 			<input type="file" class="cert-tab-img cert-img-input" id="getImg" ng-required="{{isXu}}"  ng-file-select="onFileSelectsss($files)"  accept="image/*"   ng-model="user.getImgXu" ng-change="getfile()" id="imgInp" />
+	   							<div class="cert-tab-img cert-img-style" >
+	           						<img ng-src="{{getFileFour}}" class="photograph" alt="" />		
+	           					</div>
+						 		<div class="cert-tab-font">开户许可证</div>
+					 		</div>
+						</div>
+						<div class="item cert-photo-padding padding-row" >
+							 <div class="cert-tab-itemimg picture-content pull-left ">
+							 	<input type="file" class="cert-tab-img cert-img-input" id="getImg" ng-required="{{isBussiesDoor}}"  ng-file-select="onFileSelectss6($files)"  accept="image/*"   ng-model="user.getImgBussiesDoor" ng-change="getfile()" id="imgInp" />
+	   							<div class="cert-tab-img cert-img-style" >
+	           						<img ng-src="{{getFileBussiesDoor}}" class="photograph" alt="" />	
+	           					</div>
+							 	<div class="cert-tab-font" >门头照</div>
+							 </div>
+					 		<div class="cert-tab-itemimg picture-content pull-right " >
+					 			<input type="file" class="cert-tab-img cert-img-input" id="getImg" ng-required="{{isForeground}}"  ng-file-select="onFileSelectsss7($files)"  accept="image/*"   ng-model="user.getImgForeground" ng-change="getfile()" id="imgInp" />
+	   							<div class="cert-tab-img cert-img-style" >
+	           						<img ng-src="{{getFileForeground}}" class="photograph" alt="" />		
+	           					</div>
+						 		<div class="cert-tab-font">前台照</div>
+					 		</div>
+						</div>
+						<div class="item cert-img-background padding-row cert_img_top" >
+							 <div class="cert-tab-itemimg picture-content pull-left ">
+							 	<input type="file" class="cert-tab-img cert-img-input" id="getImg" ng-required="{{isOffice}}"  ng-file-select="onFileSelectss8($files)"  accept="image/*"   ng-model="user.getImgOffice" ng-change="getfile()" id="imgInp" />
+	   							<div class="cert-tab-img cert-img-style" >
+	           						<img ng-src="{{getFileOffice}}" class="photograph" alt="" />		
+	           					</div>
+							 	<div class="cert-tab-font" >办公照</div>
+							 </div>
+						</div>
+					</div>  
+				</div>
+				<div class="item " >
+		 		 	<button class="button regist-cont-next cert-button-submit" ng-disabled="!certcomForm.$valid" ng-click="certComUser()">下一步</button>
+				</div>
+				</form>
+				</button>
+			</ion-scroll>
+		</ion-tab>
+	</ion-tabs>
+</ion-view>

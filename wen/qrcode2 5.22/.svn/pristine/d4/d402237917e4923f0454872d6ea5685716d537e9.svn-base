@@ -1,0 +1,53 @@
+<ion-view view-title="商户名称">
+    <ion-content >
+        <div class="item">
+    		<!--<a class="pay-money" ui-sref="paymoney">-->
+    			<img src="./images/i_03.png" alt="" style="width:100px;height:100px;margin:0 auto;margin-top:20px;display:block"/>
+    		<!--</a>-->
+        </div>
+        <div class="item pay-regist">
+        	<a  ui-sref="regist" >点击生成我的付款码</a>
+        </div>
+        <div class="item ad-img" >
+        	<img src="./images/i_06.png" alt=""  />
+        </div>
+        <div class="item" style="padding:0px">
+        	<!--<div class="icon">
+        		<button class="button button-stable button-outline add-list">一键WiFi</button>
+        		<button class="button button-stable button-outline add-list add-list-float" style="float:right">叫车/代驾</button>
+        	</div>-->
+        	<ul class="list">
+        		<li class="item row " >
+        			<div class="icon col-33 col-center icon-border" >
+        				<a class="button  ion-home button-calm button-clear"></a>
+        				<p>一键WiFi</p>
+        			</div>
+        			<div class="icon col-33 col-center icon-border" >
+        				<a class="button  ion-home button-calm button-clear"></a>
+        				<p>叫车/代驾</p>
+        			</div>
+        			<div class="icon col-33 col-center icon-border" >
+        				<a class="button  ion-home button-calm button-clear"></a>
+        				<p>看直播</p>
+        			</div>
+        		</li>
+        		<li class="item row " >
+        			<div class="icon col-33 col-center icon-border" >
+        				<a class="button  ion-home button-calm button-clear"></a>
+        				<p>玩游戏</p>
+        			</div>
+        		</li>
+        	</ul>
+        </div>
+        <div class="item">
+        	<div class="icon">
+        		<button class="button button-stable button-outline add-list">看直播</button>
+        		<button class="button button-stable button-outline add-list add-list-float" style="float:right">玩游戏</button>
+        	</div>
+        </div>
+        
+        <div class="item">
+        	<div class="index-foot">由码云提供技术支持和服务</div>
+        </div>
+    </ion-content>
+</ion-view>

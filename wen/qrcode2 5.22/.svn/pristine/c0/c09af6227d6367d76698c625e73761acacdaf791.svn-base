@@ -1,0 +1,45 @@
+<ion-view view-title="商户名">
+    <ion-content class="pay-cont-center" style="background:#e8e8e8">
+        <div class="item" >
+        	<div >
+        		<!--<div class="pay-content-center balanced">向{{user.seller}}付款</div>-->
+        		<div class="pay-content-center balanced" style="width:100%;">
+        			<div style="float:left;color:#d2d2d2">向</div>
+        			<div style="color:#878787;float:left">{{user.seller}}</div>
+        			<div style="float:left;color:#d2d2d2">付款</div>
+        			<div style="clear:both"></div>
+        		</div>
+        	</div>
+        </div>
+        <div class="item">
+
+        	<div class="pay-content-money" id="text1" style="line-height:10px;border-bottom: 1px solid #ddd;color:#b65250" ng-model="user.getMoney" ng-change="board()" ng-click="keyboard()">
+        		{{user.getMoney |currency:'￥':2}} <span style="font-size:12px;color:#D9D9D9">(元整)</span>    		
+        	</div>
+
+        </div>
+        <div class="item" style="border-bottom: #111111px solid #ccc;padding:0px">{{user.canpay}}
+        	<div class="pay-content-center balanced" style="float:right;font-size:14px;color:#dfdfdf;margin-bottom:15px;">请与商家核对应付金额</div>
+        </div>
+        <!--<!--<div class="item" >-->
+        	<!--<div class="item" style="padding:0px;height:15px;margin-top:15px;border: 1px solid #ddd!important;background:#ddd"></div>-->
+        <!--</div>-->
+        <!--<div class="item pay-cont-wei" style="background:deepskyblue">-->
+        <div class="item pay-cont-wei" style="background:#fff;margin-top:15px;">
+        	 <!--<div style="float:left" >{{user.getPay }} </div>
+        	<input type="checkbox" name="goPay"  class="pay-cont-wei-gopay" />-->
+        	<div style="float:left;font-size:23px;color:#242424;margin-right:15px;">支付方式</div>
+        	<input type="checkbox" name="goPay" ng-checked="true" ng-show="isChecked" class="pay-cont-wei-gopay" style="float:left;width:20px;height:20px;background:dodgerblue!important;color:dodgerblue!important;border-radius: 10px!important;"/>
+        	<i class="iconfont" ng-show="isApliay" style="float:left;margin:0px 10px;font-size:30px;color:dodgerblue" >&#xe63c;</i>
+        	<i class="iconfont" ng-show="isWeiXin" style="float:left;margin:0px 10px;font-size:30px;color:red" >&#xe69e;</i>
+        	<div style="float:left;font-size:15px;color:#BBBBBB" >{{user.getPay }} </div>
+        	
+        </div>
+        <div class="item" style="background:#E8E8E8;padding:40px 0px">
+        	<button class="button button-calm" ng-disabled="isPay" ng-click="goPayCommer()" style="width:95%;border-radius: 40px;background:#4990E2;color:#AEF1FF">确认支付</button>
+        </div>
+        <div class="item">
+        	<div class="pay-content-center balanced">51mayun.com</div>
+        </div>
+    </ion-content>
+</ion-view>

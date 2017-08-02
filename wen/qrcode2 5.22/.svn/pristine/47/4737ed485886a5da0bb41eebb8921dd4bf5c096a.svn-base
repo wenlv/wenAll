@@ -1,0 +1,29 @@
+
+(function(){
+    angular.module("sessionStorageModule",[])
+        .provider("sessionStorageService",function(){
+            //$window  等价 window 建议使用$window
+            this.$get = ["$window",function($window){
+                return {
+                    get:function(key){
+                        return $window.sessionStorage.getItem(key);
+                    },
+                    set:function(key,value){
+                        $window.sessionStorage.setItem(key,value);
+                    },
+                    getObject:function(key){
+                        var objStr = $window.sessionStorage.getItem(key);
+                        try{
+                            return JSON.parse(objStr);
+                        }catch(e){
+                            return null;
+                        }
+                    },
+                    setObject:function(key,value){
+                        $window.sessionStorage.setItem(key,JSON.stringify(value));
+                    }
+                }
+
+            }]
+        })
+})()

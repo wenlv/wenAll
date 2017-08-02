@@ -1,0 +1,20 @@
+<ion-view view-title="用户登录">
+ 	<ion-content class="pay-cont-center" >
+ 		<form name="loginForm">
+			<div class="list">
+				<label class="item item-input">
+					<span class="input-label">账号</span>
+					<input type="text" required placeholder="请输入您的账号" ng-model="user.loginname">
+				</label>
+				<label class="item item-input">
+					<span class="input-label">密码</span>
+					<input type="password" required placeholder="请输入您的密码" ng-model="user.loginpassword">
+				</label>
+			</div>
+
+			<div class="padding-horizontal">
+				<button ng-disabled="!loginForm.$valid" class="button button-balanced button-block" ng-click="loginUser()">登录</button>
+			</div>
+		</form>
+ 	</ion-content>
+</ion-view>

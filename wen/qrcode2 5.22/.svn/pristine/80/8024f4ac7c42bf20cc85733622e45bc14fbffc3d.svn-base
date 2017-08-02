@@ -1,0 +1,357 @@
+(function(){
+	angular.module("certifiCtrModule",[])
+		.controller("certifiController",[
+			"$scope","$state","getDataService",
+			"USERDATA","$ionicTabsDelegate",
+			'$upload',"HOSTURL","$httpParamSerializer",
+			"messageService",
+			function($scope,$state,getDataService,
+				USERDATA,$ionicTabsDelegate,
+				$upload,HOSTURL,$httpParamSerializer,messageService){
+				$scope.user={};
+				console.log("222");
+				console.log($httpParamSerializer);
+				$scope.ceshi=function(){
+					var ce=$scope.user.username;
+					var shen=$scope.user.shenfen;
+					console.log(ce);
+					console.log(shen);
+				}
+
+				//get发送数据请求注册
+				console.log(USERDATA.user);
+	           //个人验证
+				$scope.onTabSelected=function(){
+					console.log("zhong");
+					//个人验证时清除公司的名称和
+					$scope.user.companyname="";
+					$scope.user.businessId="";
+					
+					$scope.certPerUser=function(){
+						$state.go("company");
+					}
+					
+//					$scope.certPerUser=function(){
+//						console.log("555");
+//						var param={
+//							merchantId:USERDATA.user.merchantId,
+//							legalName:$scope.user.username,
+//							legalIdentityNo:$scope.user.shenfen,
+//							identityImg:$scope.getFile,
+//							handImg:$scope.getFileTwo,
+//							merchantType:1
+//						}
+//						identity(param);
+//					}
+				}
+				//公司验证
+				$scope.onComSelected=function(){
+					console.log("com");
+					$scope.user.username="";
+					$scope.user.shenfen="";
+					$scope.certComUser=function(){
+						var comparam={
+							merchantId:USERDATA.user.merchantId,
+							legalName:$scope.user.companyname,
+							legalIdentityNo:$scope.user.businessId,
+							identityImg:$scope.getFileThree,
+							handImg:$scope.getFileFour,
+							merchantType:2
+						}
+						identity(comparam);
+					}
+					
+				}
+				//验证请求
+                function identity(param){
+                	console.log(USERDATA.user);
+                	if(USERDATA.user){
+						getDataService.getRequest(
+							"merchantDetailInfo/approveMerchant",
+	                        param,
+	                       function(data){
+	                            console.log(data);
+	                            console.log(param);
+	                            if(data.data.returnCode==1){
+	                            	console.log("成功");
+	                            	console.log(data);
+	//                          	USERDATA.user=data.data.data;
+	//                          	console.log(USERDATA);
+									messageService.showMessage("正在加载中...");
+	                            	//成功注册后跳到下一步 银行信息验证
+	                            	$state.go("company");
+	                            }else if(data.data.returnCode==2){
+	                            	console.log("c==2");
+	                            	messageService.showMessage(data.data.returnMsg);
+	                            	$state.go("login");
+	                            }
+	                            
+	                        },
+	                        function(error){
+	                           console.log("错误");
+	                           messageService.showMessage(error);
+	//                         $state.go("certification");
+	                        }
+	                    );
+					}else{
+						console.log("验证失败");
+						messageService.showMessage("验证失败");
+						//没有登录 返回注册页面
+						$state.go("regist");
+					}
+                    
+                }
+//               默认照片
+				$scope.getFile="./images/shenfen.png";
+//				$scope.getFile="http://img2.imgtn.bdimg.com/it/u=819201812,3553302270&fm=214&gp=0.jpg";
+//				$scope.getFileTwo='http://img3.imgtn.bdimg.com/it/u=3326312922,67097319&fm=23&gp=0.jpg'
+				$scope.getFileTwo='./images/shenfen2.png';
+				$scope.getFileT3="./images/shenfen3.png"
+				//点击上传身份证正面图片
+				$scope.onFileSelect =function($files) {
+       			 	console.log($files);
+       			 	//$files:是已选文件的名称、大小和类型的数组
+			        for (var i = 0; i < $files.length; i++) {      
+			            var file = $files[i];
+			            console.log(file);
+			            console.log(file.name);
+			            var img='img/'+file.name;
+
+			            console.log($scope.getFile);
+			            console.log(window.navigator);
+			            /*文件上传函数*/
+			            $scope.upload = $upload.upload({
+			                url:HOSTURL+ "fileUpload/uploadFile?serviceType=0", //上传的url
+			                method: 'POST' ,
+			                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+//			                withCredentials: true,
+			                data:{file:file.name},
+			                file: file, // or list of files ($files) for html5 only
+			                //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
+			                // customize file formData name ('Content-Disposition'), server side file variable name. 
+			                //fileFormDataName: myFile, //or a list of names for multiple files (html5). Default is 'file' 
+			                // customize how data is added to formData. See #40#issuecomment-28612000 for sample code
+			                formDataAppender: function(formData, key, val){
+			                	console.log(formData);
+			                	console.log(key);
+			                	console.log(val);
+			                }
+			            }).progress(function(evt) {//上传进度
+			            	 messageService.showMessage("上传中");
+			                console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+			                
+			            }).success(function(data, status, headers, config) {
+			                // 文件上传成功处理函数
+			                 messageService.showMessage("上传成功");
+			                 $scope.getFile=data.data;
+  
+			            }).error(function(data, status, headers, config) {
+			                //失败处理函数
+			                 messageService.showMessage("上传失败");
+			            });
+			        };
+			    };
+			    
+			    //点击上传反面图片
+			    //点击上传身份证反面图片
+				$scope.onFileSelects =function($files) {
+       			 	console.log($files);
+       			 	//$files:是已选文件的名称、大小和类型的数组
+			        for (var i = 0; i < $files.length; i++) {      
+			            var file = $files[i];
+			            console.log(file);
+			            console.log(file.name);
+			            var img='img/'+file.name;
+
+			            console.log($scope.getFile);
+			            var param={
+			            	file:file.name,
+			            	serviceType:0
+			            }
+			            console.log(window.navigator);
+			            /*文件上传函数*/
+			            $scope.upload = $upload.upload({
+			                url:HOSTURL+ "fileUpload/uploadFile?serviceType=0",//上传的url
+			                method: 'POST' ,
+			                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			                //withCredentials: true,
+			                data: {file:file.name},
+			                file: file, // or list of files ($files) for html5 only
+			                //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
+			                // customize file formData name ('Content-Disposition'), server side file variable name. 
+			                //fileFormDataName: myFile, //or a list of names for multiple files (html5). Default is 'file' 
+			                // customize how data is added to formData. See #40#issuecomment-28612000 for sample code
+			                formDataAppender: function(formData, key, val){
+			                }
+			            }).progress(function(evt) {//上传进度
+			            	  messageService.showMessage("上传中...");
+			                console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+			                
+			            }).success(function(data, status, headers, config) {
+			                // 文件上传成功处理函数
+			                  messageService.showMessage("上传成功");
+			                 $scope.getFileTwo=data.data;;
+  
+			            }).error(function(data, status, headers, config) {
+			                //失败处理函数
+			                 messageService.showMessage("上传失败");
+ 
+			            });
+			        };
+			    };
+			    
+			     //点击上传手持身份证图片
+			    //点击上传手持身份证图片
+				$scope.onFileSelects3 =function($files) {
+       			 	console.log($files);
+       			 	//$files:是已选文件的名称、大小和类型的数组
+			        for (var i = 0; i < $files.length; i++) {      
+			            var file = $files[i];
+			            console.log(file);
+			            console.log(file.name);
+			            var img='img/'+file.name;
+
+			            console.log($scope.getFile);
+			            var param={
+			            	file:file.name,
+			            	serviceType:0
+			            }
+			            console.log(window.navigator);
+			            /*文件上传函数*/
+			            $scope.upload = $upload.upload({
+			                url:HOSTURL+ "fileUpload/uploadFile?serviceType=0",//上传的url
+			                method: 'POST' ,
+			                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			                //withCredentials: true,
+			                data: {file:file.name},
+			                file: file, // or list of files ($files) for html5 only
+			                //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
+			                // customize file formData name ('Content-Disposition'), server side file variable name. 
+			                //fileFormDataName: myFile, //or a list of names for multiple files (html5). Default is 'file' 
+			                // customize how data is added to formData. See #40#issuecomment-28612000 for sample code
+			                formDataAppender: function(formData, key, val){
+			                }
+			            }).progress(function(evt) {//上传进度
+			            	  messageService.showMessage("上传中...");
+			                console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+			                
+			            }).success(function(data, status, headers, config) {
+			                // 文件上传成功处理函数
+			                  messageService.showMessage("上传成功");
+			                 $scope.getFileT3=data.data;;
+  
+			            }).error(function(data, status, headers, config) {
+			                //失败处理函数
+			                 messageService.showMessage("上传失败");
+ 
+			            });
+			        };
+			    };
+			    
+			    //营业执照照片
+			    $scope.getFileThree="http://pic2.ooopic.com/12/22/95/08bOOOPICe2_1024.jpg";
+				$scope.onFileSelectss =function($files) {
+       			 	console.log($files);
+       			 	//$files:是已选文件的名称、大小和类型的数组
+			        for (var i = 0; i < $files.length; i++) {      
+			            var file = $files[i];
+			            console.log(file);
+			            console.log(file.name);
+			            var img='img/'+file.name;
+
+			            console.log($scope.getFile);
+			            var param={
+			            	file:file.name,
+			            	serviceType:0
+			            }
+			            console.log(window.navigator);
+			            /*文件上传函数*/
+			            $scope.upload = $upload.upload({
+			                url:HOSTURL+ "fileUpload/uploadFile?serviceType=0", //上传的url
+			                method: 'POST' ,
+			                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			                //withCredentials: true,
+			                data: {file:file.name},
+			                file: file, // or list of files ($files) for html5 only
+			                //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
+			                // customize file formData name ('Content-Disposition'), server side file variable name. 
+			                //fileFormDataName: myFile, //or a list of names for multiple files (html5). Default is 'file' 
+			                // customize how data is added to formData. See #40#issuecomment-28612000 for sample code
+			                formDataAppender: function(formData, key, val){
+			                }
+			            }).progress(function(evt) {//上传进度
+			            	 $scope.geterror="上传中";
+			            	  messageService.showMessage("上传中...");
+			                console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+			                
+			            }).success(function(data, status, headers, config) {
+			                // 文件上传成功处理函数
+			                  messageService.showMessage("上传成功");
+			                 $scope.getFileThree=data.data;
+  
+			            }).error(function(data, status, headers, config) {
+			                //失败处理函数
+			                console.log('上传失败');
+			                 messageService.showMessage("上传失败");
+//			                $scope.getFileThree='http://pic81.huitu.com/res/20160707/1029007_20160707000421662500_1.jpg'; 
+ 
+			            });
+			        };
+			    };
+			    
+			    //开户照片
+			    $scope.getFileFour="http://pic.58pic.com/58pic/15/69/99/55958PICpUx_1024.jpg";
+				$scope.onFileSelectsss =function($files) {
+       			 	console.log($files);
+       			 	//$files:是已选文件的名称、大小和类型的数组
+			        for (var i = 0; i < $files.length; i++) {      
+			            var file = $files[i];
+			            console.log(file);
+			            console.log(file.name);
+			            var img='img/'+file.name;
+
+			            console.log($scope.getFile);
+			            var param={
+			            	file:file.name,
+			            	serviceType:0
+			            }
+			            console.log(window.navigator);
+			            /*文件上传函数*/
+			            $scope.upload = $upload.upload({
+			                url:HOSTURL+ "fileUpload/uploadFile?serviceType=0", //上传的url
+			                method: 'POST' ,
+			                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			                //withCredentials: true,
+			                data: {file:file.name},
+			                file: file, // or list of files ($files) for html5 only
+			                //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
+			                // customize file formData name ('Content-Disposition'), server side file variable name. 
+			                //fileFormDataName: myFile, //or a list of names for multiple files (html5). Default is 'file' 
+			                // customize how data is added to formData. See #40#issuecomment-28612000 for sample code
+			                formDataAppender: function(formData, key, val){
+			                }
+			            }).progress(function(evt) {//上传进度
+			            	  messageService.showMessage("上传中...");
+			                console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+			                
+			            }).success(function(data, status, headers, config) {
+			                // 文件上传成功处理函数
+			                  messageService.showMessage("上传成功");
+			                 $scope.getFileFour=data.data;
+  
+			            }).error(function(data, status, headers, config) {
+			                //失败处理函数
+			                 messageService.showMessage("上传失败");
+//			                $scope.getFileFour='http://img4.imgtn.bdimg.com/it/u=4258410114,1864035878&fm=23&gp=0.jpg'; 
+ 
+			            });
+			        };
+			    };
+			    
+			    
+				
+			}
+		])
+
+		
+})()

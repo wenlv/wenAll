@@ -1,0 +1,73 @@
+<ion-view view-title="码云">
+    <ion-content class="background">
+        <div class="list backgroundwhite " >
+        	<div class="item padding">
+    			<div ng-click="goPayMoney()" disabled="isPay">
+    				<img src="./images/i_03.png" alt="" class="payImg" />
+    			</div>
+	        </div>
+	       <div class="item ad-img" style="padding:0px" >
+		       	 <ion-slide-box   auto-play="true" does-continue="true">
+				  <ion-slide  >
+				    <img src="./images/banner1.jpg" style="height:158px;display: block;" alt=""  />
+				  </ion-slide>
+				  <ion-slide  >
+				    <img src="./images/banner2.jpg" style="height:158px;display: block;" alt=""  />
+				  </ion-slide>
+				</ion-slide-box>
+	       </div>
+	       
+	        <div class="item" style="padding:0px">
+	        	<ul class="list" >
+	        		<li class="item row item-padding" >
+	        			<div class="col-33 col-center icon-border icon-border-bottom icon-border-right icon-border-top" >
+	        				<a href="https://common.diditaxi.com.cn/general/webEntry?wx=true&bizid=257&channel=70365"  class="button  ion-android-car button-calm button-clear iconimg icon-car"></a>
+	        				<p>
+	        					<a href="https://common.diditaxi.com.cn/general/webEntry?wx=true&bizid=257&channel=70365" style="color:#333;text-decoration: none;">叫车/代驾</a>
+	        				</p>
+	        			</div>
+	        			<div class="col-33 col-center icon-border icon-border-bottom icon-border-top" >
+	        				<a href="http://api.05710xbyy.com/api.php?uid=e001" class="button  ion-social-youtube-outline button-calm button-clear iconimg icon-tv" style="font-size:33px!important"></a>
+	        				<p>
+	        					<a href="http://api.05710xbyy.com/api.php?uid=e001" style="color:#333;text-decoration: none;">看直播</a>
+	        				</p>
+	        			</div>
+	        			<div class=" col-33 col-center icon-border icon-border-bottom icon-border-right " >
+	        				<a href="http://gameapp.wanlitong.com"  class="button  ion-ios-game-controller-b button-calm button-clear iconimg icon-game"></a>
+	        				<p>
+	        					<a href="http://gameapp.wanlitong.com" style="color:#333;text-decoration: none;">玩游戏</a>
+	        				</p>
+	        			</div>
+	        		</li>
+	        		<li class="item row item-padding " >
+	        			<div class="col-33 col-center icon-border icon-border-bottom icon-border-right " >
+	        				<a href="https://m.toutiao.com/?W2atIF=1"  class="button  ion-ios-paper button-calm button-clear iconimg icon-game"></a>
+	        				<p>
+	        					<a href="https://m.toutiao.com/?W2atIF=1" style="color:#333;text-decoration: none;">看新闻</a>
+	        				</p>
+	        			</div>
+	        			<div class="col-33 col-center icon-border icon-border-bottom icon-border-right icon-border-top" >
+	        				<!--<a class="button  ion-wifi button-calm button-clear iconimg icon-wifi"></a>
+	        				<p >一键WiFi</p>-->
+	        			</div>
+	        			<div class=" col-33 col-center icon-border icon-border-bottom icon-border-right" >
+	        				<a class="button  button-calm button-clear"></a>
+	        				<p></p>
+	        			</div>
+	        		</li>
+	        	</ul>
+	        </div>
+	        <!--<div class="item background foot-margin" >
+	        	<div class="button button-balanced" ng-click="goLogin()">点击登陆</div>
+	        </div>-->
+
+        </div>
+    </ion-content>
+	<ion-footer-bar align-title="center" class="foot"  >
+	  <h1 class="title" style="height:50px;border:0px solid #fff!important">
+        	<a  ui-sref="regist"  style="margin:50px auto;font-family:sans-serif;font-size:14px;color:dodgerblue;text-decoration: underline;background:#f5f5f5">
+        		申请我的店铺收款码
+        	</a>
+	  </h1>
+	</ion-footer-bar>
+</ion-view>
