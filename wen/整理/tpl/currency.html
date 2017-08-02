@@ -88,6 +88,37 @@
 			        $(this).val(v.substr(0, v.length - 1));
 			    }
 			});
+			
+			
+	//========================================================
+		//=====================推荐=需要同时设置ng-keyup和ng-change事件才可生效==失去焦点时验证最后一位不为.===============================
+//			失去焦点时验证最后一位不为.
+			function addPriceBlur(){
+	        	console.log("失去焦点");
+				var addPrice=$scope.MyPublic.addPrice;
+	        	$scope.MyPublic.addPrice = addPrice.replace(/\.$/g,"");
+	        }
+			//ng-keyup和ng-change事件//=====================推荐=需要同时设置ng-keyup和ng-change事件才可生效=================================
+			function clearNoNum(obj){ 
+	   			console.log(obj);
+	   			if(obj==undefined) return;  //当金额为空时的处理
+			    //先把非数字的都替换掉，除了数字和.    
+			    obj = obj.replace(/[^\d.]/g,"");    
+			    //保证只有出现一个.而没有多个.    
+			    obj = obj.replace(/\.{2,}/g,".");    
+			    //必须保证第一个为数字而不是.    
+			    obj = obj.replace(/^\./g,"");
+			    //必须保证第一个为数字而不是.    
+			    obj= obj.replace(/^00/g,"0");  
+			    //保证.只出现一次，而不能出现两次以上    
+			    obj = obj.replace(".","$#$").replace(/\./g,"").replace("$#$",".");    
+			    //只能输入两个小数  
+			    obj = obj.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');  
+			    
+			    
+			    //将最后处理的结果实时反馈给页面    很重要
+			    $scope.MyPublic.startPrice=obj;
+			}  
 		</script>
 	</body>
 </html>
