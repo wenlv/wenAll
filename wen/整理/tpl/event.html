@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件解除</title>
+</head>
+<body>
+	<button id="btn">点我</button>
+	<button id="sec">解除绑定</button>
+	<script>
+		//标准解除
+		addEvent(btn,'click',show);
+		addEvent(btn,'click',toshow);
+		addEvent(btn,'contextmenu',thirdshow)		
+		function show(){
+			alert('我是第一次绑定');
+		}
+		function toshow(){
+			alert('我是第二次绑定');
+		}
+		function thirdshow(){
+			alert('我是右击事件');
+
+		}
+		//非IE解除
+		/*sec.onclick=function(){
+			btn.removeEventListener('click',show);
+		}*/
+		//IE9-  解除
+		/*sec.onclick=function(){
+			btn.detachEvent('onclick',show);
+		}*/
+		
+		sec.onclick=function(){
+			delEvent(btn,'click',show);
+			delEvent(btn,'click',toshow);
+			delEvent(btn,'click',thirdshow);
+		}
+
+
+
+		//标准绑定事件的函数
+		function addEvent(element,event,fn){
+				if(element.addEventListener){
+					element.addEventListener(event,fn);
+				}else if(element.attachEvent){
+					element.attachEvent('on'+event,fn);
+				}else{
+					alert('您的浏览器不支持事件');
+					return;
+				}
+			}
+		//标准解除事件绑定的函数
+		function delEvent(element,event,fn){
+			if(element.removeEventListener){
+				element.removeEventListener(event,fn);
+			}else if(element.detachEvent){
+				element.detachEvent('on'+event,fn);
+			}else{
+				alert('尔等浏览器不支持事件');
+			}
+		}
+	</script>
+</body>
+</html>

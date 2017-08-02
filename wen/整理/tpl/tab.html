@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡</title>
+	<style>
+		.container{
+			width:600px;
+			height:500px;
+			margin:0 auto;
+		}
+		.nav{
+			height:100px;
+			width:600px;
+		}
+		.nav div{
+			width:100px;
+			box-sizing:border-box;
+			height:100px;
+			line-height: 100px;
+			border:1px solid #ccc;
+			float:left;
+			text-align: center;
+			border-left:0px;
+			cursor: pointer;
+		}
+		.nav div:first-child{
+			border-left:1px solid #ccc;
+		}
+		.nav div.active{
+			background: #f1f1f1;
+			border-bottom: 0px;
+		}
+		.content{
+			height:400px;
+			width:600px;
+		}
+		.content div{
+			width:600px;
+			height:400px;
+			border:1px solid #ccc;
+			box-sizing:border-box;
+			position: absolute;
+			display: none;
+			border-top: 0px;
+			line-height: 400px;
+			text-align: center;
+		}
+		.content div.active{
+			display: block;
+			background: #f1f1f1;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="nav">
+			<div class="active">猫扑论坛</div>
+			<div>国际新闻</div>
+			<div>国内新闻</div>
+			<div>凤凰新闻</div>
+			<div>环球时报</div>
+			<div>铁血论坛</div>
+		</div>
+		<div class="content">
+			<div class="active">kkkkkkkkkk</div>
+			<div>aaaaaaaaa</div>
+			<div>bbbbbbbbb</div>
+			<div>ccccccccc</div>
+			<div>ddddddddd</div>
+			<div>eeeeeeeee</div>
+		</div>
+	</div>
+
+
+	<script>
+		//获取所有的导航
+		var navlist = document.querySelectorAll('.nav div');
+		//获取所有的内容
+		var contentlist = document.querySelectorAll('.content div');
+
+		//for循环绑定
+		for(var i = 0 ; i < navlist.length; i++){
+			(function(m){
+				navlist[m].onclick=function(){
+					for(var j = 0; j<navlist.length;j++){
+						navlist[j].className='';
+						contentlist[j].className='';
+					}
+					this.className='active';
+					contentlist[m].className='active';
+				}
+			})(i);
+
+
+			/*navlist[i].onclick = function(){
+				for(var j = 0 ; j<navlist.length;j++){
+					if(navlist[j] == this){
+						navlist[j].className='active';
+						contentlist[j].className='active';
+						continue;
+					}
+					navlist[j].className='';
+					contentlist[j].className='';
+				}
+			}*/
+		}
+	</script>
+</body>
+</html>

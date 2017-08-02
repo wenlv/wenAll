@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>下拉菜单</title>
+	<style>
+		select{
+			height:200px;
+			width:80px;
+		}
+	</style>
+</head>
+<body>
+	<select class="s1" multiple>
+		<option value="1">齐桓公</option>
+		<option value="2">楚庄公</option>
+		<option value="3">秦穆公</option>
+		<option value="4">晋文公</option>
+		<option value="5">宋襄公</option>
+	</select>
+	<button onclick="toRight()">>></button>
+	<button onclick="toLeft()"><<</button>
+	<select class="s2" multiple>
+		<option value="1">大毛</option>
+		<option value="2">二毛</option>
+		<option value="3">三毛</option>
+		<option value="4">四毛</option>
+		<option value="5">五毛</option>
+	</select>
+	<br>
+	<button onclick="del()">删除</button>
+
+	<script>
+		var s1 = document.querySelector('.s1');
+		var s2 = document.querySelector('.s2');
+
+		//添加操作
+		function toRight(){
+			for(var j = 0; j < s1.options.length; j++){
+				if(s1.options[j].selected){
+					s2.add(s1.options[j]);
+					j--;
+				}
+			}
+		}
+
+		function toLeft(){
+			for(var j = 0; j < s2.options.length; j++){
+				if(s2.options[j].selected){
+					s1.add(s2.options[j]);
+					j--;
+				}
+			}
+		}
+
+
+		//删除操作
+		function del(){
+			for(var i = 0; i < s1.options.length; i++){
+				if(s1.options[i].selected){
+					s1.remove(s1.options[i].index);   //删除option的索引
+					i--;
+				}
+			}
+		}
+		/*
+		 0  1  2  3  4
+		 
+		 删除0 
+		 1—>0  2->1	
+		*/
+
+
+
+		//focus
+		s1.focus();
+
+		//blur() 
+		s1.blur();
+	</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+		.container{
+			width:790px;
+			height:340px;
+			border:1px solid #ccc;
+			margin:0 auto;
+			margin-top:50px;
+			position: relative;
+			cursor: pointer;
+		}
+		.imglist{
+			width:790px;
+			height:340px;	
+		}
+		.imglist img{
+			position: absolute;
+			display: none;
+		}
+		img.active{
+			display: block;
+		}
+		.spanlist{
+			position: absolute;
+			bottom: 10px;
+			margin-left: 300px;
+		}
+		span{
+			display: inline-block;
+			width:20px;
+			height:20px;
+			border-radius: 10px;
+			background: #ccc;
+			font:16px/20px '微软雅黑';
+			color:white;
+			text-align: center;
+			cursor: pointer;
+		}
+		span.active{
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" id="container">
+		<div class="imglist">
+			<img src="../img/lun1.jpg" alt="" class="active">
+			<img src="../img/lun2.jpg" alt="">
+			<img src="../img/lun3.jpg" alt="">
+			<img src="../img/lun4.png" alt="">
+			<img src="../img/lun5.jpg" alt="">
+			<img src="../img/lun6.jpg" alt="">
+		</div>
+		<div class="spanlist">
+			<span class="active">1</span>
+			<span>2</span>
+			<span>3</span>
+			<span>4</span>
+			<span>5</span>
+			<span>6</span>
+		</div>
+	</div>
+	<script>
+		//获取所有的img
+		var imglist = document.getElementsByTagName('img');
+		//获取所有的span
+		var spanlist = document.getElementsByTagName('span');
+		//声明一个变量
+		var i = 1;
+		//定时
+		var timer = setInterval(playing,1000);
+		function playing(){
+			if(i > 5){
+				i = 0;
+			}
+			console.log(i);
+			//让图片动
+			imgRun(i);
+			//让span动起来
+			spanRun(i);
+			i++;
+		} 
+
+		//让图片滚动的函数
+		function imgRun(i){
+			for(var j = 0 ; j < imglist.length; j++){
+				imglist[j].className="";
+			}
+			imglist[i].className="active";
+		}
+		//让span滚动起来
+		function spanRun(i){
+			for(var k = 0 ; k < spanlist.length; k++){
+				spanlist[k].className='';
+			}
+			spanlist[i].className = 'active';
+		}
+
+		//获取container
+		var container = document.getElementById('container');
+		container.onmouseover = function(){
+			clearInterval(timer);
+			//给所有的span绑定onmouseover事件
+			for(var m = 0; m < spanlist.length; m++){
+				/*
+				闭包
+				(function(a){
+					spanlist[a].onmouseover = function(){
+						imgRun(a);
+						spanRun(a);
+						i = a+1;
+					}	
+				})(m);	*/
+
+				spanlist[m].onmouseover = function(){
+					imgRun(this.innerHTML-1);
+					spanRun(this.innerHTML-1);
+					i = this.innerHTML;
+				}
+			}
+		}
+		container.onmouseout = function(){
+			timer = setInterval(playing,1000);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+		<title>数组去重</title>
+	</head>
+	<body>
+		
+		<script>
+//==========================第一种是比较常规的方法====================================
+			Array.prototype.unique1 = function(){
+			 var res = [this[0]];
+			 for(var i = 1; i < this.length; i++){
+			  var repeat = false;
+			  for(var j = 0; j < res.length; j++){
+			   if(this[i] == res[j]){
+			    repeat = true;
+			    break;
+			   }
+			  }
+			  if(!repeat){
+			   res.push(this[i]);
+			  }
+			 }
+			 return res;
+			}
+			var arr = [1, 'a', 'a', 'b', 'd', 'e', 'e', 1, 0]
+			alert(arr.unique1());
+			//====================第二种方法比上面的方法效率要高=============================
+			Array.prototype.unique2 = function(){
+			 this.sort(); //先排序
+			 var res = [this[0]];
+			 for(var i = 1; i < this.length; i++){
+			  if(this[i] !== res[res.length - 1]){
+			   res.push(this[i]);
+			  }
+			 }
+			 return res;
+			}
+			var arr = [1, 'a', 'a', 'b', 'd', 'e', 'e', 1, 0]
+			alert(arr.unique2());
+			
+//===========================第三种方法（推荐使用）========================
+			Array.prototype.unique3 = function(){
+				 var res = [];
+				 var json = {};
+				 for(var i = 0; i < this.length; i++){
+				  if(!json[this[i]]){
+				   res.push(this[i]);
+				   json[this[i]] = 1;
+				  }
+				 }
+				 return res;
+				}
+				var arr = [112,112,34,'你好',112,112,34,'你好','str','str1'];
+				console.log(arr.unique3());
+	//=========================封装的函数=========================================			
+				function unique(arr){
+					var res = [];
+				 	var json = {};
+					for(var i = 0; i < arr.length; i++){
+						if(!json[arr[i]]){
+						   res.push(arr[i]);
+						   json[arr[i]] = 1;
+						}
+					}
+				 	return res;
+				}
+				var arr = [112,112,34,'你好',112,112,34,'你好','str','str1'];
+				console.log(unique(arr));
+		</script>
+	</body>
+</html>

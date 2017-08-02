@@ -1,0 +1,55 @@
+/*============================== 移动开发时用 rem 最好，使用像素设置html=========================================*/
+/*===================================分为竖屏和横屏===============================================*/
+/*设备竖屏时的样式*/   
+@media all and (orientation : portrait){  
+    .video_bg{  
+        position:fixed;  
+        z-index: -9999;  
+        width: 100%;  
+        background: #469BD4;  
+        }  
+}  
+/*设备横屏时的样式*/  
+@media all and (orientation : landscape){  
+    .video_bg{background: #A900B1;  
+        position: fixed;  
+        right: 0;  
+        bottom:0;  
+        z-index: -9999;  
+        width: 100%;  
+        height: 100%;  
+    }  
+}  
+  
+@media only screen and (min-width:320px) and (orientation:portrait){  
+    html{font-size:12px;}  
+}  
+@media only screen and (min-width:360px) and (orientation:portrait){  
+    html{font-size:15px;}  
+}  
+@media only screen and (min-width:400px) and (orientation:portrait){  
+    html{font-size:18px;}  
+}  
+  
+@media only screen and (min-width:600px) and (orientation:portrait){  
+    html{font-size:24px;}  
+}  
+  
+@media only screen and (max-width:768px) and (orientation:portrait){  
+      
+}  
+@media only screen and (min-width:480px) and (orientation:landscape){  
+    html{font-size:12px;}  
+}  
+@media only screen and (min-width:580px) and (orientation:landscape){  
+    html{font-size:13px;}  
+}  
+@media only screen and (min-width:730px) and (orientation:landscape){  
+    html{font-size:16px;}  
+}  
+@media only screen and (min-width:900px) and (orientation:landscape){  
+    html{font-size:21px;}  
+}  
+@media only screen and (min-width:992px){  
+    html{font-size:24px;}  
+}  

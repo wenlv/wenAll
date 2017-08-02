@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<meta name="renderer" content="webkit">
+		<title>登录密码显示隐藏</title>
+		<!--<link rel="stylesheet" href="" />-->
+		<style>
+			/*****************方法二的样式开始************************/
+			.loginPwd{
+				width:80%;
+				display: none;
+				/*display: inline-block;*/
+			}
+			.togglePass{
+				width:10%;
+				box-sizing: border-box;
+				border:0px solid red;
+				float：right;
+			}
+			.login_password{
+				display: inline-block;
+			}
+			/*******************方法二的样式结束**************************/
+		</style>
+	</head>
+	<body>
+		<!--方法一-->
+		<input id="showPwd" class="txt" type="text" value="密码" tabindex="2" />  
+		<input id="pwd" class="txt" name="password" type="password" /> 
+		<hr />
+		
+		<!--********************************jquery登录密码显示 隐藏  推荐使用******************************************-->
+		<!--方法二（可用）-->
+	    <input class="weui-input loginPwd password_hidden" name="password"  type="password" placeholder="请输入密码">
+	    <input class="weui-input loginPwd password_show" name="password" type="text" placeholder="请输入密码">
+	    <span class="togglePass">切换</span>
+	      <!--**************************************************************************-->
+	      
+	      <hr />
+	      <!--方法三-->
+	     <form name="formName"> 
+			<input id="passwd" type="password" size="24" maxlength="17" style="ime-mode: disabled; display: inline;"/> 
+			<input id="passwd2" type="text" size="24" maxlength="17" style="ime-mode: disabled; display: none;" /> 
+			<input id="chk" type="checkbox" hidden/><label for="chk">显示密码 </label>
+		</form> 
+		
+		<hr />
+
+		<script src="../plugin/jquery.min.js"></script>
+		<script>
+			//方法一
+			var showPwd = $("#showPwd"), pwd = $("#pwd");  
+			showPwd.focus(function(){  
+			   pwd.show().focus();  
+			   showPwd.hide();  
+			});  
+			  
+			pwd.blur(function(){  
+			   if(pwd.val()=="") {  
+			       showPwd.show();  
+			       pwd.hide();  
+			    }  
+			}); 
+			//********************************//方法二（可用）*****************************************
+			//方法二（可用）
+			//点击切换密码时默认是隐藏密码
+			$(".password_hidden").addClass("login_password");
+			$(".togglePass").click(function(){
+	//			将值保留下来切换时可见
+				if($(".password_show").hasClass("login_password")){
+					$(".password_hidden").val($(".password_show").val());
+				}else{
+					$(".password_show").val($(".password_hidden").val());
+				}
+				$(".password_show").toggleClass("login_password");
+				$(".password_hidden").toggleClass("login_password");
+				
+			})
+			//**********************************************************
+			
+			//方法三 值同步  放在layui weui框架中无法获取$(this).attr("checked")
+			$("#chk").bind({ 
+				click: function(){ 
+					if($(this).attr("checked")){ 
+						$("#passwd2").val($("#passwd").val()); 
+						$("#passwd").hide(); 
+						$("#passwd2").show(); 
+					}else{ 
+						$("#passwd").val($("#passwd2").val()); 
+						$("#passwd2").hide(); 
+						$("#passwd").show(); 
+					} 
+				} 
+			});
+
+		</script>
+	</body>
+</html>

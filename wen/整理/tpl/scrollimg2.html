@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片的滚动加载</title>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+		h1{
+			text-align: center;
+			padding: 10px;
+		}
+		.container{
+			width:845px;
+			padding: 5px;
+			border:1px solid #ccc;
+			margin:0 auto;
+		}
+		.container:after{
+			content: '';
+			display: block;
+			clear:both;
+		}
+		.container img{
+			float:left;
+			width:400px;
+			height:260px;
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+	<h1>今天周一很开心</h1>
+	<hr>
+	<div class="container">
+		<img picture="../imgs/l1.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l2.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l3.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l4.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l5.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l6.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l1.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l2.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l3.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l4.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l5.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l6.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l1.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l2.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l3.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l4.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l5.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l6.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l1.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l2.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l3.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l4.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l5.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l6.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l1.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l2.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l3.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l4.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l5.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l6.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l1.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l2.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l3.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l4.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l5.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l6.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l1.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l2.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l3.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l4.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l5.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l6.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l1.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l2.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l3.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l4.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l5.jpg" src="../imgs/wait.gif">
+		<img picture="../imgs/l6.jpg" src="../imgs/wait.gif">
+	</div>
+
+	<script>
+		//获取所有的图片
+		var imglist = document.querySelectorAll('img');
+		//视口的高度
+		var screen_height = document.body.innerHeight || document.documentElement.clientHeight;
+		//第一张图片距离顶部的距离
+		var first_h = imglist[0].offsetTop;
+		
+		//开始加载多少张图片
+		var num = Math.ceil((screen_height - first_h)/imglist[0].offsetHeight) * 2;
+		console.log(num); 
+
+		setTimeout(function(){
+			for(var i = 0; i<num;i++){
+				imglist[i].src = imglist[i].getAttribute('picture');
+			}
+		},500);
+
+		//绑定滚动事件
+		window.onscroll = function(){
+			//获取滚动距离
+			var scroll_top = document.body.scrollTop || document.documentElement.scrollTop;
+			console.log(scroll_top);
+
+			//循环判断
+			for(var j = 0; j < imglist.length;j++){
+				if(scroll_top + screen_height > imglist[j].offsetTop){
+					(function(m){
+						setTimeout(function(){
+							imglist[m].src = imglist[m].getAttribute('picture');	
+						},500);	
+					})(j);	
+				}
+			}
+		}
+
+
+	</script>
+</body>
+</html>

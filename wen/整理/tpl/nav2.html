@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义菜单</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		ul{
+			
+			width:200px;
+			height:242px;
+			border:1px solid #ccc;
+			box-sizing:border-box;
+			position: absolute;
+			display: none;
+		}
+		ul li{
+			list-style: none;
+		/* 	width:200px; */
+			height:30px;
+			line-height: 30px;
+			box-sizing:border-box;
+			/* border:1px solid #ccc; */
+			padding-left: 30px;
+			cursor: pointer;
+		}
+		ul li:hover{
+			background: orange;
+
+		}
+		ul li:hover a{
+			color:#fff;
+		}
+		a{
+			color:#333;
+			text-decoration: none;
+
+		}
+	</style>
+</head>
+<body>
+	<ul id='ul'>
+		<li><a href="#">复制</a></li>
+		<li><a href="#">粘贴</a></li>
+		<li><a href="#">刷新</a></li>
+		<li><a href="#">打印</a></li>
+		<li><a href="#">重命名</a></li>
+		<li><a href="#">新建文件</a></li>
+		<li><a href="#">分享到QQ</a></li>
+		<li><a href="#">分享到微信</a></li>
+	</ul>
+
+	<script>
+		//获取菜单
+		var ul = document.getElementById('ul');
+		document.oncontextmenu = function(en){
+			//得到event对象
+			var e = en || window.event;
+			//鼠标的坐标
+			var x = e.clientX;
+			var y = e.clientY;
+			ul.style.display='block';
+
+			//获取视口的宽度
+			var w = window.innerWidth || document.documentElement.clientWidth;
+			var h = window.innerHeight || document.documentElement.clientHeight;
+			//console.log(h);
+
+			//给菜单定位
+			console.log(w-200)
+			console.log(h-200)
+			ul.style.left = Math.min(w-200,x)+'px';
+			ul.style.top = Math.min(h-242,y)+'px';
+
+
+			return false;
+		}
+
+		document.onclick = function(){
+			ul.style.display='none';
+		}
+	</script>
+</body>
+</html>

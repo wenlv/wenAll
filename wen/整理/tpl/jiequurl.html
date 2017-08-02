@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>截取URL参数</title>
+	</head>
+	<body>
+		<div>
+			<h1>其他参数获取介绍： </h1>
+			<p>//设置或获取对象指定的文件名或路径。
+			alert(window.location.pathname);</p>	
+			
+			<p>//设置或获取整个 URL 为字符串。
+			alert(window.location.href);</p>
+			
+			
+			<p>//设置或获取与 URL 关联的端口号码。
+			alert(window.location.port);</p>
+		
+			<p>//设置或获取 URL 的协议部分。
+			alert(window.location.protocol);</p>
+		
+			<p>//设置或获取 href 属性中在井号“#”后面的分段。
+			alert(window.location.hash);</p>
+		
+			<p>//设置或获取 location 或 URL 的 hostname 和 port 号码。
+			alert(window.location.host);</p>
+			
+			<p>//设置或获取 href 属性中跟在问号后面的部分。
+			alert(window.location.search);</p>
+
+		</div>
+		<script type="text/javascript">
+			GetRequest();
+			function GetRequest() {   
+			   var url = location.search; //获取url中"?"符后的字串   
+			   console.log(url);
+			   var theRequest = new Object();   
+			   if (url.indexOf("?") != -1) {   
+			      var str = url.substr(1);  
+			      console.log(str);
+			      strs = str.split("&");  
+			      console.log(strs);
+			      for(var i = 0; i < strs.length; i ++) {   
+			         theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);   
+			      }   
+			   }   
+			   console.log(theRequest);  
+			   return theRequest; 
+			   
+			}   
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>封装调用测试</title>
+	</head>
+	<body>
+		
+		<script src="../js/common/ajax.js"></script>
+		<script>
+			ajax({ 
+				type:"POST", 
+				url:"http://192.168.55.128:8080/manage/merchantInfo/login", 
+				dataType:"json", 
+				data:{"sysAccount":"13162885390","pwd":"123456"}, 
+				beforeSend:function(){ 
+				  //some js code 
+				}, 
+				success:function(msg){ 
+				  console.log(msg) 
+		//			成功后将数据给到页面
+		//			pay_bank.innerHTML=
+		//			pay_money.innerHTML=
+		//			pay_tel.innerHTML=
+		//			pay_name.innerHTML=
+		//			pay_info.innerHTML=
+				}, 
+				error:function(){ 
+				  console.log("error") 
+				} 
+			})
+		</script>
+	</body>
+</html>

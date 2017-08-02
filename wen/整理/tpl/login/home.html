@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	
+<script src="Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery.cookie.js" type="text/javascript"></script>
+<script type="text/javascript">
+//因为Cookie的问题所以最好在主框架页面加入注销换帐号的功能，代码如下
+    function CookClear() {
+        alert('afd');
+        $.cookie("chkRemember", "true", { expires: -1 }); //清除
+        $.cookie("sp001_userName", null, { expires: -1 });
+        $.cookie("sp001_passWord", null, { expires: -1 });
+        window.location.href = "/Login.htm";
+    }
+</script>
+ 
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+      <input id="Button2" type="button" value="注销" onclick="CookClear();" />
+    </div>
+    </form>
+</body>
+	</body>
+</html>

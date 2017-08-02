@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据遍历</title>
+	<style>
+		table{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		//模拟一条数据
+		/*var obj = {
+			goodsName:['手机','电脑','娃娃','苹果','耳机'],
+			price:[5000,12000,20000,5,1000],
+			type:['4G','8G','男用','红富士','AKG'],
+			num:[1,1,2,10,1]
+		}
+
+		//将数据遍历到表格中
+		var table = document.createElement('table');
+		table.border=1;
+		table.width=600;
+		document.body.appendChild(table);
+		//第一行
+		var tr = table.insertRow(0);  
+		var th = document.createElement('th');
+		th.innerHTML = 'goodsName';
+		tr.appendChild(th);
+		var th = document.createElement('th');
+		th.innerHTML = 'price';
+		tr.appendChild(th);
+		var th = document.createElement('th');
+		th.innerHTML = 'type';
+		tr.appendChild(th);
+		var th = document.createElement('th');
+		th.innerHTML = 'num';
+		tr.appendChild(th);
+
+		//遍历数据
+		for(var i = 0; i<obj['goodsName'].length; i++){
+			var t = table.insertRow(i+1);
+
+			t.insertCell(0).innerHTML = obj['goodsName'][i];
+			t.insertCell(1).innerHTML = obj['price'][i];
+			t.insertCell(2).innerHTML = obj['type'][i];
+			t.insertCell(3).innerHTML = obj['num'][i];
+		}
+*/
+		var o = {
+			0:{goodsName:'手机',price:5000,type:'4G',num:1},
+			1:{goodsName:'电脑',price:50,type:'8G',num:1},
+			2:{goodsName:'娃娃',price:50,type:'男用',num:2},
+			3:{goodsName:'苹果',price:1500,type:'红富士',num:4},
+			4:{goodsName:'耳机',price:1500,type:'AKG',num:2}
+		}
+
+		//创建table
+		var table = document.createElement('table');
+		table.border=1;
+		table.width=600;
+		document.body.appendChild(table);   //将表格放入body
+
+		//第一行
+		var tr = table.insertRow(0);     //创建行
+		var th = document.createElement('th');  //创建th节点
+		th.innerHTML = '商品名称';
+		tr.appendChild(th);
+		var th = document.createElement('th');  //创建th节点
+		th.innerHTML = '商品价格';
+		tr.appendChild(th);
+		var th = document.createElement('th');  //创建th节点
+		th.innerHTML = '商品样式';
+		tr.appendChild(th);
+		var th = document.createElement('th');  //创建th节点
+		th.innerHTML = '购买个数';
+		tr.appendChild(th);
+		//数据
+		for(var i in o){
+			//创建行  tr
+			var tr = table.insertRow(Number(i) + 1);
+			tr.insertCell(0).innerHTML = o[i]['goodsName'];
+			tr.insertCell(1).innerHTML = o[i]['price'];
+			tr.insertCell(2).innerHTML = o[i]['type'];
+			tr.insertCell(3).innerHTML = o[i]['num'];
+		}
+	</script>
+</body>
+</html>

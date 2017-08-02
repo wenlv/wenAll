@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--<meta name="format-detection" content="telephone=no">-->
+	<title></title>
+	<link rel="stylesheet" href="../css/default.css" />
+	<link rel="stylesheet" href="../css/spay_scan.css-v=2.0.css" />
+	<link rel="stylesheet" href="../css/key.css" />
+</head>
+<body>
+	 <div class="layout-flex">
+        <!-- content start -->
+        <div class="content">
+            <!--<p class="sico_pay_p"><span class="sico_pay"></span></p>
+            <div class="amount_title"><em>向</em><span>上海森枫物流有限公司</span><em>付款</em></div>-->
+            <div class="set_amount">
+                <div class="amount_hd">消费总额</div>
+                <div class="amount_bd">
+                    <i class="i_money">¥</i>
+                    <span class="input_simu" id="amount"></span>
+                    <!-- 模拟input -->
+                    <em class="line_simu" id="line"></em>
+                    <!-- 模拟闪烁的光标 -->
+                    <div class="clearBtn none" id="clearBtn"><b class="btn_clear"></b></div>
+                    <!-- 清除按钮 -->
+                </div>
+            </div>
+            <!--<p class="remark"><span id="remarkBtn">付款备注</span></p>-->
+        </div>
+        <!-- content end -->
+	
+    <!-- 键盘 -->
+    <div class="keyboard">
+        <table class="key_table" id="keyboard">
+            <tr>
+                <td class="key border b_rgt_btm" data-value="1">1</td>
+                <td class="key border b_rgt_btm" data-value="2">2</td>
+                <td class="key border b_rgt_btm" data-value="3">3</td>
+                <td class="key border b_btm clear" data-value="delete"></td>
+            </tr>
+            <tr>
+                <td class="key border b_rgt_btm" data-value="4">4</td>
+                <td class="key border b_rgt_btm" data-value="5">5</td>
+                <td class="key border b_rgt_btm" data-value="6">6</td>
+                <td class="pay_btn disable" rowspan="3" id="payBtn"><em>付</em>款</td>
+            </tr>
+            <tr>
+                <td class="key border b_rgt_btm" data-value="7">7</td>
+                <td class="key border b_rgt_btm" data-value="8">8</td>
+                <td class="key border b_rgt_btm" data-value="9">9</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="key border b_rgt" data-value="0">0</td>
+                <td class="key border b_rgt" data-value="dot">.</td>
+            </tr>
+        </table>
+    </div>
+	
+	
+	<script src="../js/hammer.js"></script>
+	<script src="../js/key.js"></script>
+	
+</body>
+</html>

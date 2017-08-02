@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+		<title>js 获取今天以及过去日期</title>
+	</head>
+
+	<body>
+		<!--<form method="post">-->
+			起始时间：<input id="first" type="text" /><br>
+			<!-- 2012-05-01 -->
+			终止时间：<input id="second" type="text" />
+			<!--<input type="submit" id="submit" name="提交" />-->
+			<button class="btn">提交</button>
+		<!--</form>-->
+
+		<script type="text/javascript">
+				console.log("=======================");
+//==================================================================================
+//==================================查询日期限制在多少天内(此方法可以)================================================
+//==================================================================================
+				var startdate='2013-08-02';
+				var enddate='2013-09-01';
+				getLimit(startdate,enddate,30);
+				function getLimit(startdate,enddate,limit){
+					//startdate开始日   enddate结束日期 日期格式必需为2013-09-01    limit限制时间天
+					var startD = new Date(Date.parse(startdate.replace(/-/g,"/")));
+					var endD   = new Date(Date.parse(enddate.replace(/-/g,"/")));
+					var days = parseInt((endD.getTime()-startD.getTime()) / (1000 * 60 * 60 * 24));
+					//开始日期小于结束日期或days不为负
+					if(days > limit || days<0){
+						if(days<0){
+							console.log('开始时间不能超过结束时间哦');
+						}else{
+							console.log(查询时间不能大于"+limit+"天哦");
+							return false;
+						}
+					}else{
+						//符合条件时应该要做的事
+						console.log("合适");
+						
+					}
+			    }
+//=================================================================================
+//=================================================================================
+//=================================================================================
+			console.log("=======================");
+			document.querySelector(".btn").onclick=function(){
+				console.log("sdf !");
+				var first = document.getElementById("first").value;
+				var second = document.getElementById("second").value;
+				console.log(Date);
+				limitTime(first,second,31)
+//				
+//				var data1 = Date.parse(first.replace(/-/g, "/"));
+//				console.log(data1);
+//				var data2 = Date.parse(second.replace(/-/g, "/"));
+//				var datadiff = data2 - data1;
+//				var time = 31 * 24 * 60 * 60 * 1000;
+//				if(first.length > 0 && second.length > 0) {
+//					if(datadiff < 0 || datadiff > time) {
+//						console.log("开始时间应小于结束时间并且间隔小于31天，请检查!");
+//	//					return false;
+//					}else{
+//						console.log("请检查!");
+//					}
+//			    }
+			}
+				console.log("开llllll!");
+				//限制查询日期
+				function limitTime(start,end,limit){
+//					日期格式 2017-04-17
+					//start开始日期  end结束日期  limit限制条件（31）
+					console.log(Date);
+					console.log(Date.parse);
+					var data1 =Date.parse(start.replace(/-/g, "/"));
+					var data2 =Date.parse(end.replace(/-/g, "/"));
+					var datadiff = data2 - data1;
+					console.log(data1);
+					console.log(data2);
+					console.log(datadiff);
+					console.log(start.length);
+					console.log(end.length);
+					var time = limit * 24 * 60 * 60 * 1000;
+					if(start.length > 0 && end.length > 0) {
+						if(datadiff < 0 || datadiff > time) {
+							console.log("开始时间应小于结束时间并且间隔小于31天，请检查!");
+		//					return false;
+						}else{
+							console.log("请检查!");
+						}
+					}
+				}
+
+		</script>
+		<script>
+			//获取未来一段时间 获取天数， 如昨天，今天，近1星期，近14天
+			function GetDateStr(AddDayCount) {
+				var dd = new Date();
+				//			    dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期 
+				dd.setDate(dd.getDate() - AddDayCount); //获取AddDayCount天后的日期 
+				var y = dd.getFullYear();
+				var m = dd.getMonth() + 1; //获取当前月份的日期 
+				var d = dd.getDate();
+				//判断 月
+				if(m < 10) {
+					m = "0" + m;
+				} else {
+					m = m;
+				}
+				//判断 日n     
+				if(d < 10) { //如果天数<10
+					d = "0" + d;
+				} else {
+					d = d;
+				}
+				return y + "-" + m + "-" + d;
+			}
+			console.log(GetDateStr(7));
+
+			//			获取月份 ，如1个月后，3个月后，6个月后
+			function GetMonthStr(AddMonthCount) {
+				var dd = new Date();
+				//			    dd.setMonth(dd.getMonth()+AddMonthCount);//获取AddMonthCount月后的日期 
+				dd.setMonth(dd.getMonth() - AddMonthCount); //获取AddMonthCount月前的日期 
+				var y = dd.getFullYear();
+				var m = dd.getMonth() + 1; //获取当前月份的日期 
+				var d = dd.getDate();
+				//判断 月
+				if(m < 10) {
+					m = "0" + m;
+				} else {
+					m = m;
+				}
+				//判断 日n     
+				if(d < 10) { //如果天数<10
+					d = "0" + d;
+				} else {
+					d = d;
+				}
+				return y + "-" + m + "-" + d;
+			}
+			console.log(GetMonthStr(1));
+
+			//			获取年 如1个年前
+			function GetYearStr(AddYearCount) {
+				var dd = new Date();
+				dd.setYear(dd.getFullYear() + AddYearCount); //获取AddMonthCount月后的日期 
+				var y = dd.getFullYear();
+				var m = dd.getMonth() + 1; //获取当前月份的日期 
+				var d = dd.getDate();
+				//判断 月
+				if(m < 10) {
+					m = "0" + m;
+				} else {
+					m = m;
+				}
+				//判断 日n     
+				if(d < 10) { //如果天数<10
+					d = "0" + d;
+				} else {
+					d = d;
+				}
+				return y + "-" + m + "-" + d;
+			}
+			console.log(GetYearStr(1));
+		</script>
+	</body>
+
+</html>

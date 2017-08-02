@@ -1,0 +1,101 @@
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>JS 控制只能输入数字并且最多允许两位小数点</title>  
+</head>  
+<body>    
+<input type="text" name="je"  onkeyup="clearNoNum(this)" />元  
+<input type="text" name="je" class="moeny" />元  
+<script language="JavaScript" type="text/javascript">   
+//输入时
+document.querySelector(".moeny").onkeyup=function(){
+	clearNoNum(this);
+}
+
+//JS 控制只能输入数字并且最多允许两位小数点、首位不能为类似于 01、02的金额  
+    function clearNoNum(obj){  
+        //修复第一个字符是小数点 的情况.  
+        if(obj.value !=''&& obj.value.substr(0,1) == '.'){  
+            obj.value="";  
+        }  
+          
+        obj.value = obj.value.replace(/[^\d.]/g,"");  //清除“数字”和“.”以外的字符  
+        obj.value = obj.value.replace(/\.{2,}/g,"."); //只保留第一个. 清除多余的       
+        obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");      
+        obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');//只能输入两个小数       
+        if(obj.value.indexOf(".")< 0 && obj.value !=""){//以上已经过滤，此处控制的是如果没有小数点，首位不能为类似于 01、02的金额  
+            if(obj.value.substr(0,1) == '0' && obj.value.length == 2){  
+                obj.value= obj.value.substr(1,obj.value.length);      
+            }  
+        }      
+    }    
+    
+    //==================================================================
+    /**转化金额  每三位加一个逗号      有258965.8.5(bug)**/  
+	function convert(money) {  
+	    var s = money; /**获取小数型数据**/  
+	    s += "";  
+	    if (s.indexOf(".") == -1) s += ".0"; /**如果没有小数点，在后面补个小数点和0**/  
+	    if (/\.\d$/.test(s)) s += "0"; /**正则判断**/  
+	    while (/\d{4}(\.|,)/.test(s)) /**符合条件则进行替换**/  
+	    s = s.replace(/(\d)(\d{3}(\.|,))/, "$1,$2"); /**每隔3位添加一个**/  
+	    return s;  
+	 }  
+	 console.log(convert(258965.0));
+//===========================================================================
+//===========================暂时无bug推荐使用================================================
+//===========================================================================
+//===========================================================================
+function formatNum(str){
+	//参数str必需为字符串 (bug汉字和英文时时也可以，str自身不能带逗号)
+	console.log(typeof str);
+//	if(typeof str!="string"){
+//		console.log("不是字符串会报错");
+//		console.log(typeof  String(str));
+//		return;
+//	}
+	//str必需是字符串
+  var newStr = "";
+  var count = 0;
+
+  if(str.indexOf(".")==-1){
+
+    for(var i=str.length-1;i>=0;i--){
+      if(count % 3 == 0 && count != 0){
+        newStr = str.charAt(i) + "," + newStr;
+      }else{
+        newStr = str.charAt(i) + newStr;
+      }
+      count++;
+    }
+    str = newStr + ".00"; //自动补小数点后两位
+  }else{
+    for(var i = str.indexOf(".")-1;i>=0;i--){
+      if(count % 3 == 0 && count != 0){
+        newStr = str.charAt(i) + "," + newStr;
+      }else{
+        newStr = str.charAt(i) + newStr; //逐个字符相接起来
+      }
+      count++;
+    }
+    str = newStr + (str + "00").substr((str + "00").indexOf("."),3);
+  }
+  return str;
+}
+console.log(formatNum('56985265'));
+console.log(formatNum('56985265.0'));
+console.log(formatNum('56985265.05'));
+console.log(formatNum('56985265.0691'));
+console.log(formatNum('56985265.0154'));
+console.log(formatNum('56985265'));
+console.log(formatNum('56'));
+console.log(formatNum('56985265.01.54'));
+console.log(formatNum('人'));
+console.log(formatNum('sdfgh'));
+console.log(formatNum('8552,856')); //bug 2个逗号   85,52,,856.00
+console.log(formatNum('8552,856.55'));
+
+</script>    
+</body>  
+</html>  
+

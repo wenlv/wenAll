@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片的延迟加载</title>
+	<style>
+		.container{
+			border:1px solid #333;
+			border-radius: 20px;
+			padding: 10px;
+			margin:0 auto;
+			width:900px;
+		}
+		.container img{
+			width:440px;
+			height:190px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<img src="../imgs/wait.gif" picture='../imgs/lun1.jpg'>
+		<img src="../imgs/wait.gif" picture='../imgs/lun2.jpg'>
+		<img src="../imgs/wait.gif" picture='../imgs/lun3.jpg'>
+		<img src="../imgs/wait.gif" picture='../imgs/lun4.png'>
+		<img src="../imgs/wait.gif" picture='../imgs/lun5.jpg'>
+		<img src="../imgs/wait.gif" picture='../imgs/lun6.jpg'>
+		<img src="../imgs/wait.gif" picture='../imgs/lun1.jpg'>
+		<img src="../imgs/wait.gif" picture='../imgs/lun2.jpg'>
+		<img src="../imgs/wait.gif" picture='../imgs/lun3.jpg'>
+		<img src="../imgs/wait.gif" picture='../imgs/lun4.png'>
+		<img src="../imgs/wait.gif" picture='../imgs/lun5.jpg'>
+		<img src="../imgs/wait.gif" picture='../imgs/lun6.jpg'>
+	</div>
+
+	<script>
+		//获取所有的图片
+		var imglist = document.querySelectorAll('img');
+		var i = 0;
+		var timer = setInterval(show,70);
+		function show(){
+			if(i>=imglist.length){
+				clearInterval(timer);
+				return;
+			}
+			var new_src = imglist[i].getAttribute('picture');
+			imglist[i].setAttribute('src',new_src);
+			i++;
+		}
+
+		/*setTimeout(function(){
+			for(var i = 0 ; i < imglist.length; i++){
+					//获取自己的picture属性值
+				var new_src = imglist[i].getAttribute('picture');
+				imglist[i].setAttribute('src',new_src);
+			}	
+		},3000);*/
+	</script>
+</body>
+</html>

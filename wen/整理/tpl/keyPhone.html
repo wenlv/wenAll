@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		
+		<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+		">
+		<title>js键盘事件监听</title>
+	</head>
+	<body>
+		<input type="text" id="input" />
+		
+		 <form>
+		        只能输入数字：<input type="text" id="text">
+		</form> 
+		<script src="../plugin/jquery.min.js" type="text/javascript"></script>
+		<script>
+			//获取当前页面高度
+			var winHeight = $(window).height();   
+			$(window).resize(function(){
+			   var thisHeight=$(this).height();
+			    if(winHeight - thisHeight >50){
+			        //窗口发生改变(大),故此时键盘弹出
+			         //当软键盘弹出，在这里面操作
+			    }else{
+			        //窗口发生改变(小),故此时键盘收起
+			        //当软键盘收起，在此处操作
+			    }
+			});
+			
+			//IOS上第三方输入法，用JS监听不到键盘不事件~
+//			监听input事件，如果没有，就监听propertychange事件
+			$('#input').bind('input propertychange', function() {  
+                alert("ok")  ;
+            });  
+            
+			//js 对键盘组合键监听实现.
+			$("#input").keydown(function(e){
+			   if(e.keyCode == 13 && e.ctrlKey){
+			       submit();
+			   }
+			});
+			
+			//=======================================================
+//			判断多种情况：
+//			//小键盘数字键
+//			keyCode>=96 && keyCode<=105
+//			//功能区的数字键
+//			keyCode>=48 && keyCode<=57
+//			//功能键，例如删除，这些需要排除，不然无法使用这些功能
+//			keyCode>=8
+//			
+//			具体的键值可以去搜一下
+			window.onload=function(){
+	            var text=document.getElementById('text');
+	            text.onkeydown=function(e){
+	                var e=e ? e : window.event;
+	                var currKey = e.keyCode||e.which||e.charCode;
+	                //alert(currKey);
+	                if(currKey>=96 && currKey<=105)
+	                {
+	                    console.log("currKey:"+currKey);
+	                }else{
+	                    return false;
+	                }
+	            }
+	        }
+//		</script>
+	</body>
+</html>

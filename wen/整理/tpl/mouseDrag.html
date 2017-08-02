@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>有问题不可用</title>
+		<style>
+			.drag{
+				width:200px;
+				height:100px;
+				border:1px solid red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--<span style="font-size:24px;">//拖拽效果  </span>-->
+		<div class="drag">拖拽</div>
+		<script>
+//			window
+//			window.onload = drag;  
+			var drag=document.querySelector(".drag");
+			drag.onmousedown=fnDown;
+//			function drag() {
+////				var oTitle = getElementByClass('login_logo_webqq', 'loginPanel')[0];
+//				var oTitle = document.querySelector(".drag");
+//				oTitle.onmousedown = fnDown;
+//			}
+
+			function fnDown(event) {
+				event = event || window.event;
+				console.log(event.clientX);
+				console.log(event);
+				console.log(this.offsetLeft);
+				var oDrag = document.getElementById('loginPanel'),
+					//光标按下时光标和面板之间的距离  
+					disX = event.clientX - this.offsetLeft,
+					disY = event.clientY - this.offsetTop;
+				//移动  
+				document.onmousemove = function(event) {
+					event = event || window.event;
+					fnMove(event, disX, disY);
+				}
+				//释放鼠标  
+				document.onmouseup = function() {
+					document.onmousemove = null; //卸载事件  
+					document.onmouseup = null; //卸载本身  
+				}
+			}
+
+			function fnMove(e, posX, posY) {
+//				var oDrag = document.getElementById('loginPanel'),
+				var oDrag = document.querySelector(".drag"),
+					l = e.clientX - posX,
+					t = e.clientY - posY;
+				winW = document.documentElement.clientWidth || document.body.clientWidth, //获取窗口的宽和高  
+					winH = document.documentElement.clientHeight || document.body.clientHeight,
+					maxW = winW - oDrag.offsetWidth,
+					maxH = winH - oDrag.offsetHeight;
+
+				//解决拖拽超出边界的问题  
+				if(l < 0) {
+					l = 0;
+				} else if(l > maxW) {
+					l = maxW;
+				}
+				if(t < 0) {
+					t = 0;
+				} else if(t > maxH) {
+					t = maxH;
+				}
+				oDrag.style.left = l + 'px';
+				oDrag.style.top = t + 'px';
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		
+		<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+		">
+		<title>enter键登录login</title>
+		<style>
+			.box{
+				width:100px;
+				height:50px;
+				background:red;
+			}
+		</style>
+	</head>
+	<body  onkeydown="keyLogin();">
+		<div class="box"></div>
+		
+		<!--方法一页面-->
+		<input id="input1" value="登录" type="button" onClick="alert('调用成功！')">
+		
+			<!--方法二页面-->
+		<form name="Form1" method="">
+			用户名:<INPUT TYPE=text SIZE=20 maxlength = 8 onkeydown=KeyDown()>
+			密码:<INPUT TYPE=password SIZE=20 maxlength = 8 onkeydown=KeyDown()>
+			<input type="submit" name="btnsubmit" value="提交" />
+		</form>
+		<script>
+			
+			document.querySelector(".box").onclick=function(){
+				console.log("5555");
+			}
+			
+			//=========================方法一==============================
+			//enter 处理事件
+			function keyLogin(){
+			  if (event.keyCode==13){  //回车键的键值为13
+//			   document.getElementByIdx_x("input1").click(); //调用登录按钮的登录事件
+//				document.querySelector(".box").click();
+			   }
+			}
+			//=========================方法二==============================
+			function KeyDown(){
+			  if (event.keyCode == 13){
+			    event.returnValue=false;
+			    event.cancel = true;
+//			    Form1.btnsubmit.click();
+				document.querySelector(".box").click();
+			  }
+			}
+			
+			//=========================方法三(兼容处理)==============================
+			function keyDownSearch(e) {    
+		        // 兼容FF和IE和Opera    
+		        var theEvent = e || window.event;    
+		        var code = theEvent.keyCode || theEvent.which || theEvent.charCode;    
+		        if (code == 13) {    
+		            alert('回车');//具体处理函数    
+		            return false;    
+		        }    
+		        return true;    
+		    }  
+		    
+		    //=========================方法四(按键处理)=============================
+		    //=========================方法四(按键处理)=============================
+		    //=========================方法四(按键处理)=============================
+		       function keyUp(e) {
+			       var  currKey=0,
+			       		e=e||window.event;
+			       currKey=e.keyCode||e.which||e.charCode;
+			       //输出所按的字母
+			       var keyName = String.fromCharCode(currKey);
+			       console.log('”按键码: ”' + currKey + '” 字符: ”' + keyName);
+			   }
+			   document.onkeyup = keyUp;
+			   
+			
+			   //========================= 判断浏览器类型兼容ie event.keyCode, 火狐 opera   e.which=============================
+			    function keyUp(e) {
+			       if (navigator.appName == "Microsoft Internet Explorer")
+			       {
+			           var keycode = event.keyCode;
+			           var realkey = String.fromCharCode(event.keyCode);
+			       }else {
+			           var keycode = e.which;
+			           var realkey = String.fromCharCode(e.which);
+			       }
+			       console.log("按键码: "+ keycode + "字符:" + realkey);
+			   }
+			   document.onkeyup = keyUp;
+		</script>
+	</body>
+</html>

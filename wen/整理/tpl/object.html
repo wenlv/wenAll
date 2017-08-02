@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JS判断object/json是否为空</title>
+	</head>
+	<body>
+		<!--JavaScript判断object/json 是否为空，可以使用jQuery的isEmptyObject()方法。
+		此方法如下-->
+		<script>
+			function isEmptyObject(e) {  
+			    var t;  
+			    for (t in e)  
+			        return !1;  
+			    return !0  
+			}  
+			
+			
+			console.log(isEmptyObject({"re": 2}));    //false  
+			console.log(isEmptyObject());           //true  
+			console.log(isEmptyObject({}));         //true  
+			console.log(isEmptyObject(null));       //true  
+			console.log(isEmptyObject(23));         //true  
+			console.log(isEmptyObject({"te": 2}));      //false  
+		</script>
+	</body>
+</html>

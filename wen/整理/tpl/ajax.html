@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script>
+			//****************angularceshi *********************************
+				getDataService.getRequest(
+							"incomeOrder/queryIncomeOrderList",
+	                       {merchantId: "M000327"},
+	                       function(data){
+	                       	console.log(data);
+	                       },function(error){
+	                       	console.log(error);
+	                       })
+				//************************jquery跨域请求**************************
+				$.ajax({
+//					headers: {'Cookie' : document.cookie }, 
+					url: "http://192.168.55.128:8080/manage/incomeOrder/queryIncomeOrderList",
+					data:{
+						merchantId: "M000327"
+			        },
+					type: "GET",
+					dataType:'json',
+					//跨域设置cookie
+					xhrFields:{
+					      withCredentials:true
+					  },
+					success:function(data){
+						console.log(data);	
+					},
+					error:function(error){
+						console.log("fff");
+						console.log(error);
+					}
+					
+				});
+				//*********************************************
+				var xmlhttp = new XMLHttpRequest();  
+				xmlhttp.onreadystatechange = function() {  
+					
+				    if(xmlhttp.readystate == 4 && xmlhttp.status == 200) {  
+				        var response = xmlhttp.responseText;  
+				        console.log(xmlhttp);
+				        console.log(response);
+				    }else if(xmlhttp.status == 400) { //或者可以是任何以4开头的状态码  
+				        //优雅地处理错误  
+				          console.log(xmlhttp);
+				    }else{
+				    	console.log(xmlhttp);
+				    }
+				};  
+				
+				//建立连接  
+				xmlhttp.open("GET", "http://192.168.55.128:8080/manage/incomeOrder/queryIncomeOrderList?merchantId=M000327", true);  
+				//发起请求  
+				xmlhttp.send(); 
+				
+		</script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+		<title>每月第一天和最后一天</title>
+	</head>
+	<body>
+		
+		<script>
+			//每月第一天
+			var firstDate = new Date();
+			firstDate.setDate(1); //第一天
+			console.log(firstDate.setDate(1));
+			console.log(new Date(firstDate).toString('yyyy-MM-dd'));
+			
+			//每月最后一天
+			var endDate = new Date(firstDate);
+			endDate.setMonth(firstDate.getMonth()+1);
+			endDate.setDate(0);
+			console.log(endDate.setDate(0));
+			console.log(new Date(endDate).toString('yyyy-MM-dd'));
+//			alert("第一天："+new Date(firstDate).toString('yyyy-MM-dd')+" 最后一天："+new Date(endDate).toString('yyyy-MM-dd'));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>拖拽</title>
+	<style>
+		*{
+			padding: 0;
+			margin:0;
+		}
+		#box{
+			width:200px;
+			height:200px;
+			position: absolute;
+			background-image: url('../image/9.jpg');
+			background-size: cover;
+			left:20px;
+			top:40px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script>
+		//获取盒子
+		var box = document.getElementById('box');
+		box.onmousedown = function(en){
+			//获取event事件
+			var e = en || window.event;
+			//得到鼠标的坐标
+			var x = e.clientX;
+			var y = e.clientY;
+			//console.log(x+','+y);
+			//盒子距离最近的定位的父级的left
+			var width = this.offsetLeft;
+			//盒子距离最近的定位的父级的top
+			var height = this.offsetTop;
+			//console.log(width+','+height);
+
+			//鼠标在盒子上的位置
+			var left = x - width;
+			var top = y - height;
+			console.log('鼠标在盒子上的x坐标'+left+',鼠标在盒子上的y坐标'+top);
+
+			box.onmousemove = function(even){
+				var event = even || window.event;
+				console.log(event.clientX+','+event.clientY);
+				var l = event.clientX;
+				var r = event.clientY;
+				//给盒子定位
+				this.style.left = (l-left)+'px';
+				this.style.top = (r-top) + 'px';
+			}
+		}
+
+		//鼠标抬起事件
+		box.onmouseup = function(){
+			box.onmousemove=function(){}
+		}
+	</script>
+</body>
+</html>

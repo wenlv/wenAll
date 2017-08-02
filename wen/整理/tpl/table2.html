@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>table--dom</title>
+</head>
+<body>
+	<table border="1" width="600">
+		<tr>
+			<th>用户</th>
+			<th>性别</th>
+			<th>年龄</th>
+			<th>收入</th>
+			<th>操作</th>
+		</tr>
+		<tr>
+			<td>沈万三</td>
+			<td>男</td>
+			<td>200</td>
+			<td>2000万</td>
+			<td><button onclick="del(this)">删除</button></td>
+		</tr>
+		<tr>
+			<td>和珅</td>
+			<td>男</td>
+			<td>20</td>
+			<td>1000万</td>
+			<td><button onclick="del(this)">删除</button></td>
+		</tr>
+		<tr>
+			<td>陶朱公</td>
+			<td>男</td>
+			<td>120</td>
+			<td>1000万</td>
+			<td><button onclick="del(this)">删除</button></td>
+		</tr>
+		<tr>
+			<td>马云</td>
+			<td>男</td>
+			<td>50</td>
+			<td>1200万万</td>
+			<td><button onclick="del(this)">删除</button></td>
+		</tr>
+	</table>
+	<hr>
+	<form action="" name="myform" onsubmit='return false'>
+		姓名：<input type="text" name="name"><br>
+		性别：<input type="text" name="sex"><br>
+		年龄：<input type="text" name='age'><br>
+		年薪：<input type="text" name="money"><br>
+		<button onclick='getData()'>提交</button>
+	</form>
+	<script>
+		var tab = document.querySelector('table');
+
+		function getData(){
+			var name = document.myform.name.value;
+			var sex = document.myform.sex.value;
+			var age = document.myform.age.value;
+			var money = document.myform.money.value;
+
+
+			//将数据放入表格中
+			var tr = tab.insertRow(tab.rows.length);   //给table添加行
+
+			tr.insertCell(0).innerHTML = name;   //给行添加单元格
+			tr.insertCell(1).innerHTML = sex;
+			tr.insertCell(2).innerHTML = age;
+			tr.insertCell(3).innerHTML = money;
+			tr.insertCell(4).innerHTML = '<button onclick="del(this)">删除</button>';
+		}
+
+		function del(m){
+			console.log(m);
+			console.log(m.parentNode.parentNode);  //得到当前tr
+
+			//执行删除    --需要传入行的索引
+			tab.deleteRow(m.parentNode.parentNode.rowIndex); 
+		}
+
+
+		//删除单元格   --传入单元格的索引
+		tab.rows[2].deleteCell(0);
+	</script>
+</body>
+</html>
